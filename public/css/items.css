@@ -1,0 +1,36 @@
+html,body,h1,h2,p,ul,li{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    font-size: 62.5%;
+}
+
+.site-width{
+    width: 980px;
+    margin: auto;
+}
+
+.main-container{
+    height: 1200px;
+}
+
+.top-title{
+    padding-top: 250px;
+    font-size: 1.8rem;
+    border-bottom: 3px solid #8B4513;
+    color: #8B4513;
+}
+.content-container{
+    overflow: auto;
+    max-height: 780px;
+    min-height: 780px;
+    border: black 1px solid;
+}
+.item{
+    width: 33%;
+    float: left;
+    max-height: 100px;
+    min-height: 100px;
+}

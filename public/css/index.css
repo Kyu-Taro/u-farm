@@ -1,0 +1,43 @@
+html,body,h1,h2,p,ul,li{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    font-size: 62.5%;
+}
+
+.site-width{
+    width: 980px;
+    margin: auto;
+}
+
+.top-container{
+    height: 900px;
+    background-image: url('/img/top.jpg');
+    background-size: 100% 900px;
+}
+.top{
+    height: 900px;
+    background: rgba(44, 44, 44, 0.24);
+}
+h1.top-title{
+    padding-top: 300px;
+    text-align: center;
+    display: block;
+    font-size: 4.5rem;
+    color: white;
+}
+p.top-comment{
+    text-align: center;
+    color: white;
+    font-size: 2.9rem;
+}
+.sub-container{
+    height: 500px;
+    background: rgb(74, 160, 74);
+}
+.detail{
+    height: 500px;
+    background: rgb(182, 103, 103);
+}
