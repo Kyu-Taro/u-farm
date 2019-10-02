@@ -50,7 +50,7 @@ class ItemsController extends Controller
             $path = Storage::disk('s3')->putFile('u-farm',$request->file('img'),'public');
             $img = Storage::disk('s3')->url($path);
             $form['img'] = $img;
-            // $item->fill($form)->save();
+            $item->fill($form)->save();
         }
 
         return redirect()->route('mypage');
