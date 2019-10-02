@@ -22,18 +22,21 @@ Route::get('/login_second','MainController@login_second');
 Route::post('/login_second','LoginController@login_second');
 Route::post('/login','LoginController@login')->name('login');
 Route::get('/setting','MainController@setting')->name('setting');
+Route::get('/register_second','MainController@register_second');
+Route::resource('/items','ItemsController');
+Route::resource('/admin','AdminController');
+Route::post('/charge/{item_id}/{user_id}','ChargeController@charge')->name('charge');
 
-Route::group(['middleware' => 'guest:admin'],function(){
-    Route::get('/register_second','MainController@register_second');
+Route::group(['middleware' => 'auth:user'],function(){
+    Route::get('/setting_second','MainController@setting_second');
+    Route::resource('/user','UserController');
 });
 
 Route::group(['middleware' => 'auth:admin'],function(){
     Route::get('/mypage','MainController@mypage')->name('mypage');
     Route::get('/create','MainController@create');
-    Route::resource('/items','ItemsController');
     Route::get('/delete/{id}','MainController@delete');
     Route::get('/update/{id}','MainController@update');
-    Route::resource('/admin','AdminController');
     Route::get('/account_add','MainController@account_add')->name('account_add');
     Route::get('/account_update','MainController@account_update')->name('account_update');
     Route::resource('/account','AccountController');

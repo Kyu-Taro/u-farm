@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Item;
 use App\Http\Requests\CreateRequest;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class ItemsController extends Controller
 {
@@ -63,7 +64,19 @@ class ItemsController extends Controller
      */
     public function show($id)
     {
-        return redirect()->route('mypage');
+        $item = Item::find($id);
+        if(Auth::guard('admin')->check()){
+            $user = Auth::guard('admin')->user();
+        }else{
+            $user = Auth::user();
+        }
+
+        $data = [
+            'user' => $user,
+            'item' => $item,
+        ];
+
+        return view('pages.itemDetail',$data);
     }
 
     /**

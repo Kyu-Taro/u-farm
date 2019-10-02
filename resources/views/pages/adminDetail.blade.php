@@ -1,6 +1,6 @@
-@extends('templates.form')
-@section('title','商品登録')
-@section('href','create.css')
+@extends('templates.mypageParent')
+@section('title','生産者詳細')
+@section('href','/css/mypage.css')
 
 @section('header')
     @component('components.header2')
@@ -37,41 +37,34 @@
     @endcomponent
 @endsection
 
-@section('form')
-<form action="/items" method="POST" enctype="multipart/form-data">
-    @csrf
-    <input type="hidden" value="{{ $user->id }}" name="admin_id">
-    <div class="area-drop">
-        写真を選択
-        <img src="@if(!empty($user->img)) {{ $user->img }} @endif" class="prev-img" style="@if(!empty($user->img)) display: block @else display: none @endif">
-        <input type="file" name="img" class="input-file"><br/>
+@section('my-content')
+    <img src="@if(empty($user->img)) /img/sample.jpg @else {{ $user->img }} @endif">
+    <dl>
+        <dt>名前</dt>
+        <dd>{{ $user->name }}</dd>
+        <dt>農家紹介</dt>
+        <dd>@if(empty($user->text)) 準備中です。しばらくお待ちください。@else {{ $user->text }} @endif</dd>
+    </dl>
+@endsection
+
+@section('items-content')
+    <h1>出品商品一覧</h1>
+    <div class="item-contents">
+        <div class="item-container">
+            @foreach ($items as $item)
+                <div class="item">
+                    <img src="@if(empty($item->img)) img/sample.jpg @else {{ $item->img }} @endif"><br/>
+                    商品名: {{ $item->name }}<br/>
+                    金額: {{ $item->price }}円<br/>
+                    産地: {{ $item->area }}<br/>
+                    商品情報:<br/>
+                    <div class="comment">
+                        {{ $item->text }}
+                    </div>
+                </div>
+            @endforeach
+        </div>
     </div>
-    商品名:
-    @error('name')
-        <span class="error">{{ $message }}</span>
-    @enderror
-    <br>
-    <input type="text" name="name"><br/>
-    金額
-    @error('price')
-        <span class="error">{{ $message }}</span>
-    @enderror
-    <br/>
-    <input type="tel" name="price"><br/>
-    産地:
-    @error('area')
-        <span class="error">{{ $message }}</span>
-    @enderror
-    <br/>
-    <input type="text" name="area"><br/>
-    商品説明:
-    @error('text')
-        <span class="error">{{ $message }}</span>
-    @enderror
-    <br/>
-    <textarea name="text" cols="68" rows="10"></textarea><br/>
-    <input type="submit" value="登録">
-</form>
 @endsection
 
 @section('footer')

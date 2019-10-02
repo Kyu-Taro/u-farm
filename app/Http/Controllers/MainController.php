@@ -106,4 +106,10 @@ class MainController extends Controller
             return redirect()->route('account_add');
         }
     }
+
+    public function setting_second()
+    {
+        $user = Auth::user();
+        return view('pages.setting_second',compact('user'));
+    }
 }
