@@ -38,7 +38,7 @@ class ChargeController extends Controller
 
         $to = $item->admin->email;
         $text = $user->postNumber.$user->area;
-        // Mail::to($to)->send(new Admin($text));
+        Mail::to($to)->send(new Admin($text));
 
         return back();
     }
