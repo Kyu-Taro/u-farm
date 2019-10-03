@@ -32,8 +32,6 @@ class ChargeController extends Controller
                 'currency' => 'jpy'
             ));
 
-            return back();
-            
         } catch (\Exception $ex) {
             return $ex->getMessage();
         }
