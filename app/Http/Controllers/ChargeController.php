@@ -21,7 +21,7 @@ class ChargeController extends Controller
 
         $item = Item::find($item_id);
         $user = User::find($user_id);
-        $id = $item->account->id;
+        $id = $item->admin_id;
         $admin = Admins::find($id);
 
 
