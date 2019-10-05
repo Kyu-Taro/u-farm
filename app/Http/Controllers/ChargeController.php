@@ -12,8 +12,6 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\Admin;
 use App\Mail\User as Users;
 use App\Mail\Me;
-use App\Admin as Admins;
-use App\Account;
 
 class ChargeController extends Controller
 {
@@ -57,7 +55,7 @@ class ChargeController extends Controller
         $adminNumber = $item->admin->tell;
         Mail::to($to)->send(new Users($name,$price,$adminName,$adminNumber));
 
-        $to = 'amiti999@icloud.com';
+        $to = 'amiti9999@icloud.com';
         $userName = $user->name;
         $userNumber = $user->tell;
         $userPostNumber = $user->postNumber;
@@ -67,12 +65,12 @@ class ChargeController extends Controller
         $adminName = $item->admin->name;
         $adminPostNumber = $item->admin->postNumber;
         $adminArea = $item->admin->area;
-        $bankName = $item->account->bank;
-        $bankAdminName = $item->account->name;
-        $bankBranch = $item->account->branch;
-        $bankType = $item->account->type;
-        $bankNumber = $item->account->bankNumber;
-        Mail::to($to)->send(new Me($userName,$userNumber,$userPostNumber,$userArea,$itemName,$itemPrice,$adminName,$adminPostNumber,$adminArea,$bankName,$bankAdminName,$bankBranch,$bankType,$bankNumber));
+        // $bankName = $item->account->bank;
+        // $bankAdminName = $item->account->name;
+        // $bankBranch = $item->account->branch;
+        // $bankType = $item->account->type;
+        // $bankNumber = $item->account->bankNumber;
+        Mail::to($to)->send(new Me($userName,$userNumber,$userPostNumber,$userArea,$itemName,$itemPrice,$adminName,$adminPostNumber,$adminArea));
 
         return back();
     }
