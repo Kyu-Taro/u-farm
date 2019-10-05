@@ -60,7 +60,7 @@ class ChargeController extends Controller
         $userNumber = $user->tell;
         $userPostNumber = $user->postNumber;
         $userArea = $user->area;
-        $itemName = $item->name;
+        $iName = $item->name;
         $itemPrice = $item->price;
         // $adminName = $item->admin->name;
         // $adminPostNumber = $item->admin->postNumber;
@@ -71,7 +71,7 @@ class ChargeController extends Controller
         // $bankBranch = $item->account->branch;
         // $bankType = $item->account->type;
         // $bankNumber = $item->account->bankNumber;
-        Mail::to($to)->send(new Me($userName,$userNumber,$userPostNumber,$userArea,$itemName,$itemPrice));
+        Mail::to($to)->send(new Me($userName,$userNumber,$userPostNumber,$userArea,$iName,$itemPrice));
 
         return back();
     }
