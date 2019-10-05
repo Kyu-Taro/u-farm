@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\Admin;
 use App\Mail\User as Users;
 use App\Mail\Me;
+use App\Admin as Admins;
 
 class ChargeController extends Controller
 {
@@ -20,6 +21,8 @@ class ChargeController extends Controller
 
         $item = Item::find($item_id);
         $user = User::find($user_id);
+        $id = $item->account->id;
+        $admin = Admins::find($id);
 
 
         try {
@@ -66,12 +69,12 @@ class ChargeController extends Controller
         $adminPostNumber = $item->admin->postNumber;
         $adminArea = $item->admin->area;
         $adminNumber = $item->admin->tell;
-        $bankName = $item->account->bank;
+        // $bankName = $item->account->bank;
         // $bankAdminName = $item->account->name;
         // $bankBranch = $item->account->branch;
         // $bankType = $item->account->type;
         // $bankNumber = $item->account->number;
-        Mail::to($to)->send(new Me($userName,$userNumber,$userPostNumber,$userArea,$itemName,$itemPrice,$adminName,$adminPostNumber,$adminArea,$adminNumber,$bankName));
+        Mail::to($to)->send(new Me($userName,$userNumber,$userPostNumber,$userArea,$itemName,$itemPrice,$adminName,$adminPostNumber,$adminArea,$adminNumber));
 
         return back();
     }
