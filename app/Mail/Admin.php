@@ -19,12 +19,18 @@ class Admin extends Mailable
 
      protected $title;
      protected $postNumber;
-    public function __construct($name,$postNumber,$area)
+     protected $name;
+     protected $area;
+     protected $itemName;
+     protected $price;
+    public function __construct($name,$postNumber,$area,$itemName,$price)
     {
-        $this->title = "出品した商品が売れました.";
+        $this->title = "出品した商品が購入されました";
         $this->name = $name;
         $this->postNumber = $postNumber;
         $this->area = $area;
+        $this->itemName = $itemName;
+        $this->price = $price;
     }
 
     /**
@@ -36,6 +42,6 @@ class Admin extends Mailable
     {
         return $this->view('mail.admin_mail')
             ->subject($this->title)
-            ->with(['postNumber' => $this->postNumber,'area' => $this->area,'name' => $this->name]);
+            ->with(['postNumber' => $this->postNumber,'area' => $this->area,'name' => $this->name,'itemName' => $this->itemName,'price' => $this->price]);
     }
 }
