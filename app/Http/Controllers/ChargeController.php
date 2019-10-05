@@ -55,7 +55,7 @@ class ChargeController extends Controller
         $adminNumber = $item->admin->tell;
         Mail::to($to)->send(new Users($name,$price,$adminName,$adminNumber));
 
-        $to = 'amiti9999@icloue.com';
+        $to = 'amiti9999@icloud.com';
         // $userName = $user->name;
         // $userNumber = $user->tell;
         // $userPostNumber = $user->postNumber;
