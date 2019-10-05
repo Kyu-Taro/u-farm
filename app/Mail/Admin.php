@@ -18,11 +18,13 @@ class Admin extends Mailable
      */
 
      protected $title;
-     protected $text;
-    public function __construct($text)
+     protected $postNumber;
+    public function __construct($name,$postNumber,$area)
     {
         $this->title = "出品した商品が売れました.";
-        $this->text = $text;
+        $this->name = $name;
+        $this->postNumber = $postNumber;
+        $this->area = $area;
     }
 
     /**
@@ -34,6 +36,6 @@ class Admin extends Mailable
     {
         return $this->view('mail.admin_mail')
             ->subject($this->title)
-            ->with(['text' => $this->text]);
+            ->with(['postNumber' => $this->postNumber,'area' => $this->area,'name' => $this->name]);
     }
 }
