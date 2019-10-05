@@ -12,10 +12,10 @@
 住所:{{ $adminPostNumber }} {{ $adminArea }}<br/>
 電話番号:{{ $adminNumber }}<br/>
 <br/>
-{{-- 【口座情報】<br/>
-名義名:{{ $bankAdminName }}<br/>
+【口座情報】<br/>
+{{-- 名義名:{{ $bankAdminName }}<br/> --}}
 銀行名:{{ $bankName }}<br/>
-支店名:{{ $bankBranch }}<br/>
+{{-- 支店名:{{ $bankBranch }}<br/>
 種別:{{ $bankType }}<br/>
 口座番号:{{ $bankNumber }} --}}
 
