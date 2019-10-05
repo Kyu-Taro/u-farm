@@ -24,17 +24,17 @@ class Me extends Mailable
      protected $userArea;
     //  protected $itemName;
     //  protected $itemPrice;
-     protected $adminName;
-     protected $adminPostNumber;
-     protected $adminArea;
-     protected $adminNumber;
-     protected $bankName;
-     protected $bankAdminName;
-     protected $bankBranch;
-     protected $bankType;
-     protected $bankNumber;
+    //  protected $adminName;
+    //  protected $adminPostNumber;
+    //  protected $adminArea;
+    //  protected $adminNumber;
+    //  protected $bankName;
+    //  protected $bankAdminName;
+    //  protected $bankBranch;
+    //  protected $bankType;
+    //  protected $bankNumber;
 
-    public function __construct($userName,$userNumber,$userPostNumber,$userArea,$adminName,$adminPostNumber,$adminArea,$adminNumber,$bankName,$bankAdminName,$bankBranch,$bankType,$bankNumber)
+    public function __construct($userName,$userNumber,$userPostNumber,$userArea)
     {
         $this->title = '購入情報通知';
         $this->userName = $userName;
@@ -43,15 +43,15 @@ class Me extends Mailable
         $this->userArea = $userArea;
         // $this->itemName = $itemName;
         // $this->itemPrice = $itemPrice;
-        $this->adminName = $adminName;
-        $this->adminPostNumber = $adminPostNumber;
-        $this->adminArea = $adminArea;
-        $this->adminNumber = $adminNumber;
-        $this->bankName = $bankName;
-        $this->bankAdminName = $bankAdminName;
-        $this->bankBranch = $bankBranch;
-        $this->bankType = $bankType;
-        $this->bankNumber = $bankNumber;
+        // $this->adminName = $adminName;
+        // $this->adminPostNumber = $adminPostNumber;
+        // $this->adminArea = $adminArea;
+        // $this->adminNumber = $adminNumber;
+        // $this->bankName = $bankName;
+        // $this->bankAdminName = $bankAdminName;
+        // $this->bankBranch = $bankBranch;
+        // $this->bankType = $bankType;
+        // $this->bankNumber = $bankNumber;
     }
 
     /**
@@ -71,15 +71,15 @@ class Me extends Mailable
                     'userArea' => $this->userArea,
                     // 'itemName' => $this->itemName,
                     // 'itemPrice' => $this->itemPrice,
-                    'adminName' => $this->adminName,
-                    'adminPostNumber' => $this->adminPostNumber,
-                    'adminArea' => $this->adminArea,
-                    'adminNumber' => $this->adminNumber,
-                    'bankName' => $this->bankName,
-                    'bankAdminName' => $this->bankAdminName,
-                    'bankBranch' => $this->bankBranch,
-                    'bankType' => $this->bankType,
-                    'bankNumber' => $this->bankNumber
+                    // 'adminName' => $this->adminName,
+                    // 'adminPostNumber' => $this->adminPostNumber,
+                    // 'adminArea' => $this->adminArea,
+                    // 'adminNumber' => $this->adminNumber,
+                    // 'bankName' => $this->bankName,
+                    // 'bankAdminName' => $this->bankAdminName,
+                    // 'bankBranch' => $this->bankBranch,
+                    // 'bankType' => $this->bankType,
+                    // 'bankNumber' => $this->bankNumber
                 ]
             );
     }
