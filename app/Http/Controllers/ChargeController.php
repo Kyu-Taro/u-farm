@@ -22,8 +22,7 @@ class ChargeController extends Controller
 
         $item = Item::find($item_id);
         $user = User::find($user_id);
-        $id = $item->admin()->id;
-        $admin = Admins::find($id);
+
 
         try {
             Stripe::setApiKey(env('STRIPE_SECRET'));
