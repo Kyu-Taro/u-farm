@@ -1,7 +1,7 @@
 【購入者情報】<br/>
 氏名:{{ $userName }}<br/>
 電話番号:{{ $userNumber }}<br/>
-住所:{{ $userPostNumber }} {{ $userarea }}<br/>
+住所:{{ $userPostNumber }} {{ $userArea }}<br/>
 {{-- <br/>
 【購入商品】<br/>
 商品名:{{ $itemName }}<br/>
