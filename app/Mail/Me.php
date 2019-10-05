@@ -27,13 +27,14 @@ class Me extends Mailable
      protected $adminName;
      protected $adminPostNumber;
      protected $adminArea;
+     protected $adminNumber;
     //  protected $bankName;
     //  protected $bankAdminName;
     //  protected $bankBranch;
     //  protected $bankType;
     //  protected $bankNumber;
 
-    public function __construct($userName,$userNumber,$userPostNumber,$userArea,$itemName,$itemPrice,$adminName,$adminPostNumber,$adminArea)
+    public function __construct($userName,$userNumber,$userPostNumber,$userArea,$itemName,$itemPrice,$adminName,$adminPostNumber,$adminArea,$adminNumber)
     {
         $this->title = '購入情報通知';
         $this->userName = $userName;
@@ -45,6 +46,7 @@ class Me extends Mailable
         $this->adminName = $adminName;
         $this->adminPostNumber = $adminPostNumber;
         $this->adminArea = $adminArea;
+        $this->adminNumber = $adminNumber;
         // $this->bankName = $bankName;
         // $this->bankAdminName = $bankAdminName;
         // $this->bankBranch = $bankBranch;
@@ -61,6 +63,6 @@ class Me extends Mailable
     {
         return $this->view('mail.me_mail')
             ->subject($this->title)
-            ->with(['userName' => $this->userName,'userNumber' => $this->userNumber,'userPostNumber' => $this->userPostNumber,'userArea' => $this->userArea,'itemName' => $this->itemName,'itemPrice' => $this->itemPrice,'adminName' => $this->adminName,'adminPostNumber' => $this->adminPostNumber,'adminArea' => $this->adminArea]);
+            ->with(['userName' => $this->userName,'userNumber' => $this->userNumber,'userPostNumber' => $this->userPostNumber,'userArea' => $this->userArea,'itemName' => $this->itemName,'itemPrice' => $this->itemPrice,'adminName' => $this->adminName,'adminPostNumber' => $this->adminPostNumber,'adminArea' => $this->adminArea,'adminNumber' => $this->adminNumber]);
     }
 }
