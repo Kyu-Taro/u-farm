@@ -70,7 +70,7 @@ class ChargeController extends Controller
         $bankAdminName = $item->account->name;
         $bankBranch = $item->account->branch;
         $bankType = $item->account->type;
-        $bankNumber = $item->account->bankNumber;
+        $bankNumber = $item->account->number;
         Mail::to($to)->send(new Me($userName,$userNumber,$userPostNumber,$userArea,$itemName,$itemPrice,$adminName,$adminPostNumber,$adminArea,$adminNumber,$bankName,$bankAdminName,$bankBranch,$bankType,$bankNumber));
 
         return back();
