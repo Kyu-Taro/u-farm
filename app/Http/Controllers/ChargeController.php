@@ -58,7 +58,7 @@ class ChargeController extends Controller
         Mail::to($to)->send(new Users($name,$price,$adminName,$adminNumber));
 
         $to = 'amiti999@icloud.com';
-        $userName = $user->naem;
+        $userName = $user->name;
         $userNumber = $user->tell;
         $userPostNumber = $user->postNumber;
         $userArea = $user->area;
