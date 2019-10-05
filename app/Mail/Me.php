@@ -28,11 +28,11 @@ class Me extends Mailable
      protected $adminPostNumber;
      protected $adminArea;
      protected $adminNumber;
-    //  protected $bankName;
-    //  protected $bankAdminName;
-    //  protected $bankBranch;
-    //  protected $bankType;
-    //  protected $bankNumber;
+     protected $bankName;
+     protected $bankAdminName;
+     protected $bankBranch;
+     protected $bankType;
+     protected $bankNumber;
 
     public function __construct($userName,$userNumber,$userPostNumber,$userArea,$itemName,$itemPrice,$adminName,$adminPostNumber,$adminArea,$adminNumber,$bankName,$bankAdminName,$bankBranch,$bankType,$bankNumber)
     {
@@ -63,6 +63,24 @@ class Me extends Mailable
     {
         return $this->view('mail.me_mail')
             ->subject($this->title)
-            ->with(['userName' => $this->userName,'userNumber' => $this->userNumber,'userPostNumber' => $this->userPostNumber,'userArea' => $this->userArea,'itemName' => $this->itemName,'itemPrice' => $this->itemPrice,'adminName' => $this->adminName,'adminPostNumber' => $this->adminPostNumber,'adminArea' => $this->adminArea,'adminNumber' => $this->adminNumber,'bankName' => $this->bankName,'bankAdminName' => $this->bankAdminName,'bankBranch' => $this->bankBranch,'bankType' => $this->bankType,'bankNumber' => $this->bankNumber]);
+            ->with(
+                [
+                    'userName' => $this->userName,
+                    'userNumber' => $this->userNumber,
+                    'userPostNumber' => $this->userPostNumber,
+                    'userArea' => $this->userArea,
+                    'itemName' => $this->itemName,
+                    'itemPrice' => $this->itemPrice,
+                    'adminName' => $this->adminName,
+                    'adminPostNumber' => $this->adminPostNumber,
+                    'adminArea' => $this->adminArea,
+                    'adminNumber' => $this->adminNumber,
+                    'bankName' => $this->bankName,
+                    'bankAdminName' => $this->bankAdminName,
+                    'bankBranch' => $this->bankBranch,
+                    'bankType' => $this->bankType,
+                    'bankNumber' => $this->bankNumber
+                ]
+            );
     }
 }

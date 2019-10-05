@@ -55,23 +55,23 @@ class ChargeController extends Controller
         $adminNumber = $item->admin->tell;
         Mail::to($to)->send(new Users($name,$price,$adminName,$adminNumber));
 
-        $to = 'amiti9999@icloue.com';
-        $userName = $user->name;
-        $userNumber = $user->tell;
-        $userPostNumber = $user->postNumber;
-        $userArea = $user->area;
-        $itemName = $item->name;
-        $itemPrice = $item->price;
-        $adminName = $item->admin->name;
-        $adminPostNumber = $item->admin->postNumber;
-        $adminArea = $item->admin->area;
-        $adminNumber = $item->admin->tell;
-        $bankName = $item->account->bank;
-        $bankAdminName = $item->account->name;
-        $bankBranch = $item->account->branch;
-        $bankType = $item->account->type;
-        $bankNumber = $item->account->bankNumber;
-        Mail::to($to)->send(new Me($userName,$userNumber,$userPostNumber,$userArea,$itemName,$itemPrice,$adminName,$adminPostNumber,$adminArea,$adminNumber,$bankName,$bankAdminName,$bankBranch,$bankType,$bankNumber));
+        // $to = 'amiti9999@icloue.com';
+        // $userName = $user->name;
+        // $userNumber = $user->tell;
+        // $userPostNumber = $user->postNumber;
+        // $userArea = $user->area;
+        // $itemName = $item->name;
+        // $itemPrice = $item->price;
+        // $adminName = $item->admin->name;
+        // $adminPostNumber = $item->admin->postNumber;
+        // $adminArea = $item->admin->area;
+        // $adminNumber = $item->admin->tell;
+        // $bankName = $item->account->bank;
+        // $bankAdminName = $item->account->name;
+        // $bankBranch = $item->account->branch;
+        // $bankType = $item->account->type;
+        // $bankNumber = $item->account->bankNumber;
+        // Mail::to($to)->send(new Me($userName,$userNumber,$userPostNumber,$userArea,$itemName,$itemPrice,$adminName,$adminPostNumber,$adminArea,$adminNumber,$bankName,$bankAdminName,$bankBranch,$bankType,$bankNumber));
 
         return back();
     }
