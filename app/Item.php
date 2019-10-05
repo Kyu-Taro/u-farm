@@ -19,4 +19,9 @@ class Item extends Model
     {
         return $this->hasOne('App\Admin','id','admin_id');
     }
+
+    public function account()
+    {
+        return $this->hasOne('App\Account','admin_id','admin_id');
+    }
 }
