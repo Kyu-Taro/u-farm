@@ -20,7 +20,9 @@ class ChargeController extends Controller
 
         $item = Item::find($item_id);
         $user = User::find($user_id);
-        
+        $id = $item->admin()->id;
+        $admin = Admin::find($id);
+
         try {
             Stripe::setApiKey(env('STRIPE_SECRET'));
 
@@ -64,11 +66,11 @@ class ChargeController extends Controller
         $adminName = $item->admin->name;
         $adminPostNumber = $item->admin->postNumber;
         $adminArea = $item->admin->area;
-        $bankName = $item->admin->account->bank;
-        $bankAdminName = $item->admin->account->name;
-        $bankBranch = $item->admin->account->branch;
-        $bankType = $item->admin->account->type;
-        $bankNumber = $item->admin->account->bankNumber;
+        $bankName = $admin->account->bank;
+        $bankAdminName = $admin->account->name;
+        $bankBranch = $admin->account->branch;
+        $bankType = $admin->account->type;
+        $bankNumber = $admin->account->bankNumber;
         Mail::to($to)->send(new Me($userName,$userNumber,$userPostNumber,$userArea,$itemName,$itemPrice,$adminName,$adminPostNumber,$adminArea,$bankName,$bankAdminName,$bankBranch,$bankType,$bankNumber));
 
         return back();
