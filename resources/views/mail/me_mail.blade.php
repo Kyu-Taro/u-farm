@@ -10,7 +10,7 @@
 【農家情報】<br/>
 氏名:{{ $adminName }}<br/>
 住所:{{ $adminPostNumber }} {{ $adminArea }}<br/>
-電話番号:{{ $adminNumbmer }}<br/>
+電話番号:{{ $adminNumber }}<br/>
 <br/>
 {{-- 【口座情報】<br/>
 名義名:{{ $bankAdminName }}<br/>
