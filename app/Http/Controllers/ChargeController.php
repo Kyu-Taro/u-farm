@@ -10,6 +10,7 @@ use App\Item;
 use App\User;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Admin;
+use App\Mail\User as Users;
 
 class ChargeController extends Controller
 {
@@ -43,6 +44,13 @@ class ChargeController extends Controller
         $itemName = $item->name;
         $price = $item->price;
         Mail::to($to)->send(new Admin($name,$postNumber,$area,$itemName,$price));
+
+        $to = $user->email;
+        $name = $item->name;
+        $price = $item->price;
+        $adminName = $item->admin->name;
+        $adminNumber = $item->admin->tell;
+        Mail::to($to)->send(new Users($name,$price,$adminName,$adminNumber));
 
         return back();
     }

@@ -16,9 +16,20 @@ class User extends Mailable
      *
      * @return void
      */
-    public function __construct()
+
+     protected $title;
+     protected $name;
+     protected $price;
+     protected $adminName;
+     protected $adminNumber;
+
+    public function __construct($name,$price,$adminName,$adminNumber)
     {
-        //
+        $this->title = '商品の購入が完了しました';
+        $this->name = $name;
+        $this->price = $price;
+        $this->adminName = $adminName;
+        $this->adminNumber = $adminNumber;
     }
 
     /**
@@ -28,6 +39,8 @@ class User extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->view('mail.user_mail')
+            ->subject($this->title)
+            ->with(['name' => $this->name,'price' => $this->price,'adminName' => $this->adminName,'adminNumber' => $this->adminNumber]);
     }
 }
