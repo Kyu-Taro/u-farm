@@ -39,6 +39,6 @@ class Admin extends Authenticatable
 
     public function account()
     {
-        return $this->hasOne('App\Account','admin_id','id');
+        return $this->hasOne('App\Account');
     }
 }
