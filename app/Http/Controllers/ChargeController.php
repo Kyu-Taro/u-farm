@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\Admin;
 use App\Mail\User as Users;
 use App\Mail\Me;
+use App\Admin as Admins;
 
 class ChargeController extends Controller
 {
@@ -21,7 +22,7 @@ class ChargeController extends Controller
         $item = Item::find($item_id);
         $user = User::find($user_id);
         $id = $item->admin()->id;
-        $admin = Admin::find($id);
+        $admin = Admins::find($id);
 
         try {
             Stripe::setApiKey(env('STRIPE_SECRET'));
