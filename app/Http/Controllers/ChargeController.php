@@ -69,7 +69,7 @@ class ChargeController extends Controller
         $adminPostNumber = $item->admin->postNumber;
         $adminArea = $item->admin->area;
         $adminNumber = $item->admin->tell;
-        $bankName = $admin->account->bank;
+        $bankName = $admin->name;
         $bankAdminName = $admin->name;
         $bankBranch = $admin->name;
         $bankType = $admin->name;
