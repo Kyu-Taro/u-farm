@@ -16,9 +16,40 @@ class Me extends Mailable
      *
      * @return void
      */
-    public function __construct()
+
+     protected $title;
+     protected $userName;
+     protected $userNumber;
+     protected $userPostNumber;
+     protected $userArea;
+     protected $itemName;
+     protected $itemPrice;
+     protected $adminName;
+     protected $adminPostNumber;
+     protected $adminArea;
+     protected $bankName;
+     protected $bankAdminName;
+     protected $bankBranch;
+     protected $bankType;
+     protected $bankNumber;
+
+    public function __construct($userName,$userNumber,$userPostNumber,$userArea,$itemName,$itemPrice,$adminName,$adminPostNumber,$adminArea,$bankName,$bankAdminName,$bankBranch,$bankType,$bankNumber)
     {
-        //
+        $this->title = '購入情報通知';
+        $this->userName = $userName;
+        $this->userNumber = $userNumber;
+        $this->userPostNumber = $userPostNumber;
+        $this->userArea = $userArea;
+        $this->itemName = $itemName;
+        $this->itemPrice = $itemPrice;
+        $this->adminName = $adminName;
+        $this->adminPostNumber = $adminPostNumber;
+        $this->adminArea = $adminArea;
+        $this->bankName = $bankName;
+        $this->bankAdminName = $bankAdminName;
+        $this->bankBranch = $bankBranch;
+        $this->bankType = $bankType;
+        $this->bankNumber = $bankNumber;
     }
 
     /**
@@ -28,6 +59,8 @@ class Me extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->view('mail.me_mail')
+            ->subject($this->title)
+            ->with(['userName' => $this->userName,'userNumber' => $this->userNumber,'userPostNumber' => $this->userPostNumber,'userArea' => $this->userArea,'itemName' => $this->itemName,'itemPrice' => $this->itemPrice,'adminName' => $this->adminName,'adminPostNumber' => $this->adminPostNumber,'adminArea' => $this->adminArea,'bankName' => $this->bankName,'bankAdminName' => $this->bankAdminName,'bankBranch' => $this->bankBranch,'bankType' => $this->bankType,'bankNumber' => $this->bankNumber]);
     }
 }
