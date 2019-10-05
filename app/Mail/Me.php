@@ -18,10 +18,10 @@ class Me extends Mailable
      */
 
      protected $title;
-    //  protected $userName;
-    //  protected $userNumber;
-    //  protected $userPostNumber;
-    //  protected $userArea;
+     protected $userName;
+     protected $userNumber;
+     protected $userPostNumber;
+     protected $userArea;
     //  protected $itemName;
     //  protected $itemPrice;
     //  protected $adminName;
@@ -34,13 +34,13 @@ class Me extends Mailable
     //  protected $bankType;
     //  protected $bankNumber;
 
-    public function __construct()
+    public function __construct($userName,$userNumber,$userPostNumber,$userArea)
     {
         $this->title = '購入情報通知';
-        // $this->userName = $userName;
-        // $this->userNumber = $userNumber;
-        // $this->userPostNumber = $userPostNumber;
-        // $this->userArea = $userArea;
+        $this->userName = $userName;
+        $this->userNumber = $userNumber;
+        $this->userPostNumber = $userPostNumber;
+        $this->userArea = $userArea;
         // $this->itemName = $itemName;
         // $this->itemPrice = $itemPrice;
         // $this->adminName = $adminName;
@@ -62,13 +62,13 @@ class Me extends Mailable
     public function build()
     {
         return $this->view('mail.me_mail')
-            ->subject($this->title);
-            // ->with(
-                // [
-                    // 'userName' => $this->userName,
-                    // 'userNumber' => $this->userNumber,
-                    // 'userPostNumber' => $this->userPostNumber,
-                    // 'userArea' => $this->userArea,
+            ->subject($this->title)
+            ->with(
+                [
+                    'userName' => $this->userName,
+                    'userNumber' => $this->userNumber,
+                    'userPostNumber' => $this->userPostNumber,
+                    'userArea' => $this->userArea,
                     // 'itemName' => $this->itemName,
                     // 'itemPrice' => $this->itemPrice,
                     // 'adminName' => $this->adminName,
@@ -80,7 +80,7 @@ class Me extends Mailable
                     // 'bankBranch' => $this->bankBranch,
                     // 'bankType' => $this->bankType,
                     // 'bankNumber' => $this->bankNumber
-                // ]
-            // );
+                ]
+            );
     }
 }
