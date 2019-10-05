@@ -1,5 +1,5 @@
 【購入者情報】<br/>
-氏名:{{ $userName }}<br/>
+{{-- 氏名:{{ $userName }}<br/>
 電話番号:{{ $userNumber }}<br/>
 住所:{{ $userPostNumber }} {{ $userarea }}<br/>
 <br/>
@@ -16,5 +16,5 @@
 銀行名:{{ $bankName }}<br/>
 支店名:{{ $bankBranch }}<br/>
 種別:{{ $bankType }}<br/>
-口座番号:{{ $bankNumber }}
+口座番号:{{ $bankNumber }} --}}
 

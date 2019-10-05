@@ -28,13 +28,13 @@ class Me extends Mailable
     //  protected $adminPostNumber;
     //  protected $adminArea;
     //  protected $adminNumber;
-     protected $bankName;
-     protected $bankAdminName;
-     protected $bankBranch;
-     protected $bankType;
-     protected $bankNumber;
+    //  protected $bankName;
+    //  protected $bankAdminName;
+    //  protected $bankBranch;
+    //  protected $bankType;
+    //  protected $bankNumber;
 
-    public function __construct($bankName,$bankAdminName,$bankBranch,$bankType,$bankNumber)
+    public function __construct()
     {
         $this->title = '購入情報通知';
         // $this->userName = $userName;
@@ -47,11 +47,11 @@ class Me extends Mailable
         // $this->adminPostNumber = $adminPostNumber;
         // $this->adminArea = $adminArea;
         // $this->adminNumber = $adminNumber;
-        $this->bankName = $bankName;
-        $this->bankAdminName = $bankAdminName;
-        $this->bankBranch = $bankBranch;
-        $this->bankType = $bankType;
-        $this->bankNumber = $bankNumber;
+        // $this->bankName = $bankName;
+        // $this->bankAdminName = $bankAdminName;
+        // $this->bankBranch = $bankBranch;
+        // $this->bankType = $bankType;
+        // $this->bankNumber = $bankNumber;
     }
 
     /**
@@ -62,9 +62,9 @@ class Me extends Mailable
     public function build()
     {
         return $this->view('mail.me_mail')
-            ->subject($this->title)
-            ->with(
-                [
+            ->subject($this->title);
+            // ->with(
+                // [
                     // 'userName' => $this->userName,
                     // 'userNumber' => $this->userNumber,
                     // 'userPostNumber' => $this->userPostNumber,
@@ -75,12 +75,12 @@ class Me extends Mailable
                     // 'adminPostNumber' => $this->adminPostNumber,
                     // 'adminArea' => $this->adminArea,
                     // 'adminNumber' => $this->adminNumber,
-                    'bankName' => $this->bankName,
-                    'bankAdminName' => $this->bankAdminName,
-                    'bankBranch' => $this->bankBranch,
-                    'bankType' => $this->bankType,
-                    'bankNumber' => $this->bankNumber
-                ]
-            );
+                    // 'bankName' => $this->bankName,
+                    // 'bankAdminName' => $this->bankAdminName,
+                    // 'bankBranch' => $this->bankBranch,
+                    // 'bankType' => $this->bankType,
+                    // 'bankNumber' => $this->bankNumber
+                // ]
+            // );
     }
 }
