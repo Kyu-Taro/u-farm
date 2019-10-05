@@ -1,5 +1,5 @@
 【購入者情報】<br/>
-{{-- 氏名:{{ $userName }}<br/>
+氏名:{{ $userName }}<br/>
 電話番号:{{ $userNumber }}<br/>
 住所:{{ $userPostNumber }} {{ $userarea }}<br/>
 <br/>
@@ -7,7 +7,7 @@
 商品名:{{ $itemName }}<br/>
 金額:{{ $itemPrice }}<br/>
 <br/>
-【農家情報】<br/>
+{{-- 【農家情報】<br/>
 氏名:{{ $adminName }}<br/>
 住所:{{ $adminPostNumber }} {{ $adminArea }}<br/>
 <br/>

@@ -22,8 +22,8 @@ class Me extends Mailable
      protected $userNumber;
      protected $userPostNumber;
      protected $userArea;
-    //  protected $itemName;
-    //  protected $itemPrice;
+     protected $itemName;
+     protected $itemPrice;
     //  protected $adminName;
     //  protected $adminPostNumber;
     //  protected $adminArea;
@@ -34,15 +34,15 @@ class Me extends Mailable
     //  protected $bankType;
     //  protected $bankNumber;
 
-    public function __construct($userName,$userNumber,$userPostNumber,$userArea)
+    public function __construct($userName,$userNumber,$userPostNumber,$userArea,$itemName,$itemPrice)
     {
         $this->title = '購入情報通知';
         $this->userName = $userName;
         $this->userNumber = $userNumber;
         $this->userPostNumber = $userPostNumber;
         $this->userArea = $userArea;
-        // $this->itemName = $itemName;
-        // $this->itemPrice = $itemPrice;
+        $this->itemName = $itemName;
+        $this->itemPrice = $itemPrice;
         // $this->adminName = $adminName;
         // $this->adminPostNumber = $adminPostNumber;
         // $this->adminArea = $adminArea;
@@ -69,8 +69,8 @@ class Me extends Mailable
                     'userNumber' => $this->userNumber,
                     'userPostNumber' => $this->userPostNumber,
                     'userArea' => $this->userArea,
-                    // 'itemName' => $this->itemName,
-                    // 'itemPrice' => $this->itemPrice,
+                    'itemName' => $this->itemName,
+                    'itemPrice' => $this->itemPrice,
                     // 'adminName' => $this->adminName,
                     // 'adminPostNumber' => $this->adminPostNumber,
                     // 'adminArea' => $this->adminArea,
