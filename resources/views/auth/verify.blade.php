@@ -5,20 +5,19 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
+                <div class="card-header">本登録</div>
 
                 <div class="card-body">
                     @if (session('resent'))
                         <div class="alert alert-success" role="alert">
-                            {{ __('A fresh verification link has been sent to your email address.') }}
+                           本登録用メールを送信しました。
                         </div>
                     @endif
 
-                    {{ __('Before proceeding, please check your email for a verification link.') }}
-                    {{ __('If you did not receive the email') }},
+                    仮登録のメールアドレス宛に、メールを送信しました。そちらのリンクから本登録を行ってください
                     <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
                         @csrf
-		                <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
+		                メールが届かない場合は<button type="submit" class="btn btn-link p-0 m-0 align-baseline">こちらをクリック</button>.
 	                </form>
                 </div>
             </div>
