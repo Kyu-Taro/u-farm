@@ -15,16 +15,16 @@
 Auth::routes(['verify' => true]);
 
 Route::get('/', 'MainController@index')->name('index');
+Route::post('/register_second','Admin\Auth\RegisterController@register');
+Route::get('/login_second','MainController@login_second');
+Route::post('/login_second','LoginController@login_second');
+Route::post('/login','LoginController@login')->name('login');
+Route::get('/register_second','MainController@register_second');
 
 Route::group(['middleware' => 'verified'],function(){
     Route::get('/item','MainController@items')->name('items');
     Route::get('/logout','MainController@logout');
-    Route::post('/register_second','Admin\Auth\RegisterController@register');
-    Route::get('/login_second','MainController@login_second');
-    Route::post('/login_second','LoginController@login_second');
-    Route::post('/login','LoginController@login')->name('login');
     Route::get('/setting','MainController@setting')->name('setting');
-    Route::get('/register_second','MainController@register_second');
     Route::resource('/items','ItemsController');
     Route::resource('/admin','AdminController');
     Route::post('/charge/{item_id}/{user_id}','ChargeController@charge')->name('charge');
