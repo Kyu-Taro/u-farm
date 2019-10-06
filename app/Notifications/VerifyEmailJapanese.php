@@ -42,7 +42,7 @@ class VerifyEmailJapanese extends Notification
     {
         return (new MailMessage)
                     ->line('以下のリンクをクリックして本登録を完了してください。')
-                    ->action('本登録する', url('/'))
+                    ->action('本登録する', $this->verificationUrl($notifiable))
                     ->line('もしこのメールに覚えが無い場合は破棄してください。');
     }
 
