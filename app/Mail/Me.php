@@ -62,6 +62,7 @@ class Me extends Mailable
     public function build()
     {
         return $this->view('mail.me_mail')
+            ->from('gtnine999@gmail.com')
             ->subject($this->title)
             ->with(
                 [
