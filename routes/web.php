@@ -12,7 +12,7 @@
 */
 
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/', 'MainController@index')->name('index');
 Route::get('/item','MainController@items')->name('items');
