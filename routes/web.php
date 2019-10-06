@@ -16,7 +16,7 @@ Auth::routes(['verify' => true]);
 
 Route::get('/', 'MainController@index')->name('index');
 
-Route::group(['middleware' => 'verify'],function(){
+Route::group(['middleware' => 'verified'],function(){
     Route::get('/item','MainController@items')->name('items');
     Route::get('/logout','MainController@logout');
     Route::post('/register_second','Admin\Auth\RegisterController@register');
