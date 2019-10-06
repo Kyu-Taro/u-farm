@@ -27,6 +27,7 @@ class CreateRequest extends FormRequest
             'name' => 'required|max:255',
             'price' => 'required|integer',
             'area' => 'required',
+            'day' => 'required|integer',
             'text' => 'required|max:255',
         ];
     }
@@ -39,6 +40,8 @@ class CreateRequest extends FormRequest
             'price.required' => '※入力必須です',
             'price.integer' => '※数値で入力してください',
             'area.required' => '※入力必須です',
+            'day.required' => '※入力必須です',
+            'day.integer' => '※数値で入力してください',
             'text.required' => '※入力必須です',
             'text.max' => '※255文字以内で入力してください',
         ];

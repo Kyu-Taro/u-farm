@@ -12,7 +12,7 @@ class Item extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'admin_id','img', 'name', 'price','area','text','img'
+        'admin_id','img', 'name', 'price','area','text','img','day'
     ];
 
     public function admin()
