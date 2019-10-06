@@ -14,6 +14,8 @@ class VerifyEmailJapanese extends Notification
 {
     use Queueable;
 
+    public static $toMailCallback;
+
     /**
      * Create a new notification instance.
      *
