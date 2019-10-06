@@ -41,10 +41,9 @@ class VerifyEmailJapanese extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject(Lang::getFromJson('本登録メール'))
-                    ->line('以下のリンクをクリックし、本登録を完了してください')
+                    ->line('以下のリンクをクリックして本登録を完了してください。')
                     ->action('本登録する', url('/'))
-                    ->line('もしこのメールに覚えがない場合は、破棄してください');
+                    ->line('もしこのメールに覚えが無い場合は破棄してください。');
     }
 
     /**
