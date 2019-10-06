@@ -43,7 +43,7 @@
     <input type="hidden" value="{{ $user->id }}" name="admin_id">
     <div class="area-drop">
         写真を選択
-        <img src="@if(!empty($user->img)) {{ $user->img }} @endif" class="prev-img" style="@if(!empty($user->img)) display: block @else display: none @endif">
+        <img src="" class="prev-img" style="@if(!empty($file->img)) display: block @else display: none @endif">
         <input type="file" name="img" class="input-file"><br/>
     </div>
     商品名:
