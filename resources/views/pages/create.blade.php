@@ -52,7 +52,7 @@
     @enderror
     <br>
     <input type="text" name="name"><br/>
-    金額
+    金額:
     @error('price')
         <span class="error">{{ $message }}</span>
     @enderror
@@ -62,8 +62,14 @@
     @error('area')
         <span class="error">{{ $message }}</span>
     @enderror
-    <br/>
     <input type="text" name="area"><br/>
+    <br/>
+    発送までの日付:
+    @error('day')
+        <span class="error">{{ $message }}</span>
+    @enderror
+    <br/>
+    <input type="tel" name="day"><br/>
     商品説明:
     @error('text')
         <span class="error">{{ $message }}</span>
