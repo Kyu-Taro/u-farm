@@ -40,6 +40,7 @@ class User extends Mailable
     public function build()
     {
         return $this->view('mail.user_mail')
+            ->from('gtnine999@gmail.com')
             ->subject($this->title)
             ->with(['name' => $this->name,'price' => $this->price,'adminName' => $this->adminName,'adminNumber' => $this->adminNumber]);
     }
