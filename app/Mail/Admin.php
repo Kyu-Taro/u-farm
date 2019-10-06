@@ -41,7 +41,7 @@ class Admin extends Mailable
     public function build()
     {
         return $this->view('mail.admin_mail')
-            ->from('gtnine999@gmail.com')
+            ->from('gtnine999@gmail.com','U-farm')
             ->subject($this->title)
             ->with(['postNumber' => $this->postNumber,'area' => $this->area,'name' => $this->name,'itemName' => $this->itemName,'price' => $this->price]);
     }
