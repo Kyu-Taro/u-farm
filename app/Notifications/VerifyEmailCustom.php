@@ -6,7 +6,6 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\URL;
 
 class VerifyEmail extends Notification
@@ -44,10 +43,10 @@ class VerifyEmail extends Notification
         }
 
         return (new MailMessage)
-            ->subject(Lang::get('本登録メール'))
-            ->line(Lang::get('下記リンクをクリックし本登録を行ってください。'))
-            ->action(Lang::get('本登録する'), $verificationUrl)
-            ->line(Lang::get('もしこのメールに覚えが無い場合は破棄してください。'));
+            ->subject('本登録メール')
+            ->line('下記リンクをクリックし本登録を行ってください。')
+            ->action('本登録する', $verificationUrl)
+            ->line('もしこのメールに覚えが無い場合は破棄してください。');
     }
 
     /**
