@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Cashier\Billable;
+use App\Notifications\VerifyEmailJapanese;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -41,6 +42,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function sendEmailVerificationNotification()
     {
-        $this->notify(new \App\Notifications\VerifyEmailJapanese);
+        $this->notify(new VerifyEmailJapanese);
     }
 }
