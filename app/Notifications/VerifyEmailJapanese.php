@@ -1,14 +1,14 @@
 <?php
 
-namespace Illuminate\Auth\Notifications;
+namespace App\Notifications;
 
-use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Notifications\Notification;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Lang;
+use Illuminate\Notifications\Notification;
+use Illuminate\Notifications\Messages\MailMessage;
 
-class VerifyEmailCustom extends Notification
+class VerifyEmailJapanese extends Notification
 {
     /**
      * The callback that should be used to build the mail message.
@@ -36,17 +36,18 @@ class VerifyEmailCustom extends Notification
      */
     public function toMail($notifiable)
     {
-        $verificationUrl = $this->verificationUrl($notifiable);
-
         if (static::$toMailCallback) {
-            return call_user_func(static::$toMailCallback, $notifiable, $verificationUrl);
+            return call_user_func(static::$toMailCallback, $notifiable);
         }
 
         return (new MailMessage)
-            ->subject('本登録メール')
-            ->line('下記リンクをクリックし本登録を行ってください。')
-            ->action('本登録する', $verificationUrl)
-            ->line('もしこのメールに覚えが無い場合は破棄してください。');
+            ->subject(Lang::getFromJson('本登録メール'))
+            ->line(Lang::getFromJson('以下の認証リンクをクリックして本登録を完了させてください。'))
+            ->action(
+                Lang::getFromJson('メールアドレスを認証する'),
+                $this->verificationUrl($notifiable)
+            )
+            ->line(Lang::getFromJson('もしこのメールに覚えが無い場合は破棄してください。'));
     }
 
     /**
@@ -58,12 +59,7 @@ class VerifyEmailCustom extends Notification
     protected function verificationUrl($notifiable)
     {
         return URL::temporarySignedRoute(
-            'verification.verify',
-            Carbon::now()->addMinutes(Config::get('auth.verification.expire', 60)),
-            [
-                'id' => $notifiable->getKey(),
-                'hash' => sha1($notifiable->getEmailForVerification()),
-            ]
+            'verification.verify', Carbon::now()->addMinutes(60), ['id' => $notifiable->getKey()]
         );
     }
 
@@ -78,4 +74,3 @@ class VerifyEmailCustom extends Notification
         static::$toMailCallback = $callback;
     }
 }
-

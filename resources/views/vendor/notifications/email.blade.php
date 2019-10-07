@@ -52,7 +52,7 @@
 @slot('subcopy')
 @lang(
     "もし \":actionText\" リンククリックで本登録できな場合は\n".
-    'こちらから行ってください: [:actionURL](:actionURL)',
+    'こちらから行ってください[:actionURL](:actionURL)',
     [
         'actionText' => $actionText,
         'actionURL' => $actionUrl,
