@@ -44,4 +44,5 @@ Route::group(['middleware' => 'auth:admin'],function(){
     Route::resource('/account','AccountController');
     Route::get('/setting','MainController@setting')->name('setting');
     Route::get('/news','MainController@news')->name('news');
+    Route::resource('/client','ClientController');
 });
