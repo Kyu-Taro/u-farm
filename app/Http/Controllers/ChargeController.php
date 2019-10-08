@@ -13,6 +13,7 @@ use App\Mail\Admin;
 use App\Mail\User as Users;
 use App\Mail\Me;
 use App\Admin as Admins;
+use App\Client;
 
 class ChargeController extends Controller
 {
@@ -75,6 +76,12 @@ class ChargeController extends Controller
         $bankType = $admin->account->type;
         $bankNumber = $admin->account->number;
         Mail::to($to)->send(new Me($userName,$userNumber,$userPostNumber,$userArea,$itemName,$itemPrice,$adminName,$adminPostNumber,$adminArea,$adminNumber,$bankName,$bankAdminName,$bankBranch,$bankType,$bankNumber));
+
+        $client = new Client;
+        $client->user_id = $user->id;
+        $client->admin_id = $admin->id;
+        $client->item_id = $item->id;
+        $client->save();
 
         return back();
     }
