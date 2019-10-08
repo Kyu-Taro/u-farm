@@ -35,7 +35,7 @@ Route::group(['middleware' => 'auth:user'],function(){
     Route::resource('/user','UserController');
 });
 
-Route::group(['middleware' => 'auth:admin','middleware' => 'verified'],function(){
+Route::group(['middleware' => 'auth:admin'],function(){
     Route::get('/mypage','MainController@mypage')->name('mypage');
     Route::get('/create','MainController@create');
     Route::get('/delete/{id}','MainController@delete');
