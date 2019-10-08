@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Item;
 use App\Account;
+use App\Client;
 
 class MainController extends Controller
 {
