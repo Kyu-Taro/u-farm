@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
+use App\Mail\Send;
 
 class ClientController extends Controller
 {
@@ -79,6 +81,20 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Client::find($id)->delete();
+
+        $client = Client::find($id);
+        $user = User::where('id',$client->user_id)->first();
+        $item = Item::where('id',$client->item_id)->first();
+        $admin = Admin::where('id',$client->admin_id)->first();
+
+        $to = $user->email;
+        $name = $item->name;
+        $adminName = $admin->name;
+        $adminNumber = $admin->tell;
+
+        Mail::to($to)->send(new Send($name,$adminName,$adminNumber));
+
+        return back();
     }
 }

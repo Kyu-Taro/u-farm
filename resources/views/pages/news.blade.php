@@ -53,7 +53,7 @@
                         〒{{ $item->user->postNumber }}
                         {{ $item->user->area }}<br/>
                         購入者電話番号:{{ $item->user->tell }}<br/>
-                        <form action="/client" method="POST">
+                        <form action="/client/{{ $item->id }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <input type="submit" value="発送完了">
