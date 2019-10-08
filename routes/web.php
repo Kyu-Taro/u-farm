@@ -20,11 +20,10 @@ Route::get('/login_second','MainController@login_second');
 Route::post('/login_second','LoginController@login_second');
 Route::post('/login','LoginController@login')->name('login');
 Route::get('/register_second','MainController@register_second');
+Route::get('/logout','MainController@logout');
 
 Route::group(['middleware' => 'verified'],function(){
     Route::get('/item','MainController@items')->name('items');
-    Route::get('/logout','MainController@logout');
-    Route::get('/setting','MainController@setting')->name('setting');
     Route::resource('/items','ItemsController');
     Route::resource('/admin','AdminController');
     Route::post('/charge/{item_id}/{user_id}','ChargeController@charge')->name('charge');
@@ -43,4 +42,5 @@ Route::group(['middleware' => 'auth:admin'],function(){
     Route::get('/account_add','MainController@account_add')->name('account_add');
     Route::get('/account_update','MainController@account_update')->name('account_update');
     Route::resource('/account','AccountController');
+    Route::get('/setting','MainController@setting')->name('setting');
 });

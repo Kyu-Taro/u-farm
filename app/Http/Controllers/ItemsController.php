@@ -62,9 +62,9 @@ class ItemsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($i)
     {
-        $item = Item::find($id);
+        $item = Item::find($i);
         if(Auth::guard('admin')->check()){
             $user = Auth::guard('admin')->user();
         }else{
