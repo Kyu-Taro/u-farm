@@ -2,7 +2,7 @@
 <br/>
 購入情報<br/>
 【商品名】{{ $name }}<br/>
-【料金】{{ $price }}<br/>
+【料金】{{ $price }}円<br/>
 <br/>
 農家情報<br/>
 【農家名】{{ $adminName }}<br/>
