@@ -8,6 +8,41 @@
     <title>購入者一覧</title>
 </head>
 <body>
+
+    @component('components.header2')
+        @slot('link')
+            /mypage
+        @endslot
+        @slot('title')
+            Mypage
+        @endslot
+        @slot('link2')
+            /item
+        @endslot
+        @slot('title2')
+            Items
+        @endslot
+        @slot('link3')
+            /create
+        @endslot
+        @slot('title3')
+            Create
+        @endslot
+        @slot('link4')
+            /news
+        @endslot
+        @slot('title4')
+            News
+        @endslot
+        @slot('link5')
+            /logout
+        @endslot
+        @slot('title5')
+            Lotout
+        @endslot
+    @endcomponent
+
+    @endcomponent
     <div class="container">
         <div class="site-width">
             <div class="contens">
@@ -29,5 +64,38 @@
             </div>
         </div>
     </div>
+
+    @component('components.footer2')
+        @slot('link')
+            /mypage
+        @endslot
+        @slot('title')
+            Mypage
+        @endslot
+        @slot('link2')
+            /item
+        @endslot
+        @slot('title2')
+            Items
+        @endslot
+        @slot('link3')
+            /create
+        @endslot
+        @slot('title3')
+            Create
+        @endslot
+        @slot('link4')
+            /news
+        @endslot
+        @slot('title4')
+            News
+        @endslot
+        @slot('link5')
+            /logout
+        @endslot
+        @slot('title5')
+            Lotout
+        @endslot
+    @endcomponent
 </body>
 </html>
