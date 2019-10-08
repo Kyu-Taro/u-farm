@@ -112,4 +112,11 @@ class MainController extends Controller
         $user = Auth::user();
         return view('pages.setting_second',compact('user'));
     }
+
+    public function news()
+    {
+        $admin = Auth::guard('admin')->user();
+        $clients = Client::where('admin_id',$admin->id)->get();
+        return view('pages.news',compact('clients'));
+    }
 }
