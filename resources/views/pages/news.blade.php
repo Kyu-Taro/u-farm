@@ -42,18 +42,17 @@
         @endslot
     @endcomponent
 
-    @endcomponent
     <div class="container">
         <div class="site-width">
-            <div class="contens">
+            <div class="contents">
                 @foreach ($clients as $item)
                     <div class="content">
-                        {{ $item->item->name }}
-                        {{ $item->item->price }}
-                        {{ $item->user->name }}
-                        {{ $item->user->postNumber }}
-                        {{ $item->user->area }}
-                        {{ $item->user->tell }}
+                        商品名:{{ $item->item->name }}<br/>
+                        料金:{{ $item->item->price }}<br/>
+                        購入者:{{ $item->user->name }}<br/>
+                        〒{{ $item->user->postNumber }}
+                        {{ $item->user->area }}<br/>
+                        購入者電話番号:{{ $item->user->tell }}<br/>
                         <form action="/client" method="POST">
                             @csrf
                             @method('DELETE')
