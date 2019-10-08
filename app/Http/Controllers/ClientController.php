@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use App\Mail\Send;
+use App\Client;
+use App\User;
+use App\Item;
+use App\Admin;
 
 class ClientController extends Controller
 {
@@ -81,12 +85,13 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
-        Client::find($id)->delete();
 
         $client = Client::find($id);
         $user = User::where('id',$client->user_id)->first();
         $item = Item::where('id',$client->item_id)->first();
         $admin = Admin::where('id',$client->admin_id)->first();
+
+        Client::find($id)->delete();
 
         $to = $user->email;
         $name = $item->name;
