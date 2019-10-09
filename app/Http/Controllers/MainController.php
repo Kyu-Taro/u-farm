@@ -40,6 +40,7 @@ class MainController extends Controller
 
     public function mypage()
     {
+
         if (Auth::guard('admin')->check()) {
             $user = Auth::guard('admin')->user();
             $items = Item::where('admin_id', $user->id)->get();
@@ -48,6 +49,12 @@ class MainController extends Controller
             'user' => $user,
             'items' => $items,
         ];
+
+        $client = Client::where('admin_id',$user->id)-first();
+
+        if(empty($client)){
+            return redirect()->route('account_add');
+        }
 
             return view('pages.mypage', $data);
         }else{
