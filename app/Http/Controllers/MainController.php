@@ -50,7 +50,7 @@ class MainController extends Controller
             'items' => $items,
         ];
 
-        $client = Client::where('admin_id',$user->id)->first();
+        $client = Account::where('admin_id',$user->id)->first();
 
         if(empty($client)){
             return redirect()->route('account_add');
