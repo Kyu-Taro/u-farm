@@ -22,9 +22,9 @@ Route::post('/login','LoginController@login')->name('login');
 Route::get('/register_second','MainController@register_second');
 Route::get('/logout','MainController@logout');
 Route::resource('/items','ItemsController');
+Route::get('/item','MainController@items')->name('items');
 
 Route::group(['middleware' => 'verified'],function(){
-    Route::get('/item','MainController@items')->name('items');
     Route::resource('/admin','AdminController');
     Route::post('/charge/{item_id}/{user_id}','ChargeController@charge')->name('charge');
 });

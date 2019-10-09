@@ -8,43 +8,4 @@
     </ul>
 </header>
 
-<style>
-    header{
-        height: 80px;
-        background: #8b4513;
-        padding: 0;
-        margin: 0;
-        position: fixed;
-        width: 100%;
-    }
-    ul.header-nav{
-        float: right;
-        list-style: none;
-    }
-    .header-nav li{
-        float: left;
-        font-size: 1.6rem;
-        line-height: 80px;
-    }
-    .header-nav li:hover{
-        text-decoration: underline;
-    }
-    .header-nav li a{
-        text-decoration: none;
-        color: black;
-        margin-right: 25px;
-        font-weight: bold;
-        color: white;
-    }
-    h1.header-title{
-        line-height: 80px;
-        display: inline-block;
-        padding-left: 100px;
-        font-size: 2.6rem;
-        color: white;
-    }
-    .header-title a{
-        color: white;
-        text-decoration: none;
-    }
-</style>
+

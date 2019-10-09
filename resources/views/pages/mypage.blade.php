@@ -48,21 +48,23 @@
 @endsection
 
 @section('items-content')
-    <h1>出品商品一覧</h1>
+    <h1 class="items-title">出品商品一覧</h1>
     <div class="item-contents">
         <div class="item-container">
             @foreach ($items as $item)
                 <div class="item">
                     <img src="@if(empty($item->img)) img/sample.jpg @else {{ $item->img }} @endif"><br/>
-                    商品名: {{ $item->name }}<br/>
-                    金額: {{ $item->price }}円<br/>
-                    産地: {{ $item->area }}<br/>
-                    発送: {{ $item->day }}日<br/>
-                    商品情報:<br/>
-                    <div class="comment">
-                        {{ $item->text }}
-                    </div>
-                    <a href="/delete/{{ $item->id }}">削除</a><a href="/update/{{ $item->id }}">編集</a>
+                    <p>商品名: {{ $item->name }}</p>
+                    <p>金額: {{ $item->price }}円</p>
+                    <p>産地: {{ $item->area }}</p>
+                    <p>発送: {{ $item->day }}日</p>
+                    <p>
+                        商品情報:<br/>
+                        <div class="comment">
+                            <p>{{ $item->text }}</p>
+                        </div>
+                    </P>
+                    <a href="/delete/{{ $item->id }}" class="delete">削除</a><a href="/update/{{ $item->id }}" class="update">編集</a>
                 </div>
             @endforeach
         </div>

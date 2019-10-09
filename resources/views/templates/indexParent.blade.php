@@ -31,6 +31,12 @@
         </div>
     </div>
 
+    <div class="buy">
+        <div class="site-width">
+            @yield('buy')
+        </div>
+    </div>
+
 
     @yield('footer')
 </body>
