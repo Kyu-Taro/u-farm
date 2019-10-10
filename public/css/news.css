@@ -142,4 +142,11 @@ span.scroll{
      padding: 20px;
      margin-bottom: 13px;
  }
+ input[type="submit"]{
+     padding: 8px;
+     border: none;
+     border-radius: 5px;
+     margin-top: 10px;
+     font-weight: bold;
+ }
 
