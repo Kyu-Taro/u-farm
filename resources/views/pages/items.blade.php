@@ -72,11 +72,16 @@
     @foreach ($items as $item)
         <div class="item">
             <a href="/items/{{ $item->id }}"><img src="@if(empty($item->img)) img/sample.jpg @else {{ $item->img }} @endif"></a><br/>
-            商品名:{{ $item->name }}<br/>
-            金額:{{ $item->price }}<br/>
-            産地:{{ $item->area }}<br/>
-            発送までの日数:{{ $item->day }}日<br/>
-            商品説明:<br/>{{ $item->text }}
+            <div class="text">
+                商品名:{{ $item->name }}<br/>
+                金額:{{ $item->price }}<br/>
+                産地:{{ $item->area }}<br/>
+                発送までの日数:{{ $item->day }}日<br/>
+                商品説明:<br/>
+                <div class="item-text">
+                    {{ $item->text }}
+                </div>
+            </div>
         </div>
     @endforeach
 @endsection

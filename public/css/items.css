@@ -116,6 +116,12 @@ span.scroll{
     cursor: pointer;
 }
 
+/*
+===========================
+        itemコンテンツ
+===========================
+ */
+
 .main-container{
     height: 1200px;
 }
@@ -125,16 +131,38 @@ span.scroll{
     font-size: 1.8rem;
     border-bottom: 3px solid #8B4513;
     color: #8B4513;
+    margin-bottom: 30px;
 }
 .content-container{
     overflow: auto;
     max-height: 780px;
     min-height: 780px;
-    border: black 1px solid;
 }
 .item{
-    width: 33%;
+    width: 100%;
     float: left;
-    max-height: 100px;
-    min-height: 100px;
+    max-height: 200px;
+    min-height: 200px;
+    padding: 30px;
+    background: rgba(158, 111, 67, 0.466);
+    border-radius: 5px;
+    margin-bottom: 15px;
+    color: #8b4513;
+}
+.item img{
+    width:20%;
+    height: 200px;
+    display: inline-block;
+}
+.text{
+    display: inline-block;
+    font-size: 1.2rem;
+    position: relative;
+    top: -190px;
+    left: 350px;
+}
+.item-text{
+    max-width: 550px;
+    max-height: 70px;
+    overflow: hidden;
 }
