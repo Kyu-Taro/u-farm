@@ -118,9 +118,34 @@ span.scroll{
     cursor: pointer;
 }
 
+/*
+===========================
+        itemコンテンツ
+===========================
+ */
+
 .itemContainer{
-    height: 1000px;
+    height: 1150px;
 }
 .itemDetail{
     padding-top: 200px;
+    font-size: 1.1rem;
+}
+h1.detail-title{
+    border-bottom: solid #703f27 2px;
+    font-size: 1.7rem;
+    margin-bottom: 30px;
+}
+.items-img{
+    text-align: center;
+}
+.item{
+    margin-left: 280px;
+    letter-spacing: 1px;
+}
+.item p{
+    margin-bottom: 5px;
+}
+.item-text{
+    margin-bottom: 50px;
 }
