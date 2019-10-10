@@ -21,8 +21,11 @@ Route::post('/login_second','LoginController@login_second');
 Route::post('/login','LoginController@login')->name('login');
 Route::get('/register_second','MainController@register_second');
 Route::get('/logout','MainController@logout');
-Route::resource('/items','ItemsController');
 Route::get('/item','MainController@items')->name('items');
+
+Route::group(['middleware' => 'auth'],function(){
+    Route::resource('/items','ItemsController');
+});
 
 Route::group(['middleware' => 'verified'],function(){
     Route::resource('/admin','AdminController');
