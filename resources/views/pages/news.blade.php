@@ -45,7 +45,7 @@
     <div class="container">
         <div class="site-width">
             <div class="contents">
-                <p>発送リスト</p>
+                <h1 class="contents-title">発送リスト</h1>
                 @foreach ($clients as $item)
                     <div class="content">
                         商品名:{{ $item->item->name }}<br/>
