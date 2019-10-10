@@ -129,7 +129,7 @@ span.scroll{
 ========================
  */
 
- h1.contents-title{
+ .contents h1{
      border-bottom: solid #703f27 2px;
  }
 
