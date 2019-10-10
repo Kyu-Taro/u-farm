@@ -121,6 +121,8 @@ span.scroll{
 .contents{
     height: 770px;
     padding-top: 200px;
+    max-height: 770px;
+    overflow: auto;
 }
 
 /*
@@ -138,5 +140,6 @@ span.scroll{
      background: rgba(158, 111, 67, 0.466);
      border-radius: 5px;
      padding: 20px;
+     margin-bottom: 13px;
  }
 
