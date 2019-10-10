@@ -122,3 +122,15 @@ span.scroll{
     height: 770px;
     padding-top: 200px;
 }
+
+/*
+========================
+        content
+========================
+ */
+
+ .contents{
+     border: 1px;
+     border-bottom: solid #703f27 2px;
+ }
+
