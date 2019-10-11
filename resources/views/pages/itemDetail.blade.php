@@ -2,7 +2,7 @@
 @section('title','商品詳細')
 @section('href','itemDetail.css')
 
-@section('header')
+    @section('header')
     @if (Auth::guard('admin')->check())
         @component('components.header2')
             @slot('link')
@@ -64,7 +64,7 @@
             @endslot
         @endcomponent
     @endif
-@endsection
+    @endsection
 
 @section('content')
     <h1 class="detail-title">商品詳細</h1>
