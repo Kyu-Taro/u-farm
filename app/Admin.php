@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Notifications\VerifyEmailJapanese;
 
-class Admin extends Authenticatable
+class Admin extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
 
@@ -43,8 +43,8 @@ class Admin extends Authenticatable
         return $this->hasOne('App\Account','admin_id','id');
     }
 
-    // public function sendEmailVerificationNotification()
-    // {
-    //     $this->notify(new VerifyEmailJapanese);
-    // }
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new VerifyEmailJapanese);
+    }
 }
