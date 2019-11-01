@@ -12,7 +12,8 @@ class MainController extends Controller
 {
     public function index()
     {
-        return view('pages.index');
+        // return view('pages.index');
+        return view('index');
     }
 
     public function register_second()
