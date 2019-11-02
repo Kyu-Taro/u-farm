@@ -30,7 +30,7 @@ Route::group(['middleware' => 'verified'],function(){
     Route::post('/charge/{item_id}/{user_id}','ChargeController@charge')->name('charge');
 });
 
-Route::group(['middleware' => 'auth:user'],function(){
+Route::group(['middleware' => 'auth:user','middleware' => 'verified'],function(){
     Route::get('/setting_second','MainController@setting_second');
     Route::resource('/user','UserController');
 });
