@@ -67,9 +67,9 @@ h1.header-title{
  */
 
 
-footer{
-    height: 200px;
+ footer{
     background: #703f27;
+    padding-bottom: 1rem;
 }
 ul.footer-nav{
     width: 30%;
@@ -77,22 +77,17 @@ ul.footer-nav{
     list-style: none;
     margin: auto;
     text-align: center;
-    position: relative;
-    left: 60px;
+    display: flex;
+    justify-content: space-around;
 }
 .footer-nav li{
-    float: left;
-    margin-right: 42px;
     border-right: solid white 1px;
-    padding-right: 30px;
     text-align: center;
     font-size: 0.9rem;
+    flex: 1;
 }
 .footer-nav li:last-child{
     border: none;
-}
-.footer-nav li:first-child{
-    margin-left: 120px;
 }
 .footer-nav li a{
     color: white;
@@ -102,10 +97,10 @@ ul.footer-nav{
     text-decoration: underline;
 }
 p.footer-coment{
-    position: relative;
-    left: 40%;
+    text-align: center;
     font-size: 1.12rem;
     color: white;
+    margin: 0;
 }
 span.scroll{
     font-size: 2rem;
