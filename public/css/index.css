@@ -65,7 +65,6 @@ h1.header-title{
 
 
 footer{
-    /* height: 200px; */
     background: #703f27;
     padding-bottom: 1rem;
 }
@@ -77,14 +76,9 @@ ul.footer-nav{
     text-align: center;
     display: flex;
     justify-content: space-around;
-    /* position: relative; */
-    /* left: 60px; */
 }
 .footer-nav li{
-    /* float: left; */
-    /* margin-right: 42px; */
     border-right: solid white 1px;
-    /* padding-right: 30px; */
     text-align: center;
     font-size: 0.9rem;
     flex: 1;
@@ -92,9 +86,6 @@ ul.footer-nav{
 .footer-nav li:last-child{
     border: none;
 }
-/* .footer-nav li:first-child{
-    margin-left: 120px;
-} */
 .footer-nav li a{
     color: white;
     text-decoration: none;
@@ -103,8 +94,6 @@ ul.footer-nav{
     text-decoration: underline;
 }
 p.footer-coment{
-    /* position: relative;
-    left: 40%; */
     text-align: center;
     font-size: 1.12rem;
     color: white;
