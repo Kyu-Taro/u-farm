@@ -23,6 +23,7 @@ class Admin extends Mailable
      protected $area;
      protected $itemName;
      protected $price;
+     
     public function __construct($name,$postNumber,$area,$itemName,$price)
     {
         $this->title = "出品した商品が購入されました";

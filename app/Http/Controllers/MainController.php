@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Item;
 use App\Account;
 use App\Client;
+use App\Services\Judgment;
 
 class MainController extends Controller
 {
@@ -87,16 +88,14 @@ class MainController extends Controller
         return view('pages.setting',compact('user'));
     }
 
-    public function account_add()
+    public function account_add(Judgment $jud)
     {
         $user = Auth::guard('admin')->user();
         $account = Account::where('admin_id',$user->id)->first();
 
-        if(!empty($account)){
-            return redirect()->route('account_update');
+        if($redirect = $jud->emptyAccount($account,$user)){
+            return $redirect;
         }
-
-        return view('pages.account_add',compact('user'));
     }
 
     public function account_update()
