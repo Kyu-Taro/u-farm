@@ -1,0 +1,13 @@
+html,body,h1,h2,p,ul,li{
+  padding: 0;
+  margin: 0;
+}
+
+body{
+  font-size: 62.5%;
+}
+
+.site-width{
+  width: 980px;
+  margin: auto;
+}
