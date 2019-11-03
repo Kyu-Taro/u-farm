@@ -77,4 +77,30 @@ class Judgment
         $item->fill($form)->save();
     }
 
+    public function itemUpdate($request,$item)
+    {
+        $name = $request->input('name');
+        $price = $request->input('price');
+        $area = $request->input('area');
+        $day = $request->input('day');
+        $text = $request->input('text');
+
+        $item->name = $name;
+        $item->price = $price;
+        $item->area = $area;
+        $item->day = $day;
+        $item->text = $text;
+        $item->save();
+    }
+
+    public function itemUpdateStorage($request,$item)
+    {
+        $form = $request->all();
+        unset($form['_token']);
+        $path = Storage::disk('s3')->putFile('u-farm',$request->file('img'),'public');
+        $img = Storage::disk('s3')->url($path);
+        $form['img'] = $img;
+        $item->fill($form)->save();
+    }
+
 }

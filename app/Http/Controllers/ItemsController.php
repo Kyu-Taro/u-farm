@@ -89,26 +89,14 @@ class ItemsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id,CreateRequest $validate)
+    public function update(Request $request, $id,CreateRequest $validate,Judgment $jud)
     {
         $item = Item::find($id);
 
         if(empty($request->file('img'))){
-            $name = $request->input('name');
-            $price = $request->input('price');
-            $area = $request->input('area');
-            $day = $request->input('day');
-            $text = $request->input('text');
-
-            $item->name = $name;
-            $item->price = $price;
-            $item->area = $area;
-            $item->day = $day;
-            $item->text = $text;
-            $item->save();
+            $jud->itemUpdate($request,$item);
          }else{
-            $form = $request->all();
-            $item->fill($form)->save();
+             $jud->itemUpdateStorage($request,$item);
         }
         return redirect()->route('mypage');
     }
