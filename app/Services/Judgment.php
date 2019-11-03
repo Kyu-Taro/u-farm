@@ -4,6 +4,8 @@ namespace App\Services;
 
 use Illuminate\Support\Facades\Storage;
 use App\Item;
+use Illuminate\Support\Facades\Auth;
+
 
 class Judgment
 {
@@ -101,6 +103,42 @@ class Judgment
         $img = Storage::disk('s3')->url($path);
         $form['img'] = $img;
         $item->fill($form)->save();
+    }
+
+    public function login($email,$password,$remember)
+    {
+        if(Auth::attempt(['email' => $email,'password' => $password],$remember)){
+            return redirect()->route('items');
+        }else{
+            return back()->with('error','※メールアドレス又はパスワードが違います');
+        }
+    }
+
+    public function login_second($email,$password)
+    {
+        if(Auth::attempt(['email' => $email,'password' => $password])){
+            return redirect()->route('items');
+        }else{
+            return back()->with('error','※メールアドレス又はパスワードが違います');
+        }
+    }
+
+    public function loginFarm($email,$password,$remember)
+    {
+        if(Auth::guard('admin')->attempt(['email' => $email,'password' => $password],$remember)){
+            return redirect()->route('mypage');
+        }else{
+            return back()->with('error','※メールアドレス又はパスワードが違います');
+        }
+    }
+
+    public function loginFarm_second($email,$password)
+    {
+        if(Auth::guard('admin')->attempt(['email' => $email,'password' => $password])){
+            return redirect()->route('mypage');
+        }else{
+            return back()->with('error','※メールアドレス又はパスワードが違います');
+        }
     }
 
 }
