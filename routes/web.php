@@ -26,11 +26,10 @@ Route::resource('/items','ItemsController');
 Route::resource('/items','ItemsController');
 
 Route::group(['middleware' => 'verified'],function(){
-    Route::resource('/admin','AdminController');
     Route::post('/charge/{item_id}/{user_id}','ChargeController@charge')->name('charge');
 });
 
-Route::group(['middleware' => 'auth:user','middleware' => 'verified'],function(){
+Route::group(['middleware' => 'auth:user'],function(){
     Route::get('/setting_second','MainController@setting_second');
     Route::resource('/user','UserController');
 });
@@ -46,4 +45,5 @@ Route::group(['middleware' => 'auth:admin'],function(){
     Route::get('/setting','MainController@setting')->name('setting');
     Route::get('/news','MainController@news')->name('news');
     Route::resource('/client','ClientController');
+    Route::resource('/admin','AdminController');
 });

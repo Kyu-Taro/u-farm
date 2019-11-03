@@ -7,6 +7,7 @@ use App\Item;
 use App\Http\Requests\CreateRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use App\Services\Judgment;
 
 class ItemsController extends Controller
 {
@@ -36,21 +37,12 @@ class ItemsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,CreateRequest $validate)
+    public function store(Request $request,CreateRequest $validate,Judgment $jud)
     {
         if (empty($request->file('img'))) {
-            $form = $request->all();
-            unset($form['_token']);
-            $item = new Item;
-            $item->fill($form)->save();
+            $jud->itemStore($request);
         }else{
-            $form = $request->all();
-            unset($form['_token']);
-            $item = new Item;
-            $path = Storage::disk('s3')->putFile('u-farm',$request->file('img'),'public');
-            $img = Storage::disk('s3')->url($path);
-            $form['img'] = $img;
-            $item->fill($form)->save();
+            $jud->itemStoreStorage($request);
         }
 
         return redirect()->route('mypage');
@@ -97,28 +89,16 @@ class ItemsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id,CreateRequest $validate)
+    public function update(Request $request, $id,CreateRequest $validate,Judgment $jud)
     {
         $item = Item::find($id);
 
         if(empty($request->file('img'))){
-            $name = $request->input('name');
-            $price = $request->input('price');
-            $area = $request->input('area');
-            $text = $request->input('text');
-
-            $item->name = $name;
-            $item->price = $price;
-            $item->area = $area;
-            $item->text = $text;
-            $item->save();
-
-            return redirect()->route('mypage');
+            $jud->itemUpdate($request,$item);
          }else{
-            $form = $request->all();
-            $item->fill($form)->save();
-            return redirect()->route('mypage');
+             $jud->itemUpdateStorage($request,$item);
         }
+        return redirect()->route('mypage');
     }
 
     /**

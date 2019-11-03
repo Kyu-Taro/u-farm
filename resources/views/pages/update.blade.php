@@ -43,7 +43,7 @@
         @method('PUT')
         <div class="area-drop">
             写真を選択
-            <img src="@if(!empty($user->img)) {{ $user->img }} @endif" class="prev-img" style="@if(!empty($user->img)) display: block @else display: none @endif">
+            <img src="@if(!empty($item->img)) {{ $item->img }} @endif" class="prev-img" style="@if(!empty($item->img)) display: block @else display: none @endif">
             <input type="file" name="img" class="input-file"><br/>
         </div>
         商品名:
@@ -64,6 +64,12 @@
         @enderror
         <br/>
         <input type="text" name="area" value="{{ $item->area }}"><br/>
+        日数:
+        @error('day')
+            {{ $message }}
+        @enderror
+        <br/>
+        <input type="text" name="day" value="{{ $item->day }}"><br/>
         商品説明:
         @error('text')
             <span class="error">{{ $message }}</span>
