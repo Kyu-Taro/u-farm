@@ -64,6 +64,12 @@
         @enderror
         <br/>
         <input type="text" name="area" value="{{ $item->area }}"><br/>
+        日数:
+        @error('day')
+            {{ $message }}
+        @enderror
+        <br/>
+        <input type="text" name="day" value="{{ $item->day }}"><br/>
         商品説明:
         @error('text')
             <span class="error">{{ $message }}</span>
