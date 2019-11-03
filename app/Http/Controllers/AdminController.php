@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Admin;
 use App\Item;
+use App\Services\Judgment;
+
 
 class AdminController extends Controller
 {
@@ -78,45 +80,14 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id,Judgment $jud)
     {
         $user = Auth::guard('admin')->user();
 
         if(empty($request->file('img'))){
-            $name = $request->input('name');
-            $email = $request->input('email');
-            $postNumber = $request->input('postNumber');
-            $area = $request->input('area');
-            $tell = $request->input('tell');
-            $text = $request->input('text');
-
-            $user->name = $name;
-            $user->email = $email;
-            $user->postNumber = $postNumber;
-            $user->area = $area;
-            $user->tell = $tell;
-            $user->text = $text;
-            $user->save();
+            $jud->profUpdate($request,$user);
         }else{
-            $name = $request->input('name');
-            $email = $request->input('email');
-            $postNumber = $request->input('postNumber');
-            $area = $request->input('area');
-            $tell = $request->input('tell');
-            $text = $request->input('text');
-
-            $path = Storage::disk('s3')->putFile('u-farm',$request->file('img'),'public');
-            $img = Storage::disk('s3')->url($path);
-
-            $user->name = $name;
-            $user->email = $email;
-            $user->postNumber = $postNumber;
-            $user->area = $area;
-            $user->tell = $tell;
-            $user->text = $text;
-            $user->img = $img;
-
-            $user->save();
+            $jud->profUpdateStorage($request,$user);
         }
 
         return redirect()->route('mypage');
