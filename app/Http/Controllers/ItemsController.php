@@ -97,11 +97,13 @@ class ItemsController extends Controller
             $name = $request->input('name');
             $price = $request->input('price');
             $area = $request->input('area');
+            $day = $request->input('day');
             $text = $request->input('text');
 
             $item->name = $name;
             $item->price = $price;
             $item->area = $area;
+            $item->day = $day;
             $item->text = $text;
             $item->save();
          }else{
