@@ -40,26 +40,18 @@ nav{
     align-items: center;
     height: 80px;
 }
+a:visited{
+    color:white
+}
 .nav-item{
-    margin: 0 30px;
+    margin: 0 10px;
+    font-size: 1.2rem;
 }
-ul.header-nav{
-    /* float: right; */
-    list-style: none;
-}
-.header-nav li{
-    /* float: left; */
-    font-size: 1.6rem;
-    line-height: 80px;
-}
-.header-nav li:hover{
+.nav-item a:hover{
     text-decoration: underline;
 }
-.header-nav li a{
+.nav-item a{
     text-decoration: none;
-    color: black;
-    margin-right: 25px;
-    font-weight: bold;
     color: white;
 }
 .header-title{
@@ -67,9 +59,5 @@ ul.header-nav{
     padding-left: 50px;
     font-size: 2.6rem;
     color: white;
-}
-.header-title a{
-    color: white;
-    text-decoration: none;
 }
 </style>
