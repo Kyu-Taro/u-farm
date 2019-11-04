@@ -20,22 +20,20 @@ Route::get('/login_second','MainController@login_second');
 Route::post('/login_second','LoginController@login_second');
 Route::post('/login','LoginController@login')->name('login');
 Route::get('/register_second','MainController@register_second');
+
+//ここ3つはuserとadmin両方メール認証ずみであれば入れるようにする
 Route::get('/logout','MainController@logout');
 Route::get('/item','MainController@items')->name('items');
 Route::resource('/items','ItemsController');
-Route::get('/user_delete','MainController@user_delete');
-Route::get('/admin_delete','MainController@admin_delete');
 
-Route::group(['middleware' => 'verified'],function(){
+Route::group(['middleware' => 'auth:user','middleware' => 'verified'],function(){
     Route::post('/charge/{item_id}/{user_id}','ChargeController@charge')->name('charge');
-});
-
-Route::group(['middleware' => 'auth:user'],function(){
     Route::get('/setting_second','MainController@setting_second');
     Route::resource('/user','UserController');
+    Route::get('/user_delete','MainController@user_delete');
 });
 
-Route::group(['middleware' => 'auth:admin'],function(){
+Route::group(['middleware' => 'auth:admin','middleware' => 'verified'],function(){
     Route::get('/mypage','MainController@mypage')->name('mypage');
     Route::get('/create','MainController@create');
     Route::get('/delete/{id}','MainController@delete');
@@ -47,4 +45,5 @@ Route::group(['middleware' => 'auth:admin'],function(){
     Route::get('/news','MainController@news')->name('news');
     Route::resource('/client','ClientController');
     Route::resource('/admin','AdminController');
+    Route::get('/admin_delete','MainController@admin_delete');
 });
