@@ -122,7 +122,6 @@ span.scroll{
 }
 
 .top-title{
-    padding-top: 250px;
     font-size: 1.8rem;
     border-bottom: 3px solid #8B4513;
     color: #8B4513;
@@ -160,4 +159,17 @@ span.scroll{
     max-width: 550px;
     max-height: 70px;
     overflow: hidden;
+}
+.form-container{
+    padding-top: 250px;
+    height: 100px;
+}
+form{
+    float: right;
+}
+input[type="text"]{
+    
+}
+input[type="submit"]{
+
 }

@@ -22,10 +22,10 @@ class MainController extends Controller
         return view('pages.register_second');
     }
 
-    public function items()
+    public function items(Request $request,Judgment $jud)
     {
-        $items = Item::get();
-        return view('pages.items',compact('items'));
+        $redirect = $jud->query($request);
+        return $redirect;
     }
 
     public function logout()

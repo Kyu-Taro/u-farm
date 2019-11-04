@@ -141,4 +141,26 @@ class Judgment
         }
     }
 
+    public function query($request)
+    {
+        if(!empty($request->query('name'))){
+            if(!empty($request->query('area'))){
+                $name = $request->query('name');
+                $area = $request->query('area');
+                $items = Item::where('name','like','%'.$name.'%')->where('area','like','%'.$area.'%')->get();
+            }else{
+                $name = $request->query('name');
+                $items = Item::where('name','like','%'.$name.'%')->get();
+            }
+        }else{
+            if(!empty($request->query('area'))){
+                $area = $request->query('area');
+                $items = Item::where('area','like','%'.$area.'%')->get();
+            }else{
+                $items = Item::get();
+            }
+        }
+        return view('pages.items',compact('items'));
+    }
+
 }

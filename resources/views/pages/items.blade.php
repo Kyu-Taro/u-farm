@@ -68,6 +68,16 @@
 
 @section('top-title','商品一覧')
 
+@section('form')
+    <div class="form-container">
+        <form action="/item" method="GET">
+            商品名:<input type="text" name="name" placeholder="例) トマト"><br/>
+            産地:<input type="text" name="area" placeholder="例) 大阪"><br/>
+            <input type="submit" value="検索">
+        </form>
+    </div>
+@endsection
+
 @section('content')
     @foreach ($items as $item)
         <div class="item">

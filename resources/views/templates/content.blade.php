@@ -12,6 +12,7 @@
 
     <main class="main-container">
         <div class="site-width">
+            @yield('form')
              <h1 class="top-title">@yield('top-title')</h1>
              <div class="content-container">
                  @yield('content')
