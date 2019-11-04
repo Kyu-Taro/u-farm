@@ -65,6 +65,7 @@
         @enderror
         <br/>
         <input type="tel" name="tell" value="{{ $user->tell }}"><br/>
+        <a href="/user_delete">退会はこちら</a>
         <input type="submit" value="更新">
     </form>
 @endsection

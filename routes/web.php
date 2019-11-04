@@ -23,7 +23,8 @@ Route::get('/register_second','MainController@register_second');
 Route::get('/logout','MainController@logout');
 Route::get('/item','MainController@items')->name('items');
 Route::resource('/items','ItemsController');
-Route::resource('/items','ItemsController');
+Route::get('/user_delete','MainController@user_delete');
+Route::get('/admin_delete','MainController@admin_delete');
 
 Route::group(['middleware' => 'verified'],function(){
     Route::post('/charge/{item_id}/{user_id}','ChargeController@charge')->name('charge');

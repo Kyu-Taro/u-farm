@@ -127,4 +127,16 @@ class MainController extends Controller
         $clients = Client::where('admin_id',$admin->id)->get();
         return view('pages.news',compact('clients'));
     }
+
+    public function user_delete()
+    {
+        $user = Auth::guard('user')->user();
+        return view('pages.user_delete',compact('user'));
+    }
+
+    public function admin_delete()
+    {
+        $admin = Auth::guard('admin')->user();
+        return view('pages.admin_delete',compact('admin'));
+    }
 }
