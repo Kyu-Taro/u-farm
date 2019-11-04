@@ -102,6 +102,7 @@ class AdminController extends Controller
     public function destroy($id)
     {
         Admin::find($id)->delete();
+        Item::where('admin_id',$id)->delete();
         return redirect()->route('index');
     }
 }
