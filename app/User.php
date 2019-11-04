@@ -7,11 +7,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Cashier\Billable;
 use App\Notifications\VerifyEmailJapanese;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
     use Billable;
+    use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.

@@ -83,7 +83,9 @@
         @enderror
         <br/>
         <textarea name="text" cols="67" rows="10">{{ $user->text }}</textarea><br/>
-        <a href="/account_add">口座登録はこちら</a><br/><a href="/account_update">口座情報変更はこちら</a>
+        <a href="/account_add">口座登録はこちら</a><br/>
+        <a href="/account_update">口座情報変更はこちら</a><br/>
+        <a href="/admin_delete">退会はこちら</a>
         <input type="submit" value="更新">
     </form>
 @endsection
