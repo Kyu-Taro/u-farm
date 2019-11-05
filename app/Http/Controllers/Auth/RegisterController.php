@@ -22,6 +22,12 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
+    
+    // defaultのshowRegistrationForm()をオーバーライドする
+    public function showRegistrationForm()
+    {
+        return view('register');
+    }
 
     /**
      * Where to redirect users after registration.
