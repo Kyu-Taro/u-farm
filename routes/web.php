@@ -33,7 +33,7 @@ Route::group(['middleware' => 'auth:user','middleware' => 'verified'],function()
     Route::get('/user_delete','MainController@user_delete');
 });
 
-Route::group(['middleware' => 'auth:admin','middleware' => 'verified'],function(){
+Route::namespace('Admin')->as('admin.')->group(['middleware' => 'auth:admin','middleware' => 'admin.verified'],function(){
     Route::get('/mypage','MainController@mypage')->name('mypage');
     Route::get('/create','MainController@create');
     Route::get('/delete/{id}','MainController@delete');
