@@ -38,4 +38,33 @@ class VerificationController extends Controller
         $this->middleware('signed')->only('verify');
         $this->middleware('throttle:6,1')->only('verify', 'resend');
     }
+
+    public function show(Request $request)
+    {
+        return $request->user()->hasVerifiedEmail()
+            ? redirect($this->redirectPath())
+            : view('front.auth.verify');
+    }
+
+    public function verify(Request $request)
+    {
+        if($request->route('id') != $request->user()->getKey()){
+            throw new AuthorizationException;
+        }
+
+        if($request->user()->markEmailAsVerified()){
+            return redirect($this->redirectPath())->with('front.verified',true);
+        }
+    }
+
+    public function resend(Request $request)
+    {
+        if($request->user()->hasVerifiedEmail()){
+            return redirect($this->redirectPath());
+        }
+
+        $request->user()->sendEmailVerificationNotification();
+
+        return back()->with('front.resent',true);
+    }
 }
