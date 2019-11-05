@@ -23,6 +23,7 @@ window.Vue = require('vue');
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('header-component', require('./components/HeaderComponent.vue').default);
 Vue.component('footer-component', require('./components/FooterComponent.vue').default);
+Vue.component('registerform-component', require('./components/RegisterFormComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
