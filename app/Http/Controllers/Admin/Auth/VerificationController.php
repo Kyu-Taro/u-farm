@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\VerifiesEmails;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Verified;
+use Illuminate\Auth\Access\AuthorizationException;
 
 class VerificationController extends Controller
 {
@@ -43,7 +46,7 @@ class VerificationController extends Controller
     {
         return $request->user()->hasVerifiedEmail()
             ? redirect($this->redirectPath())
-            : view('front.auth.verify');
+            : view('auth.verify');
     }
 
     public function verify(Request $request)
@@ -53,8 +56,10 @@ class VerificationController extends Controller
         }
 
         if($request->user()->markEmailAsVerified()){
-            return redirect($this->redirectPath())->with('front.verified',true);
+            event(new Verified($request->user()));
         }
+
+        return redirect($this->redirectPath())->with('admin.verified',true);
     }
 
     public function resend(Request $request)
