@@ -5,9 +5,10 @@ html,body,h1,h2,p,ul,li{
 
 body{
   font-size: 62.5%;
+  font-family: 'sans-serif';
 }
 
 .site-width{
-  width: 980px;
+  max-width: 980px;
   margin: auto;
 }
