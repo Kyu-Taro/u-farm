@@ -15,7 +15,7 @@ class EnsureEmailIsVerified
                 ! $request->user()->hasVerifiedEmail())) {
             return $request->expectsJson()
                 ? abort(403, 'Your email address is not verified.')
-                : Redirect::route('admin.verification.notice');
+                : Redirect::route('Admin.verification.notice');
         }
 
         return $next($request);

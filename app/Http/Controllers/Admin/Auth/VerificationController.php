@@ -59,7 +59,7 @@ class VerificationController extends Controller
             event(new Verified($request->user()));
         }
 
-        return redirect($this->redirectPath())->with('admin.verified', true);
+        return redirect($this->redirectPath())->with('Admin.verified', true);
     }
 
     public function resend(Request $request)
@@ -70,6 +70,6 @@ class VerificationController extends Controller
 
         $request->user()->sendEmailVerificationNotification();
 
-        return back()->with('auth.resent', true);
+        return back()->with('Admin.resent', true);
     }
 }
