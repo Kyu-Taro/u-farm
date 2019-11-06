@@ -48,6 +48,7 @@
         position: relative;
         top: -25px;
         left: 50%;
+        transform: translate(-50%,0);
         background: #703f27;
 
     }
