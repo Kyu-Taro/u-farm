@@ -6,21 +6,37 @@
                 <li ><a href="/register_second">売りたい人</a></li>
             </ul>
             <form action="/register" method="POST">
-                <label>名前</label>
-                <input type="text" v-model="name"><br/>
-                <label>Email</label>
-                <input type="text" v-model="email"><br/>
-                <label>パスワード</label>
-                <input type="password"  v-model="password"><br/>
-                <label>再入力</label>
-                <input type="password" v-model="password_confirmation"><br/>
-                <label>郵便番号(ハイフンなし)</label>
-                <input type="tel" v-model="postNumber"><br/>
-                <label>住所</label>
-                <input type="text" v-model="area"><br/>
-                <label>電話番号</label>
-                <input type="tel" v-model="tell"><br/>
-                <input type="submit" value="登録">
+                <div class="form-group">
+                    <label>名前</label>
+                    <input class="form-control" type="text" v-model="name">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input class="form-control"type="text" v-model="email">
+                </div>
+                <div class="form-group">
+                    <label>パスワード</label>
+                    <input class="form-control" type="password"  v-model="password">
+                </div>
+                <div class="form-group">
+                    <label>再入力</label>
+                    <input class="form-control" type="password" v-model="password_confirmation">
+                </div>
+                <div class="form-group">
+                    <label>郵便番号(ハイフンなし)</label>
+                    <input class="form-control" type="tel" v-model="postNumber">
+                </div>
+                <div class="form-group">
+                    <label>住所</label>
+                    <input class="form-control" type="text" v-model="area">
+                </div>  
+                <div class="form-group">
+                    <label>電話番号</label>
+                    <input class="form-control" type="tel" v-model="tell">
+                </div>
+                <div class="button-area">
+                    <input type="submit"  class="button" value="登録">
+                </div>
             </form>
         </div>
     </div>
@@ -28,14 +44,16 @@
 
 <script>
     export default {
-        data:{
-            name:'',
-            email:'',
-            password:'',
-            password_confirmation:'',
-            postNumber:'',
-            area:'',
-            tell:''
+        data:function(){
+            return{
+                name:'',
+                email:'',
+                password:'',
+                password_confirmation:'',
+                postNumber:'',
+                area:'',
+                tell:''
+            }
         },
         mounted() {
             console.log('Component mounted.')
@@ -44,10 +62,30 @@
     }
 </script>
 
-<style>
+<style scoped>
     .full-page{
         height: auto;
         background-image: url('/img/form.jpg');
         background-size: 100% 
+    }
+    form{
+        margin: 150px auto 0;
+        padding-bottom: 100px;
+        max-width: 500px;
+    }
+    .form-group{
+        margin-bottom: 5px;
+    }
+    .button-area{
+        margin: 20px auto;
+        text-align: center;
+    }
+    .button{
+        font-size: 20px;
+        background: #8b4513;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 5px;
     }
 </style>
