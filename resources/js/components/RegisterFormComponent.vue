@@ -17,10 +17,12 @@
                 <div class="form-group">
                     <label>パスワード</label>
                     <input class="form-control" type="password"  v-model="password">
+                    <input class="form-control" type="password"  v-model="password" autocomplete="off">
                 </div>
                 <div class="form-group">
                     <label>再入力</label>
                     <input class="form-control" type="password" v-model="password_confirmation">
+                    <input class="form-control" type="password" v-model="password_confirmation" autocomplete="off">
                 </div>
                 <div class="form-group">
                     <label>郵便番号(ハイフンなし)</label>
