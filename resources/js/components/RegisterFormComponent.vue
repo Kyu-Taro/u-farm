@@ -12,16 +12,14 @@
                 </div>
                 <div class="form-group">
                     <label>Email</label>
-                    <input class="form-control"type="text" v-model="email">
+                    <input class="form-control" type="text" v-model="email">
                 </div>
                 <div class="form-group">
                     <label>パスワード</label>
-                    <input class="form-control" type="password"  v-model="password">
                     <input class="form-control" type="password"  v-model="password" autocomplete="off">
                 </div>
                 <div class="form-group">
                     <label>再入力</label>
-                    <input class="form-control" type="password" v-model="password_confirmation">
                     <input class="form-control" type="password" v-model="password_confirmation" autocomplete="off">
                 </div>
                 <div class="form-group">
@@ -66,18 +64,31 @@
 
 <style scoped>
     .full-page{
+        position: relative;
         height: auto;
-        background-image: url('/img/form.jpg');
         background-image: url('/img/form-new.jpg');
-        background-size: 100% 
+        background-size: cover;
+        z-index: 0;
+    }
+    .full-page::before{
+        content: '';
+        position: absolute;
+        top: -2px;
+        bottom: -2px;
+        left: -2px;
+        right: -2px;
+        background-image: inherit;
+        filter: blur(2px);
+        z-index: -1;
     }
     form{
-        margin: 150px auto 0;
+        margin: 10% auto 0;
         padding-bottom: 100px;
         max-width: 500px;
     }
     .form-group{
         margin-bottom: 5px;
+        color:#333;
     }
     .button-area{
         margin: 20px auto;
