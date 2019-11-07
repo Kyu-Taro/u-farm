@@ -66,6 +66,7 @@
     .full-page{
         height: auto;
         background-image: url('/img/form.jpg');
+        background-image: url('/img/form-new.jpg');
         background-size: 100% 
     }
     form{
