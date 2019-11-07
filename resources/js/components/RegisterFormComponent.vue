@@ -6,6 +6,7 @@
                 <li ><a href="/register_second">売りたい人</a></li>
             </ul>
             <form action="/register" method="POST">
+                <input type="hidden" name="_token" :value="csrf">
                 <div class="form-group">
                     <label>名前</label>
                     <input class="form-control" type="text" v-model="name">
@@ -46,13 +47,14 @@
     export default {
         data:function(){
             return{
+                csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
                 name:'',
                 email:'',
                 password:'',
                 password_confirmation:'',
                 postNumber:'',
                 area:'',
-                tell:''
+                tell:'',
             }
         },
         mounted() {
