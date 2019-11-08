@@ -81,21 +81,12 @@
         <div class="item-text">
         {{ $item->text }}
         </div>
-        <form action="/charge/{{ $item->id }}/{{ $user->id }}" method="POST">
-            @csrf
-            @if (Auth::check())
-                <script
-                    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                    data-key="{{ env('STRIPE_KEY') }}"
-                    data-amount="{{ $item->price }}"
-                    data-name="Stripe Demo"
-                    data-label="決済をする"
-                    data-description="Online course about integrating Stripe"
-                    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-                    data-locale="auto"
-                    data-currency="JPY">
-                </script>
-            @endif
+            <form action="/charge" method="POST">
+                @csrf
+                個数:<input type="tel" name="number"><br/>
+                <input type="hidden" value="{{ $item->id }}" name="item">
+                <input type="hidden" value="{{ $user->id }}" name="user">
+                <input type="submit" value="購入する">
             </form>
         </div>
 @endsection

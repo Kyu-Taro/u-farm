@@ -12,7 +12,7 @@
 */
 
 
-// Auth::routes(['verify' => true]);
+Auth::routes(['verify' => true]);
 
 Route::get('/', 'MainController@index')->name('index');
 Route::post('/register_second','Admin\Auth\RegisterController@register');
@@ -26,35 +26,15 @@ Route::get('/logout','MainController@logout');
 Route::get('/item','MainController@items')->name('items');
 Route::resource('/items','ItemsController');
 
-Route::group(['middleware' => 'auth:user','middleware' => 'verified'],function(){
+Route::group(['middleware' => 'auth:user'],function(){
     Route::post('/charge/{item_id}/{user_id}','ChargeController@charge')->name('charge');
     Route::get('/setting_second','MainController@setting_second');
     Route::resource('/user','UserController');
     Route::get('/user_delete','MainController@user_delete');
+    Route::post('/charge','MainController@charge');
 });
 
-// Route::group(['middleware' => 'auth:admin','middleware' => 'verified'],function(){
-//     Route::get('/mypage','MainController@mypage')->name('mypage');
-//     Route::get('/create','MainController@create');
-//     Route::get('/delete/{id}','MainController@delete');
-//     Route::get('/update/{id}','MainController@update');
-//     Route::get('/account_add','MainController@account_add')->name('account_add');
-//     Route::get('/account_update','MainController@account_update')->name('account_update');
-//     Route::resource('/account','AccountController');
-//     Route::get('/setting','MainController@setting')->name('setting');
-//     Route::get('/news','MainController@news')->name('news');
-//     Route::resource('/client','ClientController');
-//     Route::resource('/admin','AdminController');
-//     Route::get('/admin_delete','MainController@admin_delete');
-// });
-
-
-//テスト用不要になったら削除して上記コメントアウトを解除
-Route::namespace('Admin')->as('admin.')->group(function(){
-    Auth::routes(['verify' => true]);
-});
-
-Route::middleware('verified')->group(function(){
+Route::group(['middleware' => 'auth:admin','middleware' => 'verified'],function(){
     Route::get('/mypage','MainController@mypage')->name('mypage');
     Route::get('/create','MainController@create');
     Route::get('/delete/{id}','MainController@delete');

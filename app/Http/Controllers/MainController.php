@@ -8,6 +8,7 @@ use App\Item;
 use App\Account;
 use App\Client;
 use App\Services\Judgment;
+use App\User;
 
 class MainController extends Controller
 {
@@ -138,5 +139,24 @@ class MainController extends Controller
     {
         $admin = Auth::guard('admin')->user();
         return view('pages.admin_delete',compact('admin'));
+    }
+
+    public function charge(Request $request)
+    {
+        $item_id = $request->item;
+        $user_id = $request->user;
+        $item = Item::find($item_id);
+        $user = User::find($user_id);
+        $number = $request->input('number');
+        $price = ($item->price) * $number;
+
+        $data = [
+            'item' => $item,
+            'user' => $user,
+            'price' => $price,
+
+        ];
+
+        return view('pages.charge',$data);
     }
 }

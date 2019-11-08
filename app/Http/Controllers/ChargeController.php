@@ -24,6 +24,7 @@ class ChargeController extends Controller
         $user = User::find($user_id);
         $id = $item->admin_id;
         $admin = Admins::find($id);
+        $number = $request->input('number');
 
 
         try {
@@ -36,7 +37,7 @@ class ChargeController extends Controller
 
             $charge = Charge::create(array(
                 'customer' => $customer->id,
-                'amount' => $item->price,
+                'amount' => $item->price * $number,
                 'currency' => 'jpy'
             ));
 
