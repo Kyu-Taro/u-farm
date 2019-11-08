@@ -17,14 +17,13 @@ use App\Client;
 
 class ChargeController extends Controller
 {
-    public function charge(Request $request,$item_id,$user_id)
+    public function charge(Request $request,$item_id,$user_id,$price)
     {
 
         $item = Item::find($item_id);
         $user = User::find($user_id);
         $id = $item->admin_id;
         $admin = Admins::find($id);
-        $number = $request->input('number');
 
 
         try {
@@ -37,7 +36,7 @@ class ChargeController extends Controller
 
             $charge = Charge::create(array(
                 'customer' => $customer->id,
-                'amount' => $item->price * $number,
+                'amount' => $price,
                 'currency' => 'jpy'
             ));
 

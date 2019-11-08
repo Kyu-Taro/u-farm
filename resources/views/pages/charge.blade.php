@@ -1,4 +1,4 @@
-<form action="/charge/{{ $item->id }}/{{ $user->id }}" method="POST">
+<form action="/charge/{{ $item->id }}/{{ $user->id }}/{{ $price }}" method="POST">
     @csrf
     @if (Auth::check())
         <script
