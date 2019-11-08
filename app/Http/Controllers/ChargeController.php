@@ -83,6 +83,6 @@ class ChargeController extends Controller
         $client->item_id = $item->id;
         $client->save();
 
-        return back();
+        return redirect()->route('index');
     }
 }
