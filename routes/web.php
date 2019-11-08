@@ -48,6 +48,8 @@ Route::group(['middleware' => 'auth:user','middleware' => 'verified'],function()
 //     Route::get('/admin_delete','MainController@admin_delete');
 // });
 
+
+//テスト用不要になったら削除して上記コメントアウトを解除
 Route::namespace('Admin')->as('admin.')->group(function(){
     Auth::routes(['verify' => true]);
 });
