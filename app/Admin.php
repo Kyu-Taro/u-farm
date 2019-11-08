@@ -8,7 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use App\Notifications\VerifyEmailJapanese;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Admin extends Authenticatable implements MustVerifyEmail
+class Admin extends Authenticatable
 {
     use Notifiable;
     use SoftDeletes;
