@@ -8,7 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use App\Notifications\VerifyEmailJapanese;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Admin extends Authenticatable
+class Admin extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
     use SoftDeletes;
@@ -43,10 +43,5 @@ class Admin extends Authenticatable
     public function account()
     {
         return $this->hasOne('App\Account','admin_id','id');
-    }
-
-    public function sendEmailVerificationNotification()
-    {
-        $this->notify(new VerifyEmailJapanese);
     }
 }
