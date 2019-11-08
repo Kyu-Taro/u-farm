@@ -34,7 +34,22 @@ Route::group(['middleware' => 'auth:user'],function(){
     Route::post('/charge','MainController@charge');
 });
 
-Route::group(['middleware' => 'auth:admin','middleware' => 'verified'],function(){
+// Route::group(['middleware' => 'auth:admin','middleware' => 'verified'],function(){
+//     Route::get('/mypage','MainController@mypage')->name('mypage');
+//     Route::get('/create','MainController@create');
+//     Route::get('/delete/{id}','MainController@delete');
+//     Route::get('/update/{id}','MainController@update');
+//     Route::get('/account_add','MainController@account_add')->name('account_add');
+//     Route::get('/account_update','MainController@account_update')->name('account_update');
+//     Route::resource('/account','AccountController');
+//     Route::get('/setting','MainController@setting')->name('setting');
+//     Route::get('/news','MainController@news')->name('news');
+//     Route::resource('/client','ClientController');
+//     Route::resource('/admin','AdminController');
+//     Route::get('/admin_delete','MainController@admin_delete');
+// });
+
+Route::group(['middleware' => 'auth:admin'],function(){
     Route::get('/mypage','MainController@mypage')->name('mypage');
     Route::get('/create','MainController@create');
     Route::get('/delete/{id}','MainController@delete');
