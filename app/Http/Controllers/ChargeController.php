@@ -80,8 +80,15 @@ class ChargeController extends Controller
         $client->user_id = $user->id;
         $client->admin_id = $admin->id;
         $client->item_id = $item->id;
+        $client->number = $number;
         $client->save();
 
-        return redirect()->route('buy')->with('name',$item->name)->with('number',$number)->with('price',$price);
+        $data = [
+            'name' => $name,
+            'number' => $number,
+            'price' => $price
+        ];
+
+        return redirect()->route('buy')->with('item',$data);
     }
 }
