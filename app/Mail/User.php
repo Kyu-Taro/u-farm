@@ -22,14 +22,16 @@ class User extends Mailable
      protected $price;
      protected $adminName;
      protected $adminNumber;
+     protected $number;
 
-    public function __construct($name,$price,$adminName,$adminNumber)
+    public function __construct($name,$price,$adminName,$adminNumber,$number)
     {
         $this->title = '商品の購入が完了しました';
         $this->name = $name;
         $this->price = $price;
         $this->adminName = $adminName;
         $this->adminNumber = $adminNumber;
+        $this->number = $number;
     }
 
     /**
@@ -42,6 +44,6 @@ class User extends Mailable
         return $this->view('mail.user_mail')
             ->from('gtnine999@gmail.com','U-farm')
             ->subject($this->title)
-            ->with(['name' => $this->name,'price' => $this->price,'adminName' => $this->adminName,'adminNumber' => $this->adminNumber]);
+            ->with(['name' => $this->name,'price' => $this->price,'adminName' => $this->adminName,'adminNumber' => $this->adminNumber,'number' => $this->number]);
     }
 }

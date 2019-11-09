@@ -33,8 +33,9 @@ class Me extends Mailable
      protected $bankBranch;
      protected $bankType;
      protected $bankNumber;
+     protected $number;
 
-    public function __construct($userName,$userNumber,$userPostNumber,$userArea,$itemName,$itemPrice,$adminName,$adminPostNumber,$adminArea,$adminNumber,$bankName,$bankAdminName,$bankBranch,$bankType,$bankNumber)
+    public function __construct($userName,$userNumber,$userPostNumber,$userArea,$itemName,$itemPrice,$adminName,$adminPostNumber,$adminArea,$adminNumber,$bankName,$bankAdminName,$bankBranch,$bankType,$bankNumber,$number)
     {
         $this->title = '購入情報通知';
         $this->userName = $userName;
@@ -52,6 +53,7 @@ class Me extends Mailable
         $this->bankBranch = $bankBranch;
         $this->bankType = $bankType;
         $this->bankNumber = $bankNumber;
+        $this->number = $number;
     }
 
     /**
@@ -80,7 +82,8 @@ class Me extends Mailable
                     'bankAdminName' => $this->bankAdminName,
                     'bankBranch' => $this->bankBranch,
                     'bankType' => $this->bankType,
-                    'bankNumber' => $this->bankNumber
+                    'bankNumber' => $this->bankNumber,
+                    'number' => $this->number,
                 ]
             );
     }

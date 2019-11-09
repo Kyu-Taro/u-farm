@@ -25,6 +25,7 @@ class ChargeController extends Controller
         $id = $item->admin_id;
         $admin = Admins::find($id);
         $number = $request->input('number');
+        dump($number);
 
 
         try {
@@ -74,7 +75,7 @@ class ChargeController extends Controller
         $bankBranch = $admin->account->branch;
         $bankType = $admin->account->type;
         $bankNumber = $admin->account->number;
-        Mail::to($to)->send(new Me($userName,$userNumber,$userPostNumber,$userArea,$itemName,$itemPrice,$adminName,$adminPostNumber,$adminArea,$adminNumber,$bankName,$bankAdminName,$bankBranch,$bankType,$bankNumber));
+        Mail::to($to)->send(new Me($userName,$userNumber,$userPostNumber,$userArea,$itemName,$itemPrice,$adminName,$adminPostNumber,$adminArea,$adminNumber,$bankName,$bankAdminName,$bankBranch,$bankType,$bankNumber,$number));
 
         $client = new Client;
         $client->user_id = $user->id;

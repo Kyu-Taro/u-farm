@@ -23,8 +23,9 @@ class Admin extends Mailable
      protected $area;
      protected $itemName;
      protected $price;
-     
-    public function __construct($name,$postNumber,$area,$itemName,$price)
+     protected $number;
+
+    public function __construct($name,$postNumber,$area,$itemName,$price,$number)
     {
         $this->title = "出品した商品が購入されました";
         $this->name = $name;
@@ -32,6 +33,7 @@ class Admin extends Mailable
         $this->area = $area;
         $this->itemName = $itemName;
         $this->price = $price;
+        $this->number = $number;
     }
 
     /**
@@ -44,6 +46,6 @@ class Admin extends Mailable
         return $this->view('mail.admin_mail')
             ->from('gtnine999@gmail.com','U-farm')
             ->subject($this->title)
-            ->with(['postNumber' => $this->postNumber,'area' => $this->area,'name' => $this->name,'itemName' => $this->itemName,'price' => $this->price]);
+            ->with(['postNumber' => $this->postNumber,'area' => $this->area,'name' => $this->name,'itemName' => $this->itemName,'price' => $this->price,'number' => $this->number]);
     }
 }
