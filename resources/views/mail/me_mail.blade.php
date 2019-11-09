@@ -5,7 +5,7 @@
 <br/>
 【購入商品】<br/>
 商品名:{{ $itemName }}<br/>
-個数:{{ $number }}<br/>
+個数:{{ $number }}個<br/>
 金額:{{ $itemPrice }}円<br/>
 <br/>
 【農家情報】<br/>

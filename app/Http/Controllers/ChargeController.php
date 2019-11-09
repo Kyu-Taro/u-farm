@@ -25,7 +25,6 @@ class ChargeController extends Controller
         $id = $item->admin_id;
         $admin = Admins::find($id);
         $number = $request->input('number');
-        dump($number);
 
 
         try {
