@@ -1,3 +1,3 @@
-【購入商品】{{ session('item[name]') }}<br/>
-【個数】{{ session('item[number]') }}<br/>
-【合計金額】{{ session('item[price]') }}<br/>
+【購入商品】{{ $item['name'] }}<br/>
+【個数】{{ $item['number'] }}<br/>
+【合計金額】{{ $item['price'] }}<br/>
