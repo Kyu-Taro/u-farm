@@ -24,6 +24,7 @@ class ChargeController extends Controller
         $user = User::find($user_id);
         $id = $item->admin_id;
         $admin = Admins::find($id);
+        $number = $request->input('number');
 
 
         try {
@@ -49,15 +50,13 @@ class ChargeController extends Controller
         $area = $user->area;
         $name = $user->name;
         $itemName = $item->name;
-        $price = $price;
-        Mail::to($to)->send(new Admin($name,$postNumber,$area,$itemName,$price));
+        Mail::to($to)->send(new Admin($name,$postNumber,$area,$itemName,$price,$number));
 
         $to = $user->email;
         $name = $item->name;
-        $price = $price;
         $adminName = $item->admin->name;
         $adminNumber = $item->admin->tell;
-        Mail::to($to)->send(new Users($name,$price,$adminName,$adminNumber));
+        Mail::to($to)->send(new Users($name,$price,$adminName,$adminNumber,$number));
 
         $to = 'amiti9999@icloud.com';
         $userName = $user->name;
@@ -65,7 +64,7 @@ class ChargeController extends Controller
         $userPostNumber = $user->postNumber;
         $userArea = $user->area;
         $itemName = $item->name;
-        $itemPrice = $item->price;
+        $itemPrice = $price;
         $adminName = $item->admin->name;
         $adminPostNumber = $item->admin->postNumber;
         $adminArea = $item->admin->area;

@@ -1,5 +1,6 @@
 <form action="/charge/{{ $item->id }}/{{ $user->id }}/{{ $price }}" method="POST">
     @csrf
+    <input type="hidden" value="{{ $number }}" name="number">
     @if (Auth::check())
         <script
             src="https://checkout.stripe.com/checkout.js" class="stripe-button"
