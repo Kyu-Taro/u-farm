@@ -17,14 +17,13 @@ use App\Client;
 
 class ChargeController extends Controller
 {
-    public function charge(Request $request,$item_id,$user_id,$price)
+    public function charge(Request $request,$item_id,$user_id,$price,$totalNumber)
     {
 
         $item = Item::find($item_id);
         $user = User::find($user_id);
         $id = $item->admin_id;
         $admin = Admins::find($id);
-        $totalNumber = $price / ($item->price);
 
 
         try {

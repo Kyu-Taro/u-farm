@@ -154,6 +154,7 @@ class MainController extends Controller
             'item' => $item,
             'user' => $user,
             'price' => $price,
+            'number' => $number,
 
         ];
 
