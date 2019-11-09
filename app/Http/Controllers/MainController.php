@@ -154,8 +154,6 @@ class MainController extends Controller
             'item' => $item,
             'user' => $user,
             'price' => $price,
-            'number' => $number,
-
         ];
 
         return view('pages.charge',$data);

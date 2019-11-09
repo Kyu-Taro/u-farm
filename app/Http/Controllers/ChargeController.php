@@ -17,7 +17,7 @@ use App\Client;
 
 class ChargeController extends Controller
 {
-    public function charge(Request $request,$item_id,$user_id,$price,$totalNumber)
+    public function charge(Request $request,$item_id,$user_id,$price)
     {
 
         $item = Item::find($item_id);

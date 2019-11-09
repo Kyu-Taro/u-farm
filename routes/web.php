@@ -27,7 +27,7 @@ Route::get('/item','MainController@items')->name('items');
 Route::resource('/items','ItemsController');
 
 Route::group(['middleware' => 'auth:user'],function(){
-    Route::post('/charge/{item_id}/{user_id}/{price}/{number}','ChargeController@charge')->name('charge');
+    Route::post('/charge/{item_id}/{user_id}/{price}','ChargeController@charge')->name('charge');
     Route::get('/setting_second','MainController@setting_second');
     Route::resource('/user','UserController');
     Route::get('/user_delete','MainController@user_delete');
