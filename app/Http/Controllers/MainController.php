@@ -159,4 +159,9 @@ class MainController extends Controller
 
         return view('pages.charge',$data);
     }
+
+    public function buy()
+    {
+        return view('pages.buy');
+    }
 }

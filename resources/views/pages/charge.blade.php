@@ -1,3 +1,7 @@
+<p>【商品名】{{ $item->name }}</p>
+<p>【個数】{{ $number }}個</p>
+<p>【合計金額】{{ $price }}</p>
+
 <form action="/charge/{{ $item->id }}/{{ $user->id }}/{{ $price }}" method="POST">
     @csrf
     <input type="hidden" value="{{ $number }}" name="number">
