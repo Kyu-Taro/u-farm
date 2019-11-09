@@ -1,3 +1,3 @@
-【購入商品】{{ $data['name'] }}<br/>
-【個数】{{ $data['number'] }}<br/>
-【合計金額】{{ $data['price'] }}<br/>
+【購入商品】{{ $name }}<br/>
+【個数】{{ $number }}<br/>
+【合計金額】{{ $price }}<br/>
