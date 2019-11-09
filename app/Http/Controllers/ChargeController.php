@@ -89,6 +89,6 @@ class ChargeController extends Controller
             'price' => $price
         ];
 
-        return redirect()->route('buy')->with($data);
+        return redirect(route('buy',$data));
     }
 }
