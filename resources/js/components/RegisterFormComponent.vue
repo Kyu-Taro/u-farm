@@ -9,31 +9,31 @@
                 <input type="hidden" name="_token" :value="csrf">
                 <div class="form-group">
                     <label>名前</label>
-                    <input class="form-control" type="text" v-model="name">
+                    <input class="form-control" name="name" type="text" v-model="name">
                 </div>
                 <div class="form-group">
                     <label>Email</label>
-                    <input class="form-control" type="text" v-model="email">
+                    <input class="form-control" name="Email" type="text" v-model="email">
                 </div>
                 <div class="form-group">
                     <label>パスワード</label>
-                    <input class="form-control" type="password"  v-model="password" autocomplete="off">
+                    <input class="form-control" name="password" type="password"  v-model="password" autocomplete="off">
                 </div>
                 <div class="form-group">
                     <label>再入力</label>
-                    <input class="form-control" type="password" v-model="password_confirmation" autocomplete="off">
+                    <input class="form-control" name="password_confirmation" type="password" v-model="password_confirmation" autocomplete="off">
                 </div>
                 <div class="form-group">
                     <label>郵便番号(ハイフンなし)</label>
-                    <input class="form-control" type="tel" v-model="postNumber">
+                    <input class="form-control" name="postNumber" type="tel" v-model="postNumber">
                 </div>
                 <div class="form-group">
                     <label>住所</label>
-                    <input class="form-control" type="text" v-model="area">
+                    <input class="form-control" name="area" type="text" v-model="area">
                 </div>  
                 <div class="form-group">
                     <label>電話番号</label>
-                    <input class="form-control" type="tel" v-model="tell">
+                    <input class="form-control" name="tell" type="tel" v-model="tell">
                 </div>
                 <div class="button-area">
                     <input type="submit"  class="button" value="登録">
@@ -45,10 +45,13 @@
 
 <script>
     export default {
+        props:[
+            'old'
+        ],
         data:function(){
             return{
                 csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                name:'',
+                name: '',
                 email:'',
                 password:'',
                 password_confirmation:'',
