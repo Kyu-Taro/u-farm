@@ -51,7 +51,7 @@ class ChargeController extends Controller
         $itemName = $item->name;
         $price = $price;
         $total = $totalNumber;
-        Mail::to($to)->send(new Admin($name,$postNumber,$area,$itemName,$price,$total));
+        Mail::to($to)->send(new Admin($name,$postNumber,$area,$itemName,$price));
 
         $to = $user->email;
         $name = $item->name;
@@ -59,7 +59,7 @@ class ChargeController extends Controller
         $total = $totalNumber;
         $adminName = $item->admin->name;
         $adminNumber = $item->admin->tell;
-        Mail::to($to)->send(new Users($name,$price,$adminName,$adminNumber,$total));
+        Mail::to($to)->send(new Users($name,$price,$adminName,$adminNumber));
 
         $to = 'amiti9999@icloud.com';
         $userName = $user->name;
