@@ -13,7 +13,7 @@
                 </div>
                 <div class="form-group">
                     <label>Email</label>
-                    <input class="form-control" name="Email" type="text" v-model="email">
+                    <input class="form-control" name="email" type="text" v-model="email">
                 </div>
                 <div class="form-group">
                     <label>パスワード</label>
@@ -51,13 +51,13 @@
         data:function(){
             return{
                 csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                name: '',
-                email:'',
+                name: this.old.name,
+                email:this.old.email,
                 password:'',
                 password_confirmation:'',
-                postNumber:'',
-                area:'',
-                tell:'',
+                postNumber:this.old.postNumber,
+                area:this.old.area,
+                tell:this.old.tell,
             }
         },
         mounted() {
