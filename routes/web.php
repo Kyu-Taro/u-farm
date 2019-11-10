@@ -32,7 +32,7 @@ Route::group(['middleware' => 'auth:user'],function(){
     Route::resource('/user','UserController');
     Route::get('/user_delete','MainController@user_delete');
     Route::post('/charge','MainController@charge');
-    Route::post('/buy','MainController@buy')->name('buy');
+    Route::get('/buy','MainController@buy')->name('buy');
 });
 
 // Route::group(['middleware' => 'auth:admin','middleware' => 'verified'],function(){
