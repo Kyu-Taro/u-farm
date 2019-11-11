@@ -16,7 +16,10 @@
 <body>
     <div id="app">
         <header-component></header-component>
-        <registerform-component :old="{{ json_encode(Session::getOldInput()) }}"></registerform-component>
+        <registerform-component 
+            :old="{{ json_encode(Session::getOldInput()) }}"
+            :errors= "{{ $errors }}">
+        </registerform-component>
         <footer-component></footer-component>
     </div>
     <script src="{{ mix('js/app.js') }}"></script>

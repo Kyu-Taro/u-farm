@@ -9,14 +9,17 @@
                 <input type="hidden" name="_token" :value="csrf">
                 <div class="form-group">
                     <label>名前</label>
+                    <strong class="error" v-for="value in error.name">{{ value }}</strong>
                     <input class="form-control" name="name" type="text" v-model="name">
                 </div>
                 <div class="form-group">
                     <label>Email</label>
+                    <strong class="error" v-for="value in error.email">{{ value }}</strong>
                     <input class="form-control" name="email" type="text" v-model="email">
                 </div>
                 <div class="form-group">
                     <label>パスワード</label>
+                    <strong class="error" v-for="value in error.password">{{ value }}</strong>
                     <input class="form-control" name="password" type="password"  v-model="password" autocomplete="off">
                 </div>
                 <div class="form-group">
@@ -25,14 +28,17 @@
                 </div>
                 <div class="form-group">
                     <label>郵便番号(ハイフンなし)</label>
+                    <strong class="error" v-for="value in error.postNumber">{{ value }}</strong>
                     <input class="form-control" name="postNumber" type="tel" v-model="postNumber">
                 </div>
                 <div class="form-group">
                     <label>住所</label>
+                    <strong class="error" v-for="value in error.area">{{ value }}</strong>
                     <input class="form-control" name="area" type="text" v-model="area">
                 </div>  
                 <div class="form-group">
                     <label>電話番号</label>
+                    <strong class="error" v-for="value in error.tell">{{ value }}</strong>
                     <input class="form-control" name="tell" type="tel" v-model="tell">
                 </div>
                 <div class="button-area">
@@ -46,7 +52,8 @@
 <script>
     export default {
         props:[
-            'old'
+            'old',
+            'errors'
         ],
         data:function(){
             return{
@@ -58,6 +65,14 @@
                 postNumber:this.old.postNumber,
                 area:this.old.area,
                 tell:this.old.tell,
+                error:{
+                    name:this.errors.name,
+                    email:this.errors.email,
+                    password:this.errors.password,
+                    postNumber:this.errors.postNumber,
+                    area:this.errors.area,
+                    tell:this.errors.tell
+                }
             }
         },
         mounted() {
@@ -106,5 +121,8 @@
         border: none;
         padding: 8px 15px;
         border-radius: 5px;
+    }
+    .error{
+        color: red;
     }
 </style>
