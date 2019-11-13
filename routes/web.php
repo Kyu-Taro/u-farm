@@ -23,8 +23,8 @@ Route::get('/register_second','MainController@register_second');
 
 //ここ3つはuserとadmin両方メール認証ずみであれば入れるようにする
 Route::get('/logout','MainController@logout');
-Route::get('/item','MainController@items')->name('items');
-Route::resource('/items','ItemsController');
+// Route::get('/item','MainController@items')->name('items');
+// Route::resource('/items','ItemsController');
 
 Route::group(['middleware' => 'auth:user'],function(){
     Route::post('/charge/{item_id}/{user_id}/{price}','ChargeController@charge')->name('charge');
