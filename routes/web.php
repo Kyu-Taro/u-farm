@@ -32,6 +32,8 @@ Route::group(['middleware' => 'auth:user'],function(){
     Route::resource('/user','UserController');
     Route::get('/user_delete','MainController@user_delete');
     Route::post('/charge','MainController@charge');
+    Route::get('/item','MainController@items')->name('items');
+    Route::resource('/items','ItemsController');
 });
 
 // Route::group(['middleware' => 'auth:admin','middleware' => 'verified'],function(){
