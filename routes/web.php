@@ -23,17 +23,15 @@ Route::get('/register_second','MainController@register_second');
 
 //ここ3つはuserとadmin両方メール認証ずみであれば入れるようにする
 Route::get('/logout','MainController@logout');
-// Route::get('/item','MainController@items')->name('items');
-// Route::resource('/items','ItemsController');
+Route::get('/item','MainController@items')->name('items');
+Route::resource('/items','ItemsController');
 
-Route::group(['middleware' => 'auth:user','middleware' => 'verified'],function(){
+Route::group(['middleware' => 'auth:user'],function(){
     Route::post('/charge/{item_id}/{user_id}/{price}','ChargeController@charge')->name('charge');
     Route::get('/setting_second','MainController@setting_second');
     Route::resource('/user','UserController');
     Route::get('/user_delete','MainController@user_delete');
     Route::post('/charge','MainController@charge');
-    Route::get('/item','MainController@items')->name('items');
-    Route::resource('/items','ItemsController');
 });
 
 // Route::group(['middleware' => 'auth:admin','middleware' => 'verified'],function(){
