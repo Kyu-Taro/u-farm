@@ -35,7 +35,7 @@ laravel-nuxt_web_1      nginx -g daemon off;      Up      0.0.0.0:8080->80/tcp
 appコンテナの中入ってlaravelセットアップ
 ```bash
 $ docker-compose exec app ash
-$ composer create-project --prefer-dist cretueusebiu/laravel-nuxt
+$ composer install
 $ php artisan migrate
 ```
 
