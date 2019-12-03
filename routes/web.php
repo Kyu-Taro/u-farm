@@ -11,4 +11,4 @@ Route::get('/',function(){
 });
 
 //Authのルート
-Auth::routes();
+Auth::routes(['verify' => true]);

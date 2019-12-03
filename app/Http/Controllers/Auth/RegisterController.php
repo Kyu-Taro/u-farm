@@ -71,9 +71,4 @@ class RegisterController extends Controller
             'farmer_flg' => $data['farmer_flg'],
         ]);
     }
-
-    public function registered(Request $request,$user)
-    {
-        return $user;
-    }
 }
