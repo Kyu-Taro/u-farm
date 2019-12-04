@@ -12,7 +12,7 @@ export default {
   layout: 'default',
   head () {
     return {
-      title: 'top'
+      title: 'login'
     }
   }
 }
