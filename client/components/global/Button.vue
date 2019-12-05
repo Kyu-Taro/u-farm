@@ -1,13 +1,19 @@
 <template>
   <div>
-    <button>
+    <compnent :is="tag" class>
       <slot />
-    </button>
+    </compnent>
   </div>
 </template>
 
 <script>
 export default {
+  props: {
+    tag: {
+      type: String,
+      default: 'button'
+    }
+  }
 }
 </script>
 
