@@ -1,7 +1,6 @@
 
 export default {
   mode: 'spa',
-  srcDir: __dirname,
   /*
   ** Headers of the page
   */
@@ -24,13 +23,11 @@ export default {
   ** Global CSS
   */
   css: [
-    '~/assets/sass/theme.scss'
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~plugins/fontawesome'
   ],
   /*
   ** Nuxt.js dev-modules
