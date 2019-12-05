@@ -80,7 +80,7 @@
       <div class="row">
         <div class="col-xs-12 col-sm-8 col-sm-offset-4">
           <div>
-            <did class="row">
+            <div class="row">
               <div class="col-xs">
                 <h2>
                   野菜をおいしく、身近に。
@@ -89,9 +89,9 @@
                   Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet quia accusantium quis enim accusamus laborum ut, fugiat molestias repellat atque dolores placeat suscipit aliquam. Eligendi qui quod repellendus reiciendis aperiam molestiae, quam maiores corporis recusandae ipsam tempora in! Corporis quo officia soluta recusandae quam quia voluptates optio totam laudantium a vel, fugiat veritatis vitae maiores tempore fugit atque sed. Asperiores aliquam quae consequatur itaque placeat. Officia minima aut beatae omnis molestiae est libero, nisi nobis tempora consequatur nostrum dolorem atque optio placeat velit corporis quos amet! Illum exercitationem neque placeat perferendis eum, accusantium, sunt beatae cumque error ea, labore expedita!
                 </p>
               </div>
-            </did>
+            </div>
           </div>
-          <did class="row">
+          <div class="row">
             <div class="col-xs-6">
               <Button>
                 <fa icon="chevron-right" />
@@ -104,7 +104,7 @@
                 ユーザー登録
               </Button>
             </div>
-          </did>
+          </div>
         </div>
       </div>
     </section>

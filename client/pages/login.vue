@@ -1,6 +1,10 @@
 <template>
   <div class="container">
-    main
+    <section>
+      <form action="/login" method="POST">
+        
+      </form>
+    </section>
   </div>
 </template>
 
