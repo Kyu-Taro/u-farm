@@ -14,13 +14,13 @@
       <div class="row center-xs">
         <div class="col-xs-12 col-sm-6">
           <Button>
-            <fa icon="chevron-right" />
+            <fa icon="chevron-right" fixed-width />
             農家登録はこちら
           </Button>
         </div>
         <div class="col-xs-12 col-sm-6">
           <Button>
-            <fa icon="chevron-right" />
+            <fa icon="chevron-right" fixed-width />
             ユーザー登録はこちら
           </Button>
         </div>
@@ -94,13 +94,13 @@
           <did class="row">
             <div class="col-xs-6">
               <Button>
-                <fa icon="chevron-right" />
+                <fa icon="chevron-right" fixed-width />
                 農家登録
               </Button>
             </div>
             <div class="col-xs-6">
               <Button>
-                <fa icon="chevron-right" />
+                <fa icon="chevron-right" fixed-width />
                 ユーザー登録
               </Button>
             </div>
