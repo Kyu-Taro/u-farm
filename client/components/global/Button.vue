@@ -1,6 +1,6 @@
 <template>
   <div>
-    <compnent :is="tag" class>
+    <compnent :is="tag" class="button">
       <slot />
     </compnent>
   </div>
@@ -18,4 +18,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.button {
+  font-size: 1rem;
+}
 </style>
