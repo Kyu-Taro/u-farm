@@ -1,4 +1,6 @@
-
+if (process.env.NODE_ENV === 'development') {
+  require('dotenv').config()
+}
 export default {
   mode: 'spa',
   srcDir: __dirname,
@@ -44,13 +46,22 @@ export default {
   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/proxy'
   ],
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+  },
+  proxy: {
+    '/api': {
+      target: process.env.APP_API_URL,
+      pathRewrite: {
+        '^/api': '/api'
+      }
+    }
   },
   /*
   ** Build configuration
