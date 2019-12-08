@@ -43,13 +43,16 @@ export default {
         name: '',
         email: '',
         password: '',
-        password_confirmation: ''
+        password_confirmation: '',
+        farmer_flg: false
       }
     }
   },
   methods: {
-    register () {
-      console.log(this.registerForm)
+    async register () {
+      await this.$store.dispatch('auth/register', this.registerForm)
+      this.$router.push('/')
+      // console.log(this.registerForm)
     }
   }
 }
