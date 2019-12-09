@@ -52,7 +52,6 @@ export default {
     async register () {
       await this.$store.dispatch('auth/register', this.registerForm)
       this.$router.push('/')
-      // console.log(this.registerForm)
     }
   }
 }
