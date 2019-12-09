@@ -18,25 +18,25 @@
       <div class="col-xs-6 end-xs">
         <div class="row middle-xs">
           <div class="col-sm-3 hidden-xs">
-            <Router-Link to="/">
+            <nuxt-Link to="/">
               ホーム
-            </Router-Link>
+            </nuxt-Link>
           </div>
           <div class="col-sm-3 hidden-xs">
             <!-- 仮です -->
-            <Router-Link to="/register">
+            <nuxt-Link to="/register">
               農家登録はこちら
-            </Router-Link>
+            </nuxt-Link>
           </div>
           <div class="col-xs-6 col-sm-3">
-            <Router-Link to="/register">
+            <nuxt-Link to="/register">
               新規会員登録
-            </Router-Link>
+            </nuxt-Link>
           </div>
           <div class="col-xs-6 col-sm-3">
-            <Router-Link to="/login">
+            <nuxt-Link to="/login">
               ログイン
-            </Router-Link>
+            </nuxt-Link>
           </div>
         </div>
       </div>
