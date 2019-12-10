@@ -1,14 +1,11 @@
 <template>
-  <header>
+  <header class="header">
     <div class="row middle-xs">
       <div class="col-xs start-xs">
         <div>
           <div class="row">
             <div class="col-xs-12">
-              fresh vesitables fo you
-            </div>
-            <div class="col-xs-12">
-              U_FARM
+              U-FARM
             </div>
           </div>
         </div>
@@ -39,4 +36,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.header{
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  width: 100%;
+  background: #fff;
+  height: 120px;
+}
 </style>
