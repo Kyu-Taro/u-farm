@@ -1,11 +1,13 @@
 <template>
   <div class="container">
-    <div>
-      <ItemCard
+    <div class="row">
+      <div
         v-for="(item, idx) in items"
         :key="idx"
-        v-bind="item"
-      />
+        class="col-xs-6 col-sm-4"
+      >
+        <ItemCard v-bind="item" />
+      </div>
     </div>
   </div>
 </template>
@@ -17,7 +19,9 @@ const DUMMY_ITEM = {
   itemName: 'itemName',
   price: 1000,
   productionArea: '東京',
-  itemImage: 'https://4.imimg.com/data4/UB/WV/MY-32247465/fresh-red-apple-500x500.jpg'
+  itemImage:
+    'https://4.imimg.com/data4/UB/WV/MY-32247465/fresh-red-apple-500x500.jpg',
+  canEdit: true
 }
 
 export default {
