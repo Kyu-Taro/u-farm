@@ -1,4 +1,5 @@
 import axios from 'axios'
+import Cookie from 'js-cookie'
 
 const state = {
   user: null
@@ -15,7 +16,13 @@ const mutations = {
 // try catchhあとで実装
 const actions = {
   async register (content, data) {
-    const response = await axios.post('/api/register', data)
+    await this.$axios.get('/api/csrftoken')
+    const csrfToken = Cookie.get('XSRF-TOKEN')
+    console.log('TCL: register -> csrfToken', csrfToken)
+    const headers = {
+      'X-XSRF-TOKEN': csrfToken
+    }
+    const response = await axios.post('/api/register', data, { headers })
     console.log(response)
     content.commit('setUser', response.data)
   },

@@ -50,8 +50,12 @@ export default {
   },
   methods: {
     async register () {
-      await this.$store.dispatch('auth/register', this.registerForm)
-      this.$router.push('/')
+      try {
+        await this.$store.dispatch('auth/register', this.registerForm)
+      } catch (error) {
+        console.error(error.response)
+      }
+      // this.$router.push('/')
     }
   }
 }

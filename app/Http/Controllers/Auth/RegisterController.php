@@ -25,13 +25,6 @@ class RegisterController extends Controller
     use RegistersUsers;
 
     /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
-
-    /**
      * Create a new controller instance.
      *
      * @return void
@@ -70,5 +63,17 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'farmer_flg' => $data['farmer_flg'],
         ]);
+    }
+
+    /**
+     * The user has been registered.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\User  $user
+     * @return \Illuminate\Http\JsonResponse
+     */
+    protected function registered(Request $request, User $user)
+    {
+        return response()->json($user);
     }
 }
