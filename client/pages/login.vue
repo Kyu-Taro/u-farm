@@ -12,6 +12,9 @@
       </div>
       <input type="submit" value="ログイン">
     </form>
+    <button class="button button--link" @click="logout">
+        Logout
+      </button>
   </div>
 </template>
 
@@ -39,6 +42,11 @@ export default {
     async login () {
       // console.log(this.loginForm)
       await this.$store.dispatch('auth/login', this.loginForm)
+      this.$router.push('/')
+    },
+    async logout () {
+      // console.log(this.loginForm)
+      await this.$store.dispatch('auth/logout')
       this.$router.push('/')
     }
   }
