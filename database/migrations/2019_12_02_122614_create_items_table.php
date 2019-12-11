@@ -19,7 +19,7 @@ class CreateItemsTable extends Migration
             $table->string('img');
             $table->string('name');
             $table->string('price');
-            $table->integer('days');
+            $table->integer('sipping_duration');
             $table->text('text');
             $table->text('recipe');
             $table->string('area');
