@@ -19,7 +19,9 @@ class CreateItemsTable extends Migration
             $table->string('img');
             $table->string('name');
             $table->string('price');
+            $table->integer('days');
             $table->text('text');
+            $table->text('recipe');
             $table->string('area');
             $table->string('detail_img');
             $table->text('detail_prof');
