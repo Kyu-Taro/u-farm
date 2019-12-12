@@ -39,7 +39,8 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~plugins/fontawesome'
+    '~/plugins/fontawesome',
+    '~/plugins/money_delimiter'
   ],
   /*
   ** Nuxt.js dev-modules
