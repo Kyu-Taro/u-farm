@@ -41,11 +41,13 @@ export default {
   methods: {
     async login () {
       // console.log(this.loginForm)
+      await this.$store.dispatch('auth/getCsrfToken')
       await this.$store.dispatch('auth/login', this.loginForm)
       this.$router.push('/')
     },
     async logout () {
       // console.log(this.loginForm)
+      await this.$store.dispatch('auth/getCsrfToken')
       await this.$store.dispatch('auth/logout')
       this.$router.push('/')
     }
