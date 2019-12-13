@@ -12,9 +12,9 @@
       </div>
       <input type="submit" value="ログイン">
     </form>
-    <button class="button button--link" @click="logout">
-        Logout
-      </button>
+    <button @click="logout" class="button button--link">
+      Logout
+    </button>
   </div>
 </template>
 
