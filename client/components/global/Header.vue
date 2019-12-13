@@ -34,7 +34,10 @@
             </nuxt-Link>
           </div>
           <div class="col-xs-6 col-sm-3">
-            <nuxt-Link to="/login">
+            <div v-if="isLogin" @click="logout">
+              ログアウト
+            </div>
+            <nuxt-Link to="/login" v-else>
               ログイン
             </nuxt-Link>
           </div>
@@ -46,6 +49,18 @@
 
 <script>
 export default {
+  computed: {
+    isLogin () {
+      return this.$store.getters['auth/check']
+    }
+  },
+  methods: {
+    async logout () {
+      await this.$store.dispatch('auth/getCsrfToken')
+      await this.$store.dispatch('auth/logout')
+      this.$router.push('/')
+    }
+  }
 }
 </script>
 
