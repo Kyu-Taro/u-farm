@@ -3,7 +3,7 @@ import Cookie from 'js-cookie'
 
 const state = {
   user: null,
-  csrfToken: null
+  headers: {}
 }
 
 const getters = {}
@@ -12,8 +12,8 @@ const mutations = {
   setUser (state, user) {
     state.user = user
   },
-  setCsrfToken (state, csrfToken) {
-    state.csrfToken = csrfToken
+  setCsrfToken (state, headers) {
+    state.headers = headers
   }
 }
 
@@ -21,20 +21,17 @@ const actions = {
   async getCsrfToken (content) {
     await this.$axios.get('/api/csrftoken')
     const csrfToken = Cookie.get('XSRF-TOKEN')
-    content.commit('setCsrfToken', csrfToken)
+    const headers = {
+      'X-XSRF-TOKEN': csrfToken
+    }
+    content.commit('setCsrfToken', headers)
   },
   async register (content, data) {
-    const headers = {
-      'X-XSRF-TOKEN': state.csrfToken
-    }
-    const response = await axios.post('/api/register', data, headers)
+    const response = await axios.post('/api/register', data, state.headers)
     content.commit('setUser', response.data)
   },
   async login (content, data) {
-    const headers = {
-      'X-XSRF-TOKEN': state.csrfToken
-    }
-    const response = await axios.post('/api/login', data, headers)
+    const response = await axios.post('/api/login', data, state.headers)
     content.commit('setUser', response.data)
   },
   async logout (content) {
