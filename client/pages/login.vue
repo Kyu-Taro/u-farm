@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <form @submit.prevent="login" action="/login" method="POST">
+    <form @submit.prevent="login">
       <input type="hidden">
       <div class="form-group">
         <label>メールアドレス</label>
@@ -40,16 +40,23 @@ export default {
   },
   methods: {
     async login () {
-      // console.log(this.loginForm)
-      await this.$store.dispatch('auth/getCsrfToken')
-      await this.$store.dispatch('auth/login', this.loginForm)
-      this.$router.push('/')
+      try {
+        await this.$store.dispatch('auth/getCsrfToken')
+        await this.$store.dispatch('auth/login', this.loginForm)
+        this.$router.push('/')
+      } catch (e) {
+        // とりあえず
+        console.log(e)
+      }
     },
     async logout () {
-      // console.log(this.loginForm)
-      await this.$store.dispatch('auth/getCsrfToken')
-      await this.$store.dispatch('auth/logout')
-      this.$router.push('/')
+      try {
+        await this.$store.dispatch('auth/getCsrfToken')
+        await this.$store.dispatch('auth/logout')
+        this.$router.push('/')
+      } catch (e) {
+        console.log(e)
+      }
     }
   }
 }

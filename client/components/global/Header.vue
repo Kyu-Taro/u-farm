@@ -8,9 +8,9 @@
               fresh vesitables fo you
             </div>
             <div class="col-xs-12">
-              <Router-Link to="/">
+              <nuxt-Link to="/">
                 U_FARM
-              </Router-Link>
+              </nuxt-Link>
             </div>
           </div>
         </div>
@@ -37,7 +37,7 @@
             <div v-if="isLogin" @click="logout">
               ログアウト
             </div>
-            <nuxt-Link to="/login" v-else>
+            <nuxt-Link v-else to="/login">
               ログイン
             </nuxt-Link>
           </div>
