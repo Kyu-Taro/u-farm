@@ -51,6 +51,7 @@ export default {
   methods: {
     async register () {
       try {
+        await this.$store.dispatch('auth/getCsrfToken')
         await this.$store.dispatch('auth/register', this.registerForm)
       } catch (error) {
         console.error(error.response)
