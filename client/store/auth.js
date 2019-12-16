@@ -29,16 +29,17 @@ const actions = {
     }
     content.commit('setCsrfToken', headers)
   },
-  async register (content, data) {
+  async register ({ state, commit }, data) {
     const response = await axios.post('/api/register', data, state.headers)
-    content.commit('setUser', response.data)
+    commit('setUser', response.data)
   },
-  async login (content, data) {
+  async login ({ state, commit }, data) {
     const response = await axios.post('/api/login', data, state.headers)
-    content.commit('setUser', response.data)
+    commit('setUser', response.data)
   },
   async logout (content) {
     await axios.post('/api/logout')
+
     content.commit('setUser', null)
   }
 }
