@@ -46,7 +46,7 @@ export default {
         this.$router.push('/')
       } catch (e) {
         // とりあえず
-        console.log(e)
+        console.error('ログインエラー', e.response)
       }
     },
     async logout () {
@@ -55,7 +55,7 @@ export default {
         await this.$store.dispatch('auth/logout')
         this.$router.push('/')
       } catch (e) {
-        console.log(e)
+        console.error('ログアウトエラー', e.response)
       }
     }
   }
