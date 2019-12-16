@@ -45,11 +45,11 @@ const actions = {
   async fetchUserInfo ({ state, commit }) {
     try {
       const response = await this.$axios.get('/api/user')
+      console.log('TCL: fetchUserInfo -> response', response.data)
       commit('setUser', response.data.data.user)
     } catch (e) {
       console.error(e.response)
       commit('setUser', null)
-      throw e
     }
   }
 }
