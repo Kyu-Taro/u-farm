@@ -26,8 +26,6 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
-
     /**
      * Create a new controller instance.
      *
@@ -42,6 +40,22 @@ class LoginController extends Controller
     {
         $request->session()->regenerate();
 
-        return response()->json();
+        return response()->json([
+            'meta' => [
+                'status' => 'ok'
+            ]
+        ]);
+    }
+
+    protected function authenticated(Request $request, $user)
+    {
+        return response()->json([
+            'meta' => [
+                'status' => 'ok'
+            ],
+            'data' => [
+                'user' => $user
+            ]
+        ]);
     }
 }
