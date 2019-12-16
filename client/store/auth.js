@@ -13,7 +13,7 @@ const getters = {
 
 const mutations = {
   setUser (state, user) {
-    state.user = user
+    state.user = user.data.user
   },
   setCsrfToken (state, headers) {
     state.headers = headers
