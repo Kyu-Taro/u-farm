@@ -59,6 +59,9 @@ export default {
   proxy: {
     '/api/': process.env.APP_API_URL
   },
+  router: {
+    middleware: ['check-auth']
+  },
   /*
   ** Build configuration
   */
