@@ -74,6 +74,13 @@ class RegisterController extends Controller
      */
     protected function registered(Request $request, User $user)
     {
-        return response()->json($user);
+        return response()->json([
+            'meta' => [
+                'status' => 'ok'
+            ],
+            'data' => [
+                'user' => $user
+            ]
+        ]);
     }
 }
