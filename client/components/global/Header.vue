@@ -1,5 +1,24 @@
 <template>
   <header>
+    <div>
+      <h1>
+        ログイン確認用
+      </h1>
+      <h2>
+        <template v-if="$store.getters['auth/check']">
+          ログイン中
+        </template>
+        <template v-else>
+          ログアウト中
+        </template>
+      </h2>
+      <h2>
+        ログイン情報
+      </h2>
+      <p>
+        {{ $store.state.auth.user }}
+      </p>
+    </div>
     <div class="row middle-xs">
       <div class="col-xs start-xs">
         <div>
