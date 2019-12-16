@@ -12,3 +12,26 @@ ROute::get('/csrftoken', function (Request $request) {
             ]
     ]);
 });
+ROute::get('/user', function (Request $request) {
+    $user = $request->user();
+    if (is_null($user)) {
+        return response()->json([
+            'meta' => [
+                'status' => 'error'
+                ]
+            ],
+            401
+        );
+
+    } else {
+        return response()->json([
+            'meta' => [
+                'status' => 'ok'
+            ],
+            'data' => [
+                'user' => $user
+            ]
+        ]);
+
+    }
+});
