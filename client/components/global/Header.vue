@@ -44,6 +44,7 @@
           <div class="col-sm-3 hidden-xs">
             <!-- 仮です -->
             <nuxt-Link to="/register">
+            <nuxt-Link to="/registerAsFarmer">
               農家登録はこちら
             </nuxt-Link>
           </div>
