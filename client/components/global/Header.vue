@@ -18,6 +18,10 @@
       <p>
         {{ $store.state.auth.user }}
       </p>
+      <h3>
+        農家フラグ
+        {{ farmer_flg }}
+      </h3>
     </div>
     <div class="row middle-xs">
       <div class="col-xs start-xs">
@@ -43,7 +47,7 @@
           </div>
           <div class="col-sm-3 hidden-xs">
             <!-- 仮です -->
-            <nuxt-Link to="/register">
+            <nuxt-Link to="/registerAsFarmer">
               農家登録はこちら
             </nuxt-Link>
           </div>
@@ -71,6 +75,9 @@ export default {
   computed: {
     isLogin () {
       return this.$store.getters['auth/check']
+    },
+    farmer_flg () {
+      return this.$store.getters['auth/farmer_flg']
     }
   },
   methods: {
