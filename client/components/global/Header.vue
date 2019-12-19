@@ -11,7 +11,7 @@
         <div class="row">
           <div class="col-sm-3 hidden-xs">
             <div class="row middle-xs nav__item nav__item--home">
-              <div class="col-xs-12">
+              <div class="nav-item">
                 <fa class="nav-item__icon" icon="home" />
                 <div class="nav-item__text">
                   ホーム
@@ -21,7 +21,7 @@
           </div>
           <div class="col-sm-3 hidden-xs">
             <div class="row middle-xs nav__item nav__item--farmer">
-              <div class="col-xs-12">
+              <div class="nav-item">
                 <fa class="nav-item__icon" icon="user" />
                 <div class="nav-item__text">
                   農家登録はこちらから
@@ -31,7 +31,7 @@
           </div>
           <div class="col-xs-6 col-sm-3">
             <div class="row middle-xs nav__item nav__item--register">
-              <div class="col-xs-12">
+              <div class="nav-item">
                 <fa class="nav-item__icon" icon="pen" />
                 <div class="nav-item__text">
                   新規会員登録
@@ -41,7 +41,7 @@
           </div>
           <div class="col-xs-6 col-sm-3">
             <div class="row middle-xs nav__item nav__item--login">
-              <div class="col-xs-12">
+              <div class="nav-item">
                 <fa class="nav-item__icon" icon="arrow-alt-circle-right" />
                 <div class="nav-item__text">
                   ログイン
@@ -63,6 +63,7 @@ export default {
 <style lang="scss" scoped>
 $nav-height: 120px;
 $nav-item-icon-size: 1rem;
+$nav-item-icon-margin: 8px;
 header {
   position: fixed;
   top: 0;
@@ -76,6 +77,7 @@ header {
     }
     &__item {
       height: $nav-height;
+      padding: 15px;
       &--register {
         color: #fff;
         background: #639E56;
@@ -86,15 +88,14 @@ header {
       }
     }
     .nav-item {
+      display: flex;
+      align-items: center;
       &__icon {
         font-size: $nav-item-icon-size;
-        vertical-align: middle;
+        margin-right: $nav-item-icon-margin;
       }
       &__text {
-        width: calc(100% - #{$nav-item-icon-size} - 4px);
-        display: inline-block;
-        vertical-align: middle;
-        padding-left: 5px;
+        flex: 1;
       }
     }
   }
