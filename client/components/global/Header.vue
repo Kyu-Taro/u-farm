@@ -1,29 +1,53 @@
 <template>
   <header class="header">
-    <div class="row middle-xs ht120">
+    <div class="row middle-xs nav">
       <div class="col-xs start-xs">
         <div>
-          <div class="row">
-            <div class="col-xs-12">
-              <!-- 仮のロゴの画像 -->
-              <img src="/logo.png" class="logo">
-            </div>
-          </div>
+          <!-- 仮のロゴの画像 -->
+          <img src="~/assets/image/logo.png" class="nav__logo">
         </div>
       </div>
       <div class="col-xs-6 end-xs">
-        <div class="row middle-xs menu-wrap">
-          <div class="col-sm-3 hidden-xs home">
-            ホーム
+        <div class="row">
+          <div class="col-sm-3 hidden-xs">
+            <div class="row middle-xs nav__item nav__item--home">
+              <div class="col-xs-12">
+                <fa class="nav-item__icon" icon="home" />
+                <div class="nav-item__text">
+                  ホーム
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="col-sm-3 hidden-xs farmer">
-            農家登録はこちら
+          <div class="col-sm-3 hidden-xs">
+            <div class="row middle-xs nav__item nav__item--farmer">
+              <div class="col-xs-12">
+                <fa class="nav-item__icon" icon="user" />
+                <div class="nav-item__text">
+                  農家登録はこちらから
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="col-xs-6 col-sm-3 register">
-            新規会員登録
+          <div class="col-xs-6 col-sm-3">
+            <div class="row middle-xs nav__item nav__item--register">
+              <div class="col-xs-12">
+                <fa class="nav-item__icon" icon="pen" />
+                <div class="nav-item__text">
+                  新規会員登録
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="col-xs-6 col-sm-3 login">
-            ログイン
+          <div class="col-xs-6 col-sm-3">
+            <div class="row middle-xs nav__item nav__item--login">
+              <div class="col-xs-12">
+                <fa class="nav-item__icon" icon="arrow-alt-circle-right" />
+                <div class="nav-item__text">
+                  ログイン
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -37,34 +61,42 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$nav-height: 120px;
+$nav-item-icon-size: 1rem;
 header {
   position: fixed;
   top: 0;
   z-index: 99;
   width: 100%;
-  background: #fff;
-  height: 120px;
-  .logo {
-    padding-left: 50px;
-  }
-  .menu-wrap {
-    height: 120px;
-    text-align: center;
-    display: flex;
-    align-items: stretch;
-    .register {
-      color: white;
-      background: #639E56;
+  .nav {
+    background: #fff;
+    height: $nav-height;
+    &__logo {
+      padding-left: 50px;
     }
-    .login {
-      color: white;
-      background: #33302F;
+    &__item {
+      height: $nav-height;
+      &--register {
+        color: #fff;
+        background: #639E56;
+      }
+      &--login {
+        color: #fff;
+        background: #33302F;
+      }
     }
-    ::before{
-      content: '〇';
-      padding-right: 5px;
+    .nav-item {
+      &__icon {
+        font-size: $nav-item-icon-size;
+        vertical-align: middle;
+      }
+      &__text {
+        width: calc(100% - #{$nav-item-icon-size} - 4px);
+        display: inline-block;
+        vertical-align: middle;
+        padding-left: 5px;
+      }
     }
   }
 }
-
 </style>
