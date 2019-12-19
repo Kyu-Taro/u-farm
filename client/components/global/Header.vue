@@ -1,13 +1,13 @@
 <template>
   <header class="header">
     <div class="row middle-xs nav">
-      <div class="col-xs start-xs">
+      <div class="col-xs-5 start-xs">
         <div>
           <!-- 仮のロゴの画像 -->
           <img src="~/assets/image/logo.png" class="nav__logo">
         </div>
       </div>
-      <div class="col-xs-6 end-xs">
+      <div class="col-xs-7 end-xs">
         <div class="row">
           <div class="col-sm-3 hidden-xs">
             <div class="row middle-xs nav__item nav__item--home">
@@ -90,6 +90,7 @@ header {
     .nav-item {
       display: flex;
       align-items: center;
+      margin: 0 auto;
       &__icon {
         font-size: $nav-item-icon-size;
         margin-right: $nav-item-icon-margin;
