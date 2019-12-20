@@ -37,8 +37,14 @@ return [
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['daily'],
+            'channels' => ['daily', 'console'],
             'ignore_exceptions' => false,
+        ],
+
+        'console' => [
+            'driver' => 'console',
+            'path' => storage_path('php://stderr'),
+            'level' => 'debug',
         ],
 
         'single' => [

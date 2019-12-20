@@ -131,6 +131,5 @@ export default {
 .index{
   // 今だけ背景色塗り
   background: #E9F1F3;
-  margin-top: 120px;
 }
 </style>
