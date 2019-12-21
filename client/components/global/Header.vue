@@ -135,6 +135,7 @@ header {
       padding: 10px;
       a:link {
         color: inherit;
+        text-decoration: none;
       }
       &--register {
         color: #fff;
