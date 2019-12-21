@@ -38,7 +38,7 @@
         <div class="row">
           <div class="col-sm-3 hidden-xs">
             <div class="row middle-xs nav__item nav__item--home">
-              <nuxt-link to="/" tag="div" class="nav-item">
+              <nuxt-link to="/" class="nav-item">
                 <fa class="nav-item__icon" icon="home" />
                 <div class="nav-item__text">
                   ホーム
@@ -48,7 +48,7 @@
           </div>
           <div class="col-sm-3 hidden-xs">
             <div class="row middle-xs nav__item nav__item--farmer">
-              <nuxt-Link to="/registerAsFarmer" tag="div" class="nav-item">
+              <nuxt-Link to="/registerAsFarmer" class="nav-item">
                 <fa class="nav-item__icon" icon="user" />
                 <div class="nav-item__text">
                   農家登録はこちら
@@ -58,7 +58,7 @@
           </div>
           <div class="col-xs-6 col-sm-3">
             <div class="row middle-xs nav__item nav__item--register">
-              <nuxt-Link to="/register" tag="div" class="nav-item">
+              <nuxt-Link to="/register" class="nav-item">
                 <fa class="nav-item__icon" icon="pen" />
                 <div class="nav-item__text">
                   新規会員登録
@@ -70,12 +70,12 @@
             <div class="row middle-xs nav__item nav__item--login">
               <div v-if="isLogin" class="nav-item">
                 <!-- アイコンは変更してください -->
-                <fa class="nav-item__icon" tag="div" icon="arrow-alt-circle-right" />
+                <fa class="nav-item__icon" icon="arrow-alt-circle-right" />
                 <div @click="logout" class="nav-item__text">
                   ログアウト
                 </div>
               </div>
-              <nuxt-Link v-else to="/login" tag="div" class="nav-item">
+              <nuxt-Link v-else to="/login" class="nav-item">
                 <fa class="nav-item__icon" icon="arrow-alt-circle-right" />
                 <div class="nav-item__text">
                   ログイン
@@ -133,6 +133,9 @@ header {
     &__item {
       height: $nav-height;
       padding: 10px;
+      a:link {
+        color: inherit;
+      }
       &--register {
         color: #fff;
         background: #639E56;
@@ -152,9 +155,11 @@ header {
       &__icon {
         font-size: $nav-item-icon-size;
         margin-right: $nav-item-icon-margin;
+        color: inherit;
       }
       &__text {
         flex: 1;
+        color: inherit;
       }
     }
   }
