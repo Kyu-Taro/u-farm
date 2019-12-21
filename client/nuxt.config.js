@@ -63,14 +63,13 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    proxy: true
   },
   proxy: {
-    '/api': {
-      target: process.env.APP_API_URL,
-      pathRewrite: {
-        '^/api': '/api'
-      }
-    }
+    '/api/': process.env.APP_API_URL
+  },
+  router: {
+    middleware: ['check-auth']
   },
   /*
   ** Build configuration

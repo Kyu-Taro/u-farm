@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Symfony\Component\HttpFoundation\Request;
 
 class LoginController extends Controller
 {
@@ -25,8 +26,6 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
-
     /**
      * Create a new controller instance.
      *
@@ -35,5 +34,28 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    protected function loggedOut(Request $request)
+    {
+        $request->session()->regenerate();
+
+        return response()->json([
+            'meta' => [
+                'status' => 'ok'
+            ]
+        ]);
+    }
+
+    protected function authenticated(Request $request, $user)
+    {
+        return response()->json([
+            'meta' => [
+                'status' => 'ok'
+            ],
+            'data' => [
+                'user' => $user
+            ]
+        ]);
     }
 }
