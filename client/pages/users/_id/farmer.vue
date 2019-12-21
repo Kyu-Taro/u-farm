@@ -32,7 +32,7 @@ const DUMMY_ITEM = {
 }
 
 export default {
-  layout: 'sidebar_menu',
+  layout: 'sidebarMenu',
   components: {
     ItemCard
   },
