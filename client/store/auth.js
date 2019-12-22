@@ -6,7 +6,8 @@ const state = {
 
 const getters = {
   check: state => !!state.user,
-  username: state => state.user ? state.user.name : ''
+  username: state => state.user ? state.user.name : '',
+  farmer_flg: state => state.user ? state.user.farmer_flg : false
 }
 
 const mutations = {
