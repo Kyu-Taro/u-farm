@@ -38,6 +38,15 @@ html {
   margin: 0;
 }
 
+button{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  appearance: none;
+}
+
 .button--green {
   display: inline-block;
   border-radius: 4px;

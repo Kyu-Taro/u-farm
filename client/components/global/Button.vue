@@ -1,6 +1,6 @@
 <template>
   <div>
-    <compnent :is="tag" class="button">
+    <compnent :is="tag" :style="styleVariables" class="button">
       <slot />
     </compnent>
   </div>
@@ -12,6 +12,17 @@ export default {
     tag: {
       type: String,
       default: 'button'
+    },
+    background: {
+      type: String,
+      default: '#639E56'
+    }
+  },
+  computed: {
+    styleVariables () {
+      return {
+        '--button-background': this.background
+      }
     }
   }
 }
@@ -20,5 +31,9 @@ export default {
 <style lang="scss" scoped>
 .button {
   font-size: 1rem;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 25px;
+  background: var(--button-background);
 }
 </style>
