@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header class="header">
     <div>
       <h1>
         ログイン確認用
@@ -23,46 +23,65 @@
         {{ farmer_flg }}
       </h3>
     </div>
-    <div class="row middle-xs">
+    <div class="row middle-xs between-xs nav">
       <div class="col-xs start-xs">
-        <div>
-          <div class="row">
-            <div class="col-xs-12">
-              fresh vesitables fo you
-            </div>
-            <div class="col-xs-12">
-              <nuxt-Link to="/">
-                U_FARM
-              </nuxt-Link>
-            </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <nuxt-Link to="/">
+              <!-- 仮のロゴの画像 -->
+              <img src="~/assets/image/logo.png" class="nav__logo">
+            </nuxt-Link>
           </div>
         </div>
       </div>
-      <div class="col-xs-6 end-xs">
-        <div class="row middle-xs">
+      <div class="col-xs-7 end-xs nav__item-wrap">
+        <div class="row">
           <div class="col-sm-3 hidden-xs">
-            <nuxt-Link to="/">
-              ホーム
-            </nuxt-Link>
-          </div>
-          <div class="col-sm-3 hidden-xs">
-            <!-- 仮です -->
-            <nuxt-Link to="/registerAsFarmer">
-              農家登録はこちら
-            </nuxt-Link>
-          </div>
-          <div class="col-xs-6 col-sm-3">
-            <nuxt-Link to="/register">
-              新規会員登録
-            </nuxt-Link>
-          </div>
-          <div class="col-xs-6 col-sm-3">
-            <div v-if="isLogin" @click="logout">
-              ログアウト
+            <div class="row middle-xs nav__item nav__item--home">
+              <nuxt-link to="/" class="nav-item">
+                <fa class="nav-item__icon" icon="home" />
+                <div class="nav-item__text">
+                  ホーム
+                </div>
+              </nuxt-link>
             </div>
-            <nuxt-Link v-else to="/login">
-              ログイン
-            </nuxt-Link>
+          </div>
+          <div class="col-sm-3 hidden-xs">
+            <div class="row middle-xs nav__item nav__item--farmer">
+              <nuxt-Link to="/registerAsFarmer" class="nav-item">
+                <fa class="nav-item__icon" icon="user" />
+                <div class="nav-item__text">
+                  農家登録はこちら
+                </div>
+              </nuxt-Link>
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+            <div class="row middle-xs nav__item nav__item--register">
+              <nuxt-Link to="/register" class="nav-item">
+                <fa class="nav-item__icon" icon="pen" />
+                <div class="nav-item__text">
+                  新規会員登録
+                </div>
+              </nuxt-Link>
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+            <div class="row middle-xs nav__item nav__item--login">
+              <div v-if="isLogin" class="nav-item">
+                <!-- アイコンは変更してください -->
+                <fa class="nav-item__icon" icon="arrow-alt-circle-right" />
+                <div @click="logout" class="nav-item__text">
+                  ログアウト
+                </div>
+              </div>
+              <nuxt-Link v-else to="/login" class="nav-item">
+                <fa class="nav-item__icon" icon="arrow-alt-circle-right" />
+                <div class="nav-item__text">
+                  ログイン
+                </div>
+              </nuxt-Link>
+            </div>
           </div>
         </div>
       </div>
@@ -91,4 +110,59 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$nav-height: 120px;
+$nav-item-icon-size: 1rem;
+$nav-item-icon-margin: 8px;
+header {
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  width: 100%;
+  .nav {
+    background: #fff;
+    height: $nav-height;
+    &__logo {
+      padding-left: 50px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    &__item-wrap {
+      max-width: 700px;
+    }
+    &__item {
+      height: $nav-height;
+      padding: 10px;
+      a:link {
+        color: inherit;
+        text-decoration: none;
+      }
+      &--register {
+        color: #fff;
+        background: #639E56;
+      }
+      &--login {
+        color: #fff;
+        background: #33302F;
+      }
+    }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      margin: 0 auto;
+      &:hover {
+        cursor: pointer;
+      }
+      &__icon {
+        font-size: $nav-item-icon-size;
+        margin-right: $nav-item-icon-margin;
+        color: inherit;
+      }
+      &__text {
+        flex: 1;
+        color: inherit;
+      }
+    }
+  }
+}
 </style>

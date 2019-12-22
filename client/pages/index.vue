@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="index">
     <section>
       <div class="row center-xs">
         <div class="col-xs-12">
@@ -109,8 +109,6 @@
       </div>
     </section>
   </div>
-  </section>
-  </div>
 </template>
 
 <script>
@@ -130,4 +128,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.index{
+  // 今だけ背景色塗り
+  background: #E9F1F3;
+}
 </style>
