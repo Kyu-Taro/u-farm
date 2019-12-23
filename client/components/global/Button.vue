@@ -30,6 +30,7 @@ export default {
 
 <style lang="scss" scoped>
 .button {
+  --button-background: #639E56; //事故防止のデフォルト値
   font-size: 1rem;
   color: #fff;
   padding: 10px 20px;
