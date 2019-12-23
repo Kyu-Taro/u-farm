@@ -35,3 +35,4 @@ Route::get('/user', function (Request $request) {
 
     }
 });
+Route::resource('/items','ItemController');
