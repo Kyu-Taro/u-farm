@@ -1,5 +1,5 @@
 <template>
-  <header class="header">
+  <header class="header container">
     <div>
       <h1>
         ログイン確認用
@@ -38,7 +38,19 @@
         <div class="row">
           <div class="col-sm-3 hidden-xs">
             <div class="row middle-xs nav__item nav__item--home">
-              <nuxt-link to="/" class="nav-item">
+              <nuxt-link v-if="isLogin && farmer_flg" to="/" class="nav-item">
+                <fa class="nav-item__icon" icon="home" />
+                <div class="nav-item__text">
+                  ホーム
+                </div>
+              </nuxt-link>
+              <nuxt-link v-else-if="isLogin" to="/" class="nav-item">
+                <fa class="nav-item__icon" icon="home" />
+                <div class="nav-item__text">
+                  ホーム
+                </div>
+              </nuxt-link>
+              <nuxt-link v-else to="/" class="nav-item">
                 <fa class="nav-item__icon" icon="home" />
                 <div class="nav-item__text">
                   ホーム
@@ -46,7 +58,7 @@
               </nuxt-link>
             </div>
           </div>
-          <div class="col-sm-3 hidden-xs">
+          <div v-if="!isLogin" class="col-sm-3 hidden-xs">
             <div class="row middle-xs nav__item nav__item--farmer">
               <nuxt-Link to="/registerAsFarmer" class="nav-item">
                 <fa class="nav-item__icon" icon="user" />
@@ -56,7 +68,7 @@
               </nuxt-Link>
             </div>
           </div>
-          <div class="col-xs-6 col-sm-3">
+          <div v-if="!isLogin" class="col-xs-6 col-sm-3">
             <div class="row middle-xs nav__item nav__item--register">
               <nuxt-Link to="/register" class="nav-item">
                 <fa class="nav-item__icon" icon="pen" />
@@ -133,10 +145,6 @@ header {
     &__item {
       height: $nav-height;
       padding: 10px;
-      a:link {
-        color: inherit;
-        text-decoration: none;
-      }
       &--register {
         color: #fff;
         background: #639E56;
@@ -156,11 +164,9 @@ header {
       &__icon {
         font-size: $nav-item-icon-size;
         margin-right: $nav-item-icon-margin;
-        color: inherit;
       }
       &__text {
         flex: 1;
-        color: inherit;
       }
     }
   }
