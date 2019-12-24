@@ -1,5 +1,5 @@
 <template>
-  <div class="index">
+  <div class="index container">
     <section>
       <div class="row center-xs">
         <div class="col-xs-12">
@@ -7,7 +7,7 @@
             U-FARM
           </h1>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, quaerat.
+            農家から直接購入できる新しい野菜売買サービス
           </p>
         </div>
       </div>
@@ -19,7 +19,7 @@
           </Button>
         </div>
         <div class="col-xs-12 col-sm-6">
-          <Button>
+          <Button background="#9BD458">
             <fa icon="chevron-right" fixed-width />
             ユーザー登録はこちら
           </Button>
@@ -33,7 +33,10 @@
             U-FARMとは
           </h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores inventore neque sint laudantium culpa odio explicabo illum sit incidunt. Dolores consequatur delectus culpa tempore autem aliquid odio explicabo rem consequuntur, minima est fugit saepe provident ipsa maiores numquam! Et autem suscipit temporibus excepturi itaque tempore doloribus consequuntur pariatur maxime alias.
+            U-farmは消費者と生産者を繋ぐ新しい農産物売買サービスです。<br>
+            農協やスーパーなどを通さず、生産者から直接購入できるので、<br>
+            安く新鮮な野菜をいつでもお家で食べる事ができます。<br>
+            また、生産者のプロフィールやこだわりなどもチェックできるので安心して利用できます。<br>
           </p>
         </div>
       </div>
@@ -52,7 +55,8 @@
             農家の方
           </h3>
           <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores non in voluptate, fugit porro, sed at eveniet animi amet ex dolor sapiente. Placeat sapiente numquam, totam, vero aut cupiditate incidunt at molestiae harum sequi eveniet dolor nihil iusto odio explicabo soluta modi. Ea exercitationem quasi omnis aliquam quibusdam repellendus magni?
+            農家の方は必要な情報を入力後、口座情報を登録で完了です！<br>
+            出品したい商品の写真と共に、商品の詳細を入力するだけで簡単に出品できます。商品が購入されたら、登録先のE-mail宛にメールが届くので、あとは発送するだけです！
           </p>
           <Button>
             農家登録はこちらから！
@@ -68,9 +72,11 @@
             買いたい方
           </h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas nemo vitae suscipit odit quo, quod ex inventore officiis. Perspiciatis dolores in maiores voluptatibus exercitationem placeat enim aspernatur voluptates nesciunt. Impedit assumenda qui quia minima voluptas laboriosam velit voluptates debitis nisi provident asperiores recusandae tempore numquam hic, nesciunt illum, eveniet beatae?
+            まずはユーザー会員登録！<br>
+            氏名や住所など1分で登録は完了。<br>
+            その後検索機能や出品一覧で欲しい商品を選び、購入。発送後に登録E-mail宛にメールが届き、あとは到着を待つだけ！クレジット決済も可能でお手軽に購入できます。
           </p>
-          <Button>
+          <Button background="#9BD458">
             ユーザー登録はこちらから
           </Button>
         </div>
@@ -86,7 +92,10 @@
                   野菜をおいしく、身近に。
                 </h2>
                 <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet quia accusantium quis enim accusamus laborum ut, fugiat molestias repellat atque dolores placeat suscipit aliquam. Eligendi qui quod repellendus reiciendis aperiam molestiae, quam maiores corporis recusandae ipsam tempora in! Corporis quo officia soluta recusandae quam quia voluptates optio totam laudantium a vel, fugiat veritatis vitae maiores tempore fugit atque sed. Asperiores aliquam quae consequatur itaque placeat. Officia minima aut beatae omnis molestiae est libero, nisi nobis tempora consequatur nostrum dolorem atque optio placeat velit corporis quos amet! Illum exercitationem neque placeat perferendis eum, accusantium, sunt beatae cumque error ea, labore expedita!
+                  野菜や果物をもっと手軽に、生活に取り入れませんか？<br>
+                  U-Farmは、もっと食卓に野菜や果物を並べて欲しいという願いの下開発されました。<br>
+                  住んでいる場所や環境に囚われる事なく、おいしくて新鮮な野菜を、好きな産地の農家から直接手に入れ、手軽に食べる事ができる幸せをあなたに。<br>
+                  各農家の方においしい食べ方やおすすめの調理法を紹介してもらっているので、ぜひこの機会に試してみてください。
                 </p>
               </div>
             </div>
@@ -99,7 +108,7 @@
               </Button>
             </div>
             <div class="col-xs-6">
-              <Button>
+              <Button background="#9BD458">
                 <fa icon="chevron-right" fixed-width />
                 ユーザー登録
               </Button>

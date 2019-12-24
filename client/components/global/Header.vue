@@ -1,5 +1,5 @@
 <template>
-  <header class="header">
+  <header class="header container">
     <div>
       <h1>
         ログイン確認用
@@ -145,10 +145,6 @@ header {
     &__item {
       height: $nav-height;
       padding: 10px;
-      a:link {
-        color: inherit;
-        text-decoration: none;
-      }
       &--register {
         color: #fff;
         background: #639E56;
@@ -168,11 +164,9 @@ header {
       &__icon {
         font-size: $nav-item-icon-size;
         margin-right: $nav-item-icon-margin;
-        color: inherit;
       }
       &__text {
         flex: 1;
-        color: inherit;
       }
     }
   }
