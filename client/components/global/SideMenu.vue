@@ -11,7 +11,7 @@
           </div>
           <div class="menu-header__right">
             <div class="menu-header__username">
-              Username
+              {{ user.name }}
             </div>
             <div class="menu-header__button">
               <Button>
@@ -26,71 +26,33 @@
         <fa icon="chevron-right" fixed-width />
       </span>
     </SidebarMenu>
-    <div class="main-content">
-      <Header />
-      <nuxt />
-      <Footer />
-    </div>
   </div>
 </template>
 
 <script>
 import { SidebarMenu } from 'vue-sidebar-menu'
-import Header from '~/components/global/Header.vue'
-import Footer from '~/components/global/Footer.vue'
+import { mapState } from 'vuex'
 import Button from '~/components/global/Button.vue'
 
 export default {
   components: {
-    Header,
-    Footer,
     SidebarMenu,
     Button
   },
+  props: {
+    menu: {
+      type: Array,
+      required: true
+    }
+  },
   data () {
     return {
-      menu: [
-        {
-          title: '出品した商品',
-          icon: {
-            element: 'fa',
-            attributes: {
-              icon: 'pencil-alt'
-            }
-          },
-          child: [
-            {
-              href: '/',
-              title: '商品一覧'
-            },
-            {
-              href: '/',
-              title: '商品の編集'
-            }
-          ]
-        },
-        {
-          href: '/',
-          title: '商品投稿',
-          icon: {
-            element: 'fa',
-            attributes: {
-              icon: 'pencil-alt'
-            }
-          }
-        },
-        {
-          href: '/charts',
-          title: '商品購入ページへ',
-          icon: {
-            element: 'fa',
-            attributes: {
-              icon: 'pencil-alt'
-            }
-          }
-        }
-      ]
     }
+  },
+  computed: {
+    ...mapState({
+      user: state => state.auth.user
+    })
   }
 }
 </script>
@@ -108,10 +70,9 @@ $margin_body: 30px 0;
 $hr_color: #c4c4c4;
 
 @import "vue-sidebar-menu/src/scss/vue-sidebar-menu.scss";
-.main-content {
-  padding-left: 350px;
-}
 .v-sidebar-menu {
+  z-index: 98;
+  padding-top: $navbar_height;
   .menu-header {
     padding: $padding_header;
     &__body {

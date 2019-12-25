@@ -1,21 +1,24 @@
 <template>
-  <div class="section">
-    <div class="container">
-      <div>
-        <h1 class="h1-text">
-          出品した商品
-        </h1>
-      </div>
-      <div class="row">
-        <div
-          v-for="(item, idx) in items"
-          :key="idx"
-          class="item col-xs-6 col-sm-4"
-        >
-          <ItemCard v-bind="item" />
+  <div>
+    <SideMenu :menu="menu" />
+    <div class="section main-content">
+      <div class="container">
+        <div>
+          <h1 class="h1-text">
+            出品した商品
+          </h1>
         </div>
-        <div class="row center-xs">
-          <infinite-loading @infinite="infiniteHandler" />
+        <div class="row">
+          <div
+            v-for="(item, idx) in items"
+            :key="idx"
+            class="item col-xs-6 col-sm-4"
+          >
+            <ItemCard v-bind="item" />
+          </div>
+          <div class="row center-xs">
+            <infinite-loading @infinite="infiniteHandler" />
+          </div>
         </div>
       </div>
     </div>
@@ -25,6 +28,7 @@
 <script>
 import InfiniteLoading from 'vue-infinite-loading'
 import ItemCard from '~/components/global/ItemCard'
+import SideMenu from '~/components/global/SideMenu'
 
 const DUMMY_ITEM = {
   itemName: 'itemName',
@@ -36,10 +40,12 @@ const DUMMY_ITEM = {
 }
 
 export default {
-  layout: 'sidebarMenu',
+  layout: 'default',
+  middleware: 'auth',
   components: {
     ItemCard,
-    InfiniteLoading
+    InfiniteLoading,
+    SideMenu
   },
   validate ({ params }) {
     return true
@@ -47,7 +53,48 @@ export default {
   data () {
     return {
       items: [],
-      currentPage: 1
+      currentPage: 1,
+      menu: [
+        {
+          title: '出品した商品',
+          icon: {
+            element: 'fa',
+            attributes: {
+              icon: 'pencil-alt'
+            }
+          },
+          child: [
+            {
+              href: '/',
+              title: '商品一覧'
+            },
+            {
+              href: '/',
+              title: '商品の編集'
+            }
+          ]
+        },
+        {
+          href: '/',
+          title: '商品投稿',
+          icon: {
+            element: 'fa',
+            attributes: {
+              icon: 'pencil-alt'
+            }
+          }
+        },
+        {
+          href: '/charts',
+          title: '商品購入ページへ',
+          icon: {
+            element: 'fa',
+            attributes: {
+              icon: 'pencil-alt'
+            }
+          }
+        }
+      ]
     }
   },
   computed: {
@@ -115,5 +162,8 @@ $h1-text-color: gray;
   padding: 0 15px;
   margin: 15px 0;
   color: $h1-text-color;
+}
+.main-content {
+  padding-left: $sidemenu_width;
 }
 </style>
