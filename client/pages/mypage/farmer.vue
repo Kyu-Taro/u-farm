@@ -14,12 +14,16 @@
         >
           <ItemCard v-bind="item" />
         </div>
+        <div class="row center-xs">
+          <infinite-loading @infinite="infiniteHandler" />
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import InfiniteLoading from 'vue-infinite-loading'
 import ItemCard from '~/components/global/ItemCard'
 
 const DUMMY_ITEM = {
@@ -34,14 +38,16 @@ const DUMMY_ITEM = {
 export default {
   layout: 'sidebarMenu',
   components: {
-    ItemCard
+    ItemCard,
+    InfiniteLoading
   },
   validate ({ params }) {
     return true
   },
   data () {
     return {
-      items: []
+      items: [],
+      currentPage: 1
     }
   },
   computed: {
@@ -53,8 +59,30 @@ export default {
     this.fetchItems({})
   },
   methods: {
-    fetchItems (query) {
+    infiniteHandler ($state) {
+      try {
+        this.fetchNext()
+      } catch (error) {
+        console.error(error)
+      } finally {
+        $state.loaded()
+      }
+    },
+    fetchNext () {
+      console.log('getch next')
+      try {
+        const params = {
+          page: this.currentPage
+        }
+        this.fetchItems(params)
+        this.currentPage += 1
+      } catch (error) {
+        throw (error)
+      }
+    },
+    fetchItems (params) {
       // サーバーから取得
+      console.log('fetch item', params)
       this.items = this.items.concat(
         Array.from(new Array(12), (v, i) => DUMMY_ITEM)
       )
