@@ -56,7 +56,7 @@ export default {
     }
   },
   mounted () {
-    this.fetchItems({})
+    this.fetchNext()
   },
   methods: {
     infiniteHandler ($state) {
