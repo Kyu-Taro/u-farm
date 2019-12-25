@@ -21,37 +21,46 @@ export default {
   data () {
     return {
       items: [],
-      currentPage: 1
+      page: 1
     }
+  },
+  mounted () {
+    this.fetchItems({})
   },
   methods: {
     infiniteHandler ($state) {
-      console.log('error1')
       try {
-        this.fetchNext()
+        this.fetchNext($state)
       } catch (error) {
-        console.log('エラー')
         console.error(error)
       } finally {
         $state.loaded()
       }
     },
-    fetchNext () {
-      console.log('getch next')
+    fetchNext ($state) {
       try {
         const params = {
-          page: this.currentPage
+          page: this.page,
+          per_page: 1
         }
-        this.fetchItems(params)
-        this.currentPage += 1
+        this.fetchItems(params, $state)
+        this.page += 1
       } catch (error) {
         throw (error)
       }
     },
-    fetchItems (params) {
+    fetchItems (params, $state) {
       // サーバーから取得
-      axios.get('/api/items').then((res) => {
-        this.items = res.data
+      axios.get('/api/items', params).then((res) => {
+        console.log(res)
+        setTimeout(() => {
+          if (this.page < res.data.data.length) {
+            this.items.push(res.data.data)
+            $state.loaded()
+          } else {
+            $state.complete()
+          }
+        }, 1500)
       })
     }
   }
