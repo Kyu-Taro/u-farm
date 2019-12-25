@@ -25,19 +25,13 @@
     </div>
     <div class="row middle-xs between-xs nav">
       <div class="col-xs start-xs">
-        <div class="row">
-          <div class="col-xs-12">
-            <nuxt-Link to="/">
-              <!-- 仮のロゴの画像 -->
-              <img src="~/assets/image/logo.png" class="nav__logo">
-            </nuxt-Link>
-          </div>
-        </div>
+        <nuxt-Link to="/">
+          <!-- 仮のロゴの画像 -->
+          <img src="~/assets/image/logo.png" class="nav__logo">
+        </nuxt-Link>
       </div>
-      <div class="col-xs-7 end-xs nav__item-wrap">
-        <div class="row">
-          <div class="col-sm-3 hidden-xs">
-            <div class="row middle-xs nav__item nav__item--home">
+      <div class="end-xs nav__item-wrap">
+            <div class="nav__item nav__item--home">
               <nuxt-link v-if="isLogin && farmer_flg" to="/" class="nav-item">
                 <fa class="nav-item__icon" icon="home" />
                 <div class="nav-item__text">
@@ -57,9 +51,8 @@
                 </div>
               </nuxt-link>
             </div>
-          </div>
-          <div v-if="!isLogin" class="col-sm-3 hidden-xs">
-            <div class="row middle-xs nav__item nav__item--farmer">
+          <div v-if="!isLogin" class="">
+            <div class="nav__item nav__item--farmer">
               <nuxt-Link to="/registerAsFarmer" class="nav-item">
                 <fa class="nav-item__icon" icon="user" />
                 <div class="nav-item__text">
@@ -68,8 +61,8 @@
               </nuxt-Link>
             </div>
           </div>
-          <div v-if="!isLogin" class="col-xs-6 col-sm-3">
-            <div class="row middle-xs nav__item nav__item--register">
+          <div v-if="!isLogin" class="">
+            <div class="nav__item nav__item--register">
               <nuxt-Link to="/register" class="nav-item">
                 <fa class="nav-item__icon" icon="pen" />
                 <div class="nav-item__text">
@@ -78,8 +71,8 @@
               </nuxt-Link>
             </div>
           </div>
-          <div class="col-xs-6 col-sm-3">
-            <div class="row middle-xs nav__item nav__item--login">
+          <div class="">
+            <div class="nav__item nav__item--login">
               <div v-if="isLogin" class="nav-item">
                 <!-- アイコンは変更してください -->
                 <fa class="nav-item__icon" icon="arrow-alt-circle-right" />
@@ -97,7 +90,6 @@
           </div>
         </div>
       </div>
-    </div>
   </header>
 </template>
 
@@ -140,11 +132,12 @@ header {
       }
     }
     &__item-wrap {
-      max-width: 700px;
+      display: flex;
+      line-height: $nav-height;
     }
     &__item {
       height: $nav-height;
-      padding: 10px;
+      width: 180px;
       &--register {
         color: #fff;
         background: #639E56;
@@ -157,16 +150,13 @@ header {
     .nav-item {
       display: flex;
       align-items: center;
-      margin: 0 auto;
+      justify-content: center;
       &:hover {
         cursor: pointer;
       }
       &__icon {
         font-size: $nav-item-icon-size;
         margin-right: $nav-item-icon-margin;
-      }
-      &__text {
-        flex: 1;
       }
     }
   }
