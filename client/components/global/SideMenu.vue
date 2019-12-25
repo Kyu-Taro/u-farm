@@ -14,7 +14,7 @@
               {{ user.name }}
             </div>
             <div class="menu-header__button">
-              <Button>
+              <Button tag="a">
                 プロフィールを変更
               </Button>
             </div>
