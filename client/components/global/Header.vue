@@ -31,65 +31,65 @@
         </nuxt-Link>
       </div>
       <div class="end-xs nav__item-wrap">
-            <div class="nav__item nav__item--home">
-              <nuxt-link v-if="isLogin && farmer_flg" to="/" class="nav-item">
-                <fa class="nav-item__icon" icon="home" />
-                <div class="nav-item__text">
-                  ホーム
-                </div>
-              </nuxt-link>
-              <nuxt-link v-else-if="isLogin" to="/" class="nav-item">
-                <fa class="nav-item__icon" icon="home" />
-                <div class="nav-item__text">
-                  ホーム
-                </div>
-              </nuxt-link>
-              <nuxt-link v-else to="/" class="nav-item">
-                <fa class="nav-item__icon" icon="home" />
-                <div class="nav-item__text">
-                  ホーム
-                </div>
-              </nuxt-link>
+        <div class="nav__item nav__item--home">
+          <nuxt-link v-if="isLogin && farmer_flg" to="/" class="nav-item">
+            <fa class="nav-item__icon" icon="home" />
+            <div class="nav-item__text">
+              ホーム
             </div>
-          <div v-if="!isLogin" class="">
-            <div class="nav__item nav__item--farmer">
-              <nuxt-Link to="/registerAsFarmer" class="nav-item">
-                <fa class="nav-item__icon" icon="user" />
-                <div class="nav-item__text">
-                  農家登録はこちら
-                </div>
-              </nuxt-Link>
+          </nuxt-link>
+          <nuxt-link v-else-if="isLogin" to="/" class="nav-item">
+            <fa class="nav-item__icon" icon="home" />
+            <div class="nav-item__text">
+              ホーム
             </div>
-          </div>
-          <div v-if="!isLogin" class="">
-            <div class="nav__item nav__item--register">
-              <nuxt-Link to="/register" class="nav-item">
-                <fa class="nav-item__icon" icon="pen" />
-                <div class="nav-item__text">
-                  新規会員登録
-                </div>
-              </nuxt-Link>
+          </nuxt-link>
+          <nuxt-link v-else to="/" class="nav-item">
+            <fa class="nav-item__icon" icon="home" />
+            <div class="nav-item__text">
+              ホーム
             </div>
-          </div>
-          <div class="">
-            <div class="nav__item nav__item--login">
-              <div v-if="isLogin" class="nav-item">
-                <!-- アイコンは変更してください -->
-                <fa class="nav-item__icon" icon="arrow-alt-circle-right" />
-                <div @click="logout" class="nav-item__text">
-                  ログアウト
-                </div>
+          </nuxt-link>
+        </div>
+        <div v-if="!isLogin" class="">
+          <div class="nav__item nav__item--farmer">
+            <nuxt-Link to="/registerAsFarmer" class="nav-item">
+              <fa class="nav-item__icon" icon="user" />
+              <div class="nav-item__text">
+                農家登録はこちら
               </div>
-              <nuxt-Link v-else to="/login" class="nav-item">
-                <fa class="nav-item__icon" icon="arrow-alt-circle-right" />
-                <div class="nav-item__text">
-                  ログイン
-                </div>
-              </nuxt-Link>
+            </nuxt-Link>
+          </div>
+        </div>
+        <div v-if="!isLogin" class="">
+          <div class="nav__item nav__item--register">
+            <nuxt-Link to="/register" class="nav-item">
+              <fa class="nav-item__icon" icon="pen" />
+              <div class="nav-item__text">
+                新規会員登録
+              </div>
+            </nuxt-Link>
+          </div>
+        </div>
+        <div class="">
+          <div class="nav__item nav__item--login">
+            <div v-if="isLogin" class="nav-item">
+              <!-- アイコンは変更してください -->
+              <fa class="nav-item__icon" icon="arrow-alt-circle-right" />
+              <div @click="logout" class="nav-item__text">
+                ログアウト
+              </div>
             </div>
+            <nuxt-Link v-else to="/login" class="nav-item">
+              <fa class="nav-item__icon" icon="arrow-alt-circle-right" />
+              <div class="nav-item__text">
+                ログイン
+              </div>
+            </nuxt-Link>
           </div>
         </div>
       </div>
+    </div>
   </header>
 </template>
 
