@@ -1,5 +1,10 @@
 <template>
   <div class="items">
+    <div class="header_form">
+      <fa icon="bars" class="menu_bars"></fa>
+      <input type="text" name="word" v-model="word">
+      <fa icon="search" calss="search_icon" @click="infiniteHandler"></fa>
+    </div>
     <div v-for="item in items" :key="item.id" class="item">
       <img :src="item.img">
       <p>{{ item.name }}</p>
@@ -21,7 +26,8 @@ export default {
   data () {
     return {
       items: [],
-      page: 1
+      page: 1,
+      word: ''
     }
   },
   created () {
@@ -32,7 +38,8 @@ export default {
       axios.get('/api/items', {
         params: {
           page: this.page,
-          per_page: 1
+          per_page: 1,
+          word: this.word
         }
       }).then((res) => {
         setTimeout(() => {
@@ -75,8 +82,16 @@ export default {
     flex-direction: row;
     flex-wrap: wrap;
     width: 90%;
-    max-width: 75%;
+    max-width: 100%;
     margin: auto;
+    font-size: 62.5%;
+}
+.header_form {
+  width: 100%;
+  height: 65px
+}
+.search_icon {
+  cursor: pointer;
 }
 .item {
   border: solid 1px black;

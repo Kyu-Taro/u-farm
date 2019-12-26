@@ -12,10 +12,14 @@ class ItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $items = Item::paginate(12);
-        return $items;
+        $items = Item::paginate(10);
+        $params = [
+            'data' => $items,
+            'word' => $request->word,
+        ];
+        return $params;
     }
 
     /**
