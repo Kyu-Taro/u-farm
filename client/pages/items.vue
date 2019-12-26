@@ -1,13 +1,13 @@
 <template>
-    <div class="items">
-        <div v-for="item in items" :key="item.id" class="item">
-            <img :src="item.img">
-            <p>{{ item.name }}</p>
-            <p>{{ item.price }}</p>
-            <p>{{ item.area }}</p>
-        </div>
-        <infinite-loading @infinite="infiniteHandler"></infinite-loading>
+  <div class="items">
+    <div v-for="item in items" :key="item.id" class="item">
+      <img :src="item.img">
+      <p>{{ item.name }}</p>
+      <p>{{ item.price }}</p>
+      <p>{{ item.area }}</p>
     </div>
+    <infinite-loading @infinite="infiniteHandler"></infinite-loading>
+  </div>
 </template>
 
 <script>
@@ -24,51 +24,48 @@ export default {
       page: 1
     }
   },
-  mounted () {
-    this.fetchItems({})
+  created () {
+    this.firstHandler()
   },
   methods: {
     infiniteHandler ($state) {
-      try {
-        this.fetchNext($state)
-      } catch (error) {
-        console.error(error)
-      } finally {
-        $state.loaded()
-      }
-    },
-    fetchNext ($state) {
-      try {
-        const params = {
+      axios.get('/api/items', {
+        params: {
           page: this.page,
           per_page: 1
         }
-        this.fetchItems(params, $state)
-        this.page += 1
-      } catch (error) {
-        throw (error)
-      }
-    },
-    fetchItems (params, $state) {
-      // サーバーから取得
-      axios.get('/api/items', params).then((res) => {
-        console.log(res)
+      }).then((res) => {
         setTimeout(() => {
-          if (this.page < res.data.data.length) {
-            this.items.push(res.data.data)
+          console.log(res)
+          if (this.page < res.data.last_page) {
+            this.page += 1
+            this.items.push(...res.data.data)
             $state.loaded()
           } else {
+            this.items.push(...res.data.data)
             $state.complete()
           }
         }, 1500)
       })
+    },
+    firstHandler ($state) {
+      axios('/api/items', {
+        params: {
+          page: this.page,
+          per_page: 1
+        }
+      }).then((res) => {
+        console.log(res)
+        if (this.page <= res.data.last_page) {
+          this.page += 1
+          this.items.push(...res.data.data)
+          $state.loaded()
+        } else {
+          $state.complete()
+        }
+      })
     }
   }
-  // created () {
-  //   axios.get('/api/items').then((res) => {
-  //     this.items = res.data
-  //   })
-  // }
 }
 </script>
 
