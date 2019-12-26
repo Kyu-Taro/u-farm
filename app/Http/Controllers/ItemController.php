@@ -15,11 +15,7 @@ class ItemController extends Controller
     public function index(Request $request)
     {
         $items = Item::paginate(10);
-        $params = [
-            'data' => $items,
-            'word' => $request->word,
-        ];
-        return $params;
+        return $items;
     }
 
     /**
