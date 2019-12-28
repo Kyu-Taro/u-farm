@@ -42,12 +42,11 @@ export default {
         setTimeout(() => {
           if (this.page < res.data.last_page) {
             this.page += 1
-            this.items.push(...res.data.data)
             $state.loaded()
           } else {
-            this.items.push(...res.data.data)
             $state.complete()
           }
+          this.items.push(...res.data.data)
         }, 1500)
       })
     }
