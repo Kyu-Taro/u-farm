@@ -14,24 +14,13 @@ Route::get('/csrftoken', function (Request $request) {
 });
 Route::get('/user', function (Request $request) {
     $user = $request->user();
-    if (is_null($user)) {
-        return response()->json([
-            'meta' => [
-                'status' => 'error'
-                ]
-            ],
-            401
-        );
-
-    } else {
-        return response()->json([
-            'meta' => [
-                'status' => 'ok'
-            ],
-            'data' => [
-                'user' => $user
-            ]
-        ]);
-
-    }
+    return response()->json([
+        'meta' => [
+            'status' => 'ok'
+        ],
+        'data' => [
+            // 非ログイン時はuser=nullが帰る
+            'user' => $user
+        ]
+    ]);
 });
