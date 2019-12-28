@@ -3,7 +3,7 @@
     <div class="header_form">
       <fa icon="bars" class="menu_bars"></fa>
       <input type="text" name="word" v-model="word">
-      <fa icon="search" calss="search_icon" @click="infiniteHandler"></fa>
+      <fa icon="search" calss="search_icon"></fa>
     </div>
     <div v-for="item in items" :key="item.id" class="item">
       <img :src="item.img">
@@ -30,9 +30,6 @@ export default {
       word: ''
     }
   },
-  created () {
-    this.firstHandler()
-  },
   methods: {
     infiniteHandler ($state) {
       axios.get('/api/items', {
@@ -43,7 +40,6 @@ export default {
         }
       }).then((res) => {
         setTimeout(() => {
-          console.log(res)
           if (this.page < res.data.last_page) {
             this.page += 1
             this.items.push(...res.data.data)
@@ -53,23 +49,6 @@ export default {
             $state.complete()
           }
         }, 1500)
-      })
-    },
-    firstHandler ($state) {
-      axios('/api/items', {
-        params: {
-          page: this.page,
-          per_page: 1
-        }
-      }).then((res) => {
-        console.log(res)
-        if (this.page <= res.data.last_page) {
-          this.page += 1
-          this.items.push(...res.data.data)
-          $state.loaded()
-        } else {
-          $state.complete()
-        }
       })
     }
   }
