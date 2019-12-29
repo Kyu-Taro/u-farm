@@ -27,6 +27,7 @@
 
 <script>
 import InfiniteLoading from 'vue-infinite-loading'
+import { mapState } from 'vuex'
 import ItemCard from '~/components/global/ItemCard'
 import SideMenu from '~/components/global/SideMenu'
 
@@ -98,9 +99,9 @@ export default {
     }
   },
   computed: {
-    userName () {
-      return this.$route.params.id
-    }
+    ...mapState({
+      user: state => state.auth.user
+    })
   },
   mounted () {
     this.fetchNext()
@@ -138,7 +139,7 @@ export default {
   },
   head () {
     return {
-      title: `${this.userName}の出品商品一覧`
+      title: `${this.user.name}の出品商品一覧`
     }
   }
 }
