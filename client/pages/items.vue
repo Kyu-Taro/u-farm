@@ -3,7 +3,7 @@
     <div class="header_form">
       <fa icon="bars" class="menu_bars"></fa>
       <input type="text" name="word" v-model="word">
-      <fa icon="search" calss="search_icon"></fa>
+      <fa icon="search" calss="search_icon" @click="serch"></fa>
     </div>
     <div v-for="item in items" :key="item.id" class="item">
       <img :src="item.img">
@@ -27,11 +27,14 @@ export default {
     return {
       items: [],
       page: 1,
+      per: 1,
       word: ''
     }
   },
   methods: {
     infiniteHandler ($state) {
+      console.log('発火1')
+      console.log($state)
       axios.get('/api/items', {
         params: {
           page: this.page,
@@ -48,6 +51,21 @@ export default {
           }
           this.items.push(...res.data.data)
         }, 1500)
+      })
+    },
+    serch () {
+      console.log('発火2')
+      this.page = 1
+      axios.get('/api/items', {
+        params: {
+          page: this.page,
+          per_page: 1,
+          word: this.word
+        }
+      }).then((res) => {
+        console.log(res)
+        this.items = res.data.data
+        console.log(this.items)
       })
     }
   }
