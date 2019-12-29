@@ -36,7 +36,7 @@ const DUMMY_ITEM = {
   productionArea: '東京',
   itemImage:
     'https://4.imimg.com/data4/UB/WV/MY-32247465/fresh-red-apple-500x500.jpg',
-  canEdit: true
+  showEditButton: true
 }
 
 export default {

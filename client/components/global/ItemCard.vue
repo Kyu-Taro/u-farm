@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card__body">
       <img :src="itemImage" class="card__body__item-image">
-      <div v-if="canEdit" class="card__body__edit-button">
+      <div v-if="showEditButton" class="card__body__edit-button">
         <fa class="card__body__edit-button__icon" icon="pencil-alt" />
       </div>
       <div class="card__body__price">
@@ -44,7 +44,7 @@ export default {
       type: String,
       required: true
     },
-    canEdit: {
+    showEditButton: {
       type: Boolean,
       default: false
     }
