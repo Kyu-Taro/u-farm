@@ -65,7 +65,7 @@ export default {
           },
           child: [
             {
-              href: '/',
+              href: '/mypage/farmer',
               title: '商品一覧'
             },
             {
@@ -154,6 +154,7 @@ $h1-text-color: gray;
 }
 .item {
   margin-bottom: 24px;
+  padding: 0 16px;
 }
 
 .h1-text {

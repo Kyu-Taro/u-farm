@@ -59,10 +59,16 @@ export default {
 
 <style lang="scss">
 
-// custom vue-slidbar-menu variables
+// カスタム変数を指定して、SideMenuをカスタマイズできます
+// 変数一覧はここ参照
+// https://github.com/yaminncco/vue-sidebar-menu/blob/master/src/scss/_variables.scss
 $primary-color: $primary_color;
 $base-bg: $secondary_color_light;
 $icon-bg: transparent !important;
+$item-open-bg: white;
+$item-open-color: black;
+$icon-open-color:black;
+$icon-color: black !important;
 
 $icon_size: 60px;
 $padding_header: 30px;
@@ -70,6 +76,9 @@ $margin_body: 30px 0;
 $hr_color: #c4c4c4;
 
 @import "vue-sidebar-menu/src/scss/vue-sidebar-menu.scss";
+
+// scss書いてStyle減光することも可能です
+// https://yaminncco.github.io/vue-sidebar-menu/#/styling
 .v-sidebar-menu {
   z-index: 98;
   padding-top: $navbar_height;
@@ -102,6 +111,9 @@ $hr_color: #c4c4c4;
       border: none;
       margin: 15px 0;
     }
+  }
+  .vsm--link.vsm--link_level-1.vsm--link_active {
+    box-shadow: -3px 0px 0px 0px $primary_color inset;
   }
 }
 </style>
