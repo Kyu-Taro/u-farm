@@ -11,7 +11,7 @@
       <p>{{ item.price }}</p>
       <p>{{ item.area }}</p>
     </div>
-    <infinite-loading @infinite="infiniteHandler"></infinite-loading>
+    <infinite-loading ref="infiniteLoading" @infinite="infiniteHandler"></infinite-loading>
   </div>
 </template>
 
@@ -33,8 +33,6 @@ export default {
   },
   methods: {
     infiniteHandler ($state) {
-      console.log('発火1')
-      console.log($state)
       axios.get('/api/items', {
         params: {
           page: this.page,
@@ -54,7 +52,7 @@ export default {
       })
     },
     serch () {
-      console.log('発火2')
+      this.$refs.infiniteLoading.stateChanger.reset()
       this.page = 1
       axios.get('/api/items', {
         params: {
@@ -63,9 +61,8 @@ export default {
           word: this.word
         }
       }).then((res) => {
-        console.log(res)
         this.items = res.data.data
-        console.log(this.items)
+        this.infiniteHandler()
       })
     }
   }
