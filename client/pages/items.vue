@@ -7,9 +7,9 @@
       <input type="text" name="word" v-model="word">
       <fa icon="search" calss="search_icon" @click="serch"></fa>
       <div v-if="area_flg" class="areas-container">
-        <ul v-for="area in areas" :key="area">
-          <li class="area">{{ area }}</li>
-        </ul>
+        <select v-model="area">
+          <option  v-for="area in areas" :key="area">{{ area }}</option>
+        </select>
       </div>
     </div>
     <div v-for="item in items" :key="item.id" class="item">
@@ -85,16 +85,19 @@ export default {
         '宮崎県',
         '鹿児島県',
         '沖縄県'
-      ]
+      ],
+      area: ''
     }
   },
   methods: {
     infiniteHandler ($state) {
+      console.log($state)
       axios.get('/api/items', {
         params: {
           page: this.page,
           per_page: 1,
-          word: this.word
+          word: this.word,
+          area: this.area
         }
       }).then((res) => {
         setTimeout(() => {
@@ -109,15 +112,18 @@ export default {
       })
     },
     serch () {
+      console.log('発火')
       this.$refs.infiniteLoading.stateChanger.reset()
       this.page = 1
       axios.get('/api/items', {
         params: {
           page: this.page,
           per_page: 1,
-          word: this.word
+          word: this.word,
+          area: this.area
         }
       }).then((res) => {
+        console.log(res)
         this.items = res.data.data
         this.infiniteHandler()
       })
@@ -162,12 +168,5 @@ img {
 }
 .area {
   cursor: pointer;
-}
-.areas-container {
-  z-index: 2;
-  background: rgb(129, 129, 129);
-  max-height: 200px;
-  overflow: auto;
-  width: 100px;
 }
 </style>

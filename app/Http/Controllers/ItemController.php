@@ -15,12 +15,13 @@ class ItemController extends Controller
     public function index(Request $request)
     {
         $word = $request->word;
+        $area = $request->area;
 
-        if ($word == '') {
+        if ($word == '' && $area == '') {
             $items = Item::paginate(10);
             return $items;
         }else{
-            $items = Item::where('name','like','%'.$word.'%')->paginate(10);
+            $items = Item::where('name','like','%'.$word.'%')->where('area','like','%'.$area.'%')->paginate(10);
             return $items;
         }
     }
