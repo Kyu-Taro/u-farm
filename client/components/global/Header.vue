@@ -38,18 +38,21 @@
         <div class="row">
           <div class="col-sm-3 hidden-xs">
             <div class="row middle-xs nav__item nav__item--home">
-              <nuxt-link v-if="isLogin && farmer_flg" to="/" class="nav-item">
+              <!-- 農家ログイン時 -->
+              <nuxt-link v-if="isLogin && farmer_flg" to="/mypage/farmer" class="nav-item">
                 <fa class="nav-item__icon" icon="home" />
                 <div class="nav-item__text">
                   ホーム
                 </div>
               </nuxt-link>
-              <nuxt-link v-else-if="isLogin" to="/" class="nav-item">
+              <!-- ユーザーログイン時 -->
+              <nuxt-link v-else-if="isLogin" to="/items" class="nav-item">
                 <fa class="nav-item__icon" icon="home" />
                 <div class="nav-item__text">
                   ホーム
                 </div>
               </nuxt-link>
+              <!-- ゲスト -->
               <nuxt-link v-else to="/" class="nav-item">
                 <fa class="nav-item__icon" icon="home" />
                 <div class="nav-item__text">
