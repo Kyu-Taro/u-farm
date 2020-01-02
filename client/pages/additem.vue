@@ -5,6 +5,11 @@
     </h2>
     <form @submit.prevent="addItem" action="/addItem" method="POST">
       <div class="form-group">
+        <div class="drop-area">
+          <input class="form-control" name="img" type="file">
+        </div>
+      </div>
+      <div class="form-group">
         <label>商品名</label>
       </div>
       <div class="form-group">
@@ -49,3 +54,13 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+  .drop-area{
+    width: 300px;
+    height: 300px;
+    padding: 10px;
+    text-align: center;
+    border: 1px dashed #c6c6c6;
+    background-color: #f9f9f9;
+  }
+</style>
