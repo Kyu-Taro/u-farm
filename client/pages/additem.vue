@@ -6,19 +6,27 @@
     <form @submit.prevent="addItem" action="/addItem" method="POST">
       <div class="form-group">
         <label>商品名</label>
-        <input v-model="item.name" name="name" type="text">
+      </div>
+      <div class="form-group">
+        <input v-model="item.name" class="form-control" name="name" type="text">
       </div>
       <div class="form-group">
         <label>商品説明</label>
-        <textarea v-model="item.description" name="商品説明" cols="30" rows="10"></textarea>
+      </div>
+      <div class="form-group">
+        <textarea v-model="item.description" class="form-control" name="商品説明" cols="30" rows="10" />
       </div>
       <div class="form-group">
         <label>価格</label>
-        <input v-model="item.price" name="price" type="int">
+      </div>
+      <div class="form-group">
+        <input v-model="item.price" class="form-control" name="price" type="int">
       </div>
       <div class="form-group">
         <label>商品説明</label>
-        <textarea v-model="item.recipe" name="レシピ" cols="30" rows="10"></textarea>
+      </div>
+      <div class="form-group">
+        <textarea v-model="item.recipe" class="form-control" name="レシピ" cols="30" rows="10" />
       </div>
       <input type="submit" value="登録">
     </form>
