@@ -48,7 +48,7 @@ export default {
           console.log('農家ログイン成功')
         } else {
           console.log('一般ログイン成功')
-          this.$router.push('/')
+          this.$router.push('/items')
         }
       } catch (e) {
         // とりあえず
