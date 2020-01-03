@@ -67,7 +67,9 @@ export default {
       this.onArea = true
     },
     dropfile (e) {
-      console.log('ファイルが置かれました')
+      console.log(e)
+      const files = e.dataTransfer.files
+      console.log(files)
       this.onArea = false
     },
     dragleave () {
