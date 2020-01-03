@@ -23,7 +23,7 @@
     "js-cookie": "^2.2.1",
     "nuxt": "^2.0.0",
     "vue-infinite-loading": "^2.4.4",
-    "vue-sidebar-menu": "^4.4.4"
+    "vue-sidebar-menu": "4.4.4"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^1.0.1",
