@@ -12,7 +12,12 @@
           :class="{onArea:onArea}"
           class="drop-area"
         >
-          <input class="form-control" name="img" type="file">
+          <input @change="changefile" class="form-control" name="img" type="file">
+          <ul v-for="file in item.files">
+            <li>
+              {{ file.name }}
+            </li>
+          </ul>
         </div>
       </div>
       <div class="form-group">
@@ -50,6 +55,7 @@ export default {
   data: () => {
     return {
       item: {
+        files: [],
         name: '',
         description: '',
         price: '',
@@ -58,18 +64,19 @@ export default {
       onArea: false
     }
   },
-  computed: {
-
-  },
   methods: {
     dragover () {
       console.log('dragover')
       this.onArea = true
     },
     dropfile (e) {
+      this.changefile(e)
+    },
+    changefile (e) {
       console.log(e)
-      const files = e.dataTransfer.files
-      console.log(files)
+      const files = e.target.files || e.dataTransfer.files
+      console.log(files[0])
+      this.item.files.push(files[0])
       this.onArea = false
     },
     dragleave () {
@@ -89,6 +96,6 @@ export default {
   }
   .onArea{
     border: 1px dashed #393;
-    background-color: #ddd;
+    background-color: rgb(66, 233, 0);
   }
 </style>
