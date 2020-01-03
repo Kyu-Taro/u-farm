@@ -5,7 +5,13 @@
     </h2>
     <form @submit.prevent="addItem" action="/addItem" method="POST">
       <div class="form-group">
-        <div class="drop-area">
+        <div
+          @dragover.prevent="dragover"
+          @drop.prevent="dropfile"
+          @dragleave.prevent="dragleave"
+          :class="{onArea:onArea}"
+          class="drop-area"
+        >
           <input class="form-control" name="img" type="file">
         </div>
       </div>
@@ -41,7 +47,6 @@
 <script>
 // import axios from 'axios'
 export default {
-
   data: () => {
     return {
       item: {
@@ -49,7 +54,24 @@ export default {
         description: '',
         price: '',
         recipe: ''
-      }
+      },
+      onArea: false
+    }
+  },
+  computed: {
+
+  },
+  methods: {
+    dragover () {
+      console.log('dragover')
+      this.onArea = true
+    },
+    dropfile (e) {
+      console.log('ファイルが置かれました')
+      this.onArea = false
+    },
+    dragleave () {
+      this.onArea = false
     }
   }
 }
@@ -62,5 +84,9 @@ export default {
     text-align: center;
     border: 1px dashed #c6c6c6;
     background-color: #f9f9f9;
+  }
+  .onArea{
+    border: 1px dashed #393;
+    background-color: #ddd;
   }
 </style>
