@@ -6,19 +6,22 @@
     <form @submit.prevent="addItem" action="/addItem" method="POST">
       <div class="form-group">
         <div
-          @dragover.prevent="dragover"
-          @drop.prevent="dropfile"
-          @dragleave.prevent="dragleave"
+          @dragover.prevent="dragOver"
+          @drop.prevent="dropFile"
+          @dragleave.prevent="dragLeave"
           :class="{onArea:onArea}"
           class="drop-area"
         >
-          <input @change="changefile" class="form-control" name="img" type="file">
-          <ul v-for="file in item.files">
-            <li>
-              {{ file.name }}
-            </li>
-          </ul>
+          <input @change="changeFile" class="form-control" name="img" type="file">
         </div>
+        <ul v-for="image in imageData">
+          <li>
+            <div>
+              <img :src="image" class="preview">
+            </div>
+            <p>{{ image }}</p>
+          </li>
+        </ul>
       </div>
       <div class="form-group">
         <label>商品名</label>
@@ -61,26 +64,43 @@ export default {
         price: '',
         recipe: ''
       },
-      onArea: false
+      onArea: false,
+      imageData: []
     }
   },
   methods: {
-    dragover () {
+    dragOver () {
       console.log('dragover')
       this.onArea = true
     },
-    dropfile (e) {
-      this.changefile(e)
+    dropFile (e) {
+      console.log('drop')
+      this.changeFile(e)
     },
-    changefile (e) {
+    changeFile (e) {
       console.log(e)
       const files = e.target.files || e.dataTransfer.files
-      console.log(files[0])
+      console.log({ files })
       this.item.files.push(files[0])
       this.onArea = false
+      this.imagePreview(e)
     },
-    dragleave () {
+    dragLeave () {
       this.onArea = false
+    },
+    imagePreview (e) {
+      const reader = new FileReader()
+      console.log('1')
+      reader.onload = (e) => {
+        console.log('2')
+        const data = e.target.result || e.dataTransfer.result
+        console.log({ data })
+        this.imageData.push(data)
+      }
+      const ccc = e.target.files || e.dataTransfer.files
+      const aaa = ccc[0]
+      console.log({ aaa })
+      reader.readAsDataURL(aaa)
     }
   }
 }
@@ -97,5 +117,11 @@ export default {
   .onArea{
     border: 1px dashed #393;
     background-color: rgb(66, 233, 0);
+  }
+  .preview{
+    max-width: 200px;
+    max-height: 200px;
+    margin: 10px;
+    background-color: #ddd;
   }
 </style>
