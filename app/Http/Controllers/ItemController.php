@@ -14,19 +14,16 @@ class ItemController extends Controller
      */
     public function index(Request $request)
     {
-        //検索機能の一部
-        // $word = $request->word;
+        $word = $request->word;
+        $area = $request->area;
 
-        // if ($word == '') {
-        //     $items = Item::paginate(8);
-        //     return $items;
-        // }else{
-        //     $items = Item::where('name','like','%'.$word.'%')->paginate(10);
-        //     return $items;
-        // }
-
-        $items = Item::paginate(10);
-        return $items;
+        if ($word == '' && $area == '') {
+            $items = Item::paginate(10);
+            return $items;
+        }else{
+            $items = Item::where('name','like','%'.$word.'%')->where('area','like','%'.$area.'%')->paginate(10);
+            return $items;
+        }
     }
 
     /**

@@ -29,11 +29,18 @@ export default {
     '~/assets/sass/theme.scss',
     '@fortawesome/fontawesome-svg-core/styles.css'
   ],
+  styleResources: {
+    scss: [
+      '~/assets/sass/_variables.scss',
+      '~/assets/sass/_mixins.scss'
+    ]
+  },
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~plugins/fontawesome'
+    '~/plugins/fontawesome',
+    '~/plugins/money_delimiter'
   ],
   /*
   ** Nuxt.js dev-modules
@@ -47,7 +54,9 @@ export default {
   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/proxy',
+    '@nuxtjs/style-resources'
   ],
   /*
   ** Axios module configuration
