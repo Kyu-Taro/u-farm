@@ -82,6 +82,7 @@ $hr_color: #c4c4c4;
 .v-sidebar-menu {
   z-index: 98;
   padding-top: $navbar_height;
+  height: auto;
   .menu-header {
     padding: $padding_header;
     &__body {
