@@ -137,7 +137,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .items {
   display: flex;
     flex-direction: row;
