@@ -1,25 +1,25 @@
 <template>
   <div class="card">
     <div class="card__body">
-      <img :src="itemImage" class="card__body__item-image">
+      <img :src="img" class="card__body__item-image">
       <div v-if="showEditButton" class="card__body__edit-button">
         <fa class="card__body__edit-button__icon" icon="pencil-alt" />
       </div>
       <div class="card__body__price">
-        {{ price | moneyDelimiter }}円
+        {{ price | moneyDelimiter }}
       </div>
     </div>
     <div class="card__footer">
       <div>
         <span>
-          【{{ productionArea }}】
+          【{{ area }}】
         </span>
         <span>
           産地直送
         </span>
       </div>
       <div>
-        {{ itemName }}
+        {{ name }}
       </div>
     </div>
   </div>
@@ -28,7 +28,7 @@
 <script>
 export default {
   props: {
-    itemName: {
+    name: {
       type: String,
       required: true
     },
@@ -36,17 +36,17 @@ export default {
       type: Number,
       required: true
     },
-    productionArea: {
+    area: {
       type: String,
       required: true
     },
-    itemImage: {
+    img: {
       type: String,
       required: true
     },
     showEditButton: {
       type: Boolean,
-      default: false
+      default: true
     }
   }
 }

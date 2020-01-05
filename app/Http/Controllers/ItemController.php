@@ -16,9 +16,13 @@ class ItemController extends Controller
     {
         $word = $request->word;
         $area = $request->area;
+        $id = $request->id;
 
-        if ($word == '' && $area == '') {
+        if ($word == '' && $area == '' && !isset($id)) {
             $items = Item::paginate(10);
+            return $items;
+        }else if(isset($id)){
+            $items = Item::where('farmer_id',$id)->paginate(10);
             return $items;
         }else{
             $items = Item::where('name','like','%'.$word.'%')->where('area','like','%'.$area.'%')->paginate(10);

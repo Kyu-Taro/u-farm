@@ -5,7 +5,7 @@
       <div class="container">
         <div>
           <h1 class="h1-text">
-            出品した商品
+            商品編集
           </h1>
         </div>
         <div class="row">
@@ -14,7 +14,7 @@
             :key="idx"
             class="item col-xs-6 col-sm-4"
           >
-            <ItemCard v-bind="item" />
+            <!-- <ItemCard v-bind="item" /> -->
           </div>
           <div class="row center-xs">
             <infinite-loading @infinite="infiniteHandler" />
@@ -27,26 +27,21 @@
 
 <script>
 import InfiniteLoading from 'vue-infinite-loading'
-import { mapState } from 'vuex'
-import axios from 'axios'
-import ItemCard from '~/components/global/ItemCard'
+// import ItemCard from '~/components/global/ItemCard'
 import SideMenu from '~/components/global/SideMenu'
 
 export default {
   layout: 'default',
   middleware: 'auth',
   components: {
-    ItemCard,
+    // ItemCard,
     InfiniteLoading,
     SideMenu
-  },
-  validate ({ params }) {
-    return true
   },
   data () {
     return {
       items: [],
-      page: 1,
+      currentPage: 1,
       menu: [
         {
           title: '出品した商品',
@@ -81,35 +76,9 @@ export default {
       ]
     }
   },
-  computed: {
-    ...mapState({
-      user: state => state.auth.user
-    })
-  },
-  methods: {
-    infiniteHandler ($state) {
-      axios.get('/api/items', {
-        params: {
-          page: this.page,
-          per_page: 1,
-          id: this.user.id
-        }
-      }).then((res) => {
-        setTimeout(() => {
-          if (this.page < res.data.last_page) {
-            this.page += 1
-            $state.loaded()
-          } else {
-            $state.complete()
-          }
-          this.items.push(...res.data.data)
-        }, 1500)
-      })
-    }
-  },
   head () {
     return {
-      title: `${this.user.name}の出品商品一覧`
+      title: `出品商品編集`
     }
   }
 }
@@ -137,9 +106,5 @@ $h1-text-color: gray;
 }
 .main-content {
   padding-left: $sidemenu_width;
-}
-.infinite-loading-container {
-  height: 100px;
-  width: 100px;
 }
 </style>
