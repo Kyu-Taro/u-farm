@@ -17,7 +17,10 @@
                   :class="{onArea:onArea}"
                   class="drop-area"
                 >
-                  <input @change="changeFile" class="form-control" name="img" type="file">
+                  <label>
+                    <div class="addFileButton">＋</div>
+                    <input id="fileInput" @change="changeFile" class="form-control" name="img" type="file">
+                  </label>
                 </div>
                 <ul v-for="image in imageData">
                   <li>
@@ -128,7 +131,6 @@ export default {
   },
   methods: {
     dragOver () {
-      console.log('dragover')
       this.onArea = true
     },
     dropFile (e) {
@@ -136,9 +138,7 @@ export default {
       this.changeFile(e)
     },
     changeFile (e) {
-      console.log(e)
       const files = e.target.files || e.dataTransfer.files
-      console.log({ files })
       this.item.files.push(files[0])
       this.onArea = false
       this.imagePreview(e)
@@ -148,17 +148,14 @@ export default {
     },
     imagePreview (e) {
       const reader = new FileReader()
-      console.log('1')
       reader.onload = (e) => {
-        console.log('2')
         const data = e.target.result || e.dataTransfer.result
         console.log({ data })
         this.imageData.push(data)
       }
-      const ccc = e.target.files || e.dataTransfer.files
-      const aaa = ccc[0]
-      console.log({ aaa })
-      reader.readAsDataURL(aaa)
+      const filedata = e.target.files || e.dataTransfer.files
+      console.log({ filedata })
+      reader.readAsDataURL(filedata[0])
     }
   },
   head () {
@@ -173,20 +170,36 @@ export default {
     padding-left: $sidemenu_width;
   }
   .drop-area{
-    width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 200px;
     padding: 10px;
     text-align: center;
     border: 1px dashed #c6c6c6;
     background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .onArea{
     border: 1px dashed #393;
     background-color: rgb(66, 233, 0);
   }
+  #fileInput{
+    display: none;
+  }
+  .addFileButton{
+    width: 80px;
+    height: 80px;
+    font-size: 80px;
+    border-radius: 40px;
+    line-height: 80px;
+    background-color: rgba(100,100,100,0.5);
+    color: rgba(100,100,100,0.5);
+
+  }
   .preview{
-    max-width: 200px;
-    max-height: 200px;
+    max-width: 100px;
+    max-height: 100px;
     margin: 10px;
     background-color: #ddd;
   }
