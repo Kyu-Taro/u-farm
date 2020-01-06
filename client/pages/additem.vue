@@ -8,7 +8,7 @@
         </h2>
         <form @submit.prevent="addItem" action="/addItem" method="POST">
           <div class="row">
-            <div class="col-6">
+            <div class="col-sm-6">
               <div class="form-group">
                 <div
                   @dragover.prevent="dragOver"
@@ -24,12 +24,11 @@
                     <div>
                       <img :src="image" class="preview">
                     </div>
-                    <p>{{ image }}</p>
                   </li>
                 </ul>
               </div>
             </div>
-            <div class="col-6">
+            <div class="col-sm-6">
               <div class="form-group">
                 <label>商品名</label>
               </div>
