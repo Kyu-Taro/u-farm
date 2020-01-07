@@ -1,65 +1,77 @@
 <template>
   <div>
     <SideMenu :menu="menu" />
-    <div class="section main-content">
+    <div class="section">
       <div class="container">
-        <h2 class="center-xs">
-          商品出品登録
-        </h2>
-        <form @submit.prevent="addItem" action="/addItem" method="POST">
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="form-group">
-                <div
-                  @dragover.prevent="dragOver"
-                  @drop.prevent="dropFile"
-                  @dragleave.prevent="dragLeave"
-                  :class="{onArea:onArea}"
-                  class="drop-area"
-                >
-                  <label>
-                    <div class="addFileButton">＋</div>
-                    <input id="fileInput" @change="changeFile" class="form-control" name="img" type="file">
-                  </label>
+        <div class="page-header">
+          <h1 class="page-title">
+            商品出品登録
+          </h1>
+        </div>
+        <div class="form-area">
+          <form @submit.prevent="addItem" action="/addItem" method="POST">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <div
+                    @dragover.prevent="dragOver"
+                    @drop.prevent="dropFile"
+                    @dragleave.prevent="dragLeave"
+                    :class="{onArea:onArea}"
+                    class="drop-area"
+                  >
+                    <label>
+                      <div class="addFileButton">＋</div>
+                      <input id="fileInput" @change="changeFile" class="form-control" name="img" type="file">
+                    </label>
+                  </div>
+                  <ul v-for="image in imageData">
+                    <li>
+                      <div>
+                        <img :src="image" class="preview">
+                      </div>
+                    </li>
+                  </ul>
                 </div>
-                <ul v-for="image in imageData">
-                  <li>
-                    <div>
-                      <img :src="image" class="preview">
-                    </div>
-                  </li>
-                </ul>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>商品名</label>
+                </div>
+                <div class="form-group">
+                  <input v-model="item.name" class="form-control" name="name" type="text">
+                </div>
+                <div class="form-group">
+                  <label>商品説明</label>
+                </div>
+                <div class="form-group">
+                  <textarea v-model="item.description" class="form-control" name="商品説明" cols="30" rows="10" />
+                </div>
+                <div class="form-group">
+                  <label>価格</label>
+                </div>
+                <div class="form-group">
+                  <input v-model="item.price" class="form-control" name="price" type="int">
+                </div>
+                <div class="form-group">
+                  <label>発送までの目安</label>
+                </div>
+                <div class="form-group">
+                  <input v-model="item.price" class="form-control" name="price" type="int">
+                </div>
+                <div class="form-group">
+                  <label>オススメの食べ方・レシピなど</label>
+                </div>
+                <div class="form-group">
+                  <textarea v-model="item.recipe" class="form-control" name="レシピ" cols="30" rows="10" />
+                </div>
               </div>
             </div>
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label>商品名</label>
-              </div>
-              <div class="form-group">
-                <input v-model="item.name" class="form-control" name="name" type="text">
-              </div>
-              <div class="form-group">
-                <label>商品説明</label>
-              </div>
-              <div class="form-group">
-                <textarea v-model="item.description" class="form-control" name="商品説明" cols="30" rows="10" />
-              </div>
-              <div class="form-group">
-                <label>価格</label>
-              </div>
-              <div class="form-group">
-                <input v-model="item.price" class="form-control" name="price" type="int">
-              </div>
-              <div class="form-group">
-                <label>商品説明</label>
-              </div>
-              <div class="form-group">
-                <textarea v-model="item.recipe" class="form-control" name="レシピ" cols="30" rows="10" />
-              </div>
+            <div class="center-xs">
               <input type="submit" value="登録">
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   </div>
@@ -71,7 +83,7 @@ import SideMenu from '~/components/global/SideMenu'
 
 export default {
   layout: 'default',
-  // middleware: 'auth',
+  middleware: 'auth',
   components: {
     SideMenu
   },
@@ -166,10 +178,33 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-  .main-content {
-    padding-left: $sidemenu_width;
+  $main-content-width: 800px;
+  .section {
+    background: $muted-background;
+    padding: 24px 0;
+    margin-left: $sidemenu_width;
+  }
+  .page-header{
+    max-width: $main-content-width;
+    margin: 0 auto;
+  }
+  .page-title{
+    border-left: green solid 5px;
+    padding-left: 20px;
+  }
+  .form-area{
+    max-width: $main-content-width;
+    background-color: #fff;
+    margin: 0 auto;
+  }
+  .form-group{
+    margin-left: 20px;
+  }
+  .form-control{
+    width: 200px;
   }
   .drop-area{
+    margin: 20px auto;
     width: 200px;
     height: 200px;
     padding: 10px;
@@ -195,7 +230,6 @@ export default {
     line-height: 80px;
     background-color: rgba(100,100,100,0.5);
     color: rgba(100,100,100,0.5);
-
   }
   .preview{
     max-width: 100px;
