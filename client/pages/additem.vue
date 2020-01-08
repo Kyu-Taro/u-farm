@@ -25,13 +25,11 @@
                       <input id="fileInput" @change="changeFile" class="form-control" name="img" type="file">
                     </label>
                   </div>
-                <ul v-for="image in imageData">
-                  <li>
-                    <div>
-                      <img :src="image" class="preview">
-                    </div>
-                  </li>
-                </ul>
+                    <ul class="preview-area">
+                      <li v-for="image in imageData">
+                        <img :src="image" class="preview">
+                      </li>
+                    </ul>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
@@ -237,9 +235,15 @@ export default {
     background-color: rgba(100,100,100,0.5);
     color: rgba(100,100,100,0.5);
   }
+  .preview-area{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
   .preview{
-    max-width: 100px;
-    max-height: 100px;
+    max-width: 150px;
+    max-height: 150px;
     margin: 10px;
     background-color: #ddd;
   }
