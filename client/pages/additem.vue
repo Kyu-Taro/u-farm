@@ -20,10 +20,11 @@
                   class="drop-area"
                 >
                   <span class="square-content"></span>
-                    <label>
-                      <div class="addFileButton">＋</div>
-                      <input id="fileInput" @change="changeFile" class="form-control" name="img" type="file">
-                    </label>
+                  <img class="main-preview" :src="imageData[0]" v-if="imageData" alt="">
+                  <label>
+                    <div class="addFileButton">＋</div>
+                    <input id="fileInput" @change="changeFile" class="form-control" name="img" type="file">
+                  </label>
                   </div>
                     <ul class="preview-area">
                       <li v-for="image in imageData">
@@ -209,9 +210,10 @@ export default {
     text-align: center;
     border: 1px dashed #c6c6c6;
     background-color: #f9f9f9;
-    display: flex;
+    position: relative;
+    /* display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
   }
   //ドロップエリアを正方形に保つため
   .square-content{
@@ -226,14 +228,29 @@ export default {
   #fileInput{
     display: none;
   }
+  .main-preview{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+  }
   .addFileButton{
     width: 80px;
     height: 80px;
     font-size: 80px;
     border-radius: 40px;
     line-height: 80px;
-    background-color: rgba(100,100,100,0.5);
-    color: rgba(100,100,100,0.5);
+    background-color: rgba(100,100,100,0.8);
+    color: rgba(241, 241, 241, 0.8);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    z-index: 2;
   }
   .preview-area{
     width: 100%;
