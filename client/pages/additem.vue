@@ -12,27 +12,26 @@
           <form @submit.prevent="addItem" action="/addItem" method="POST">
             <div class="row">
               <div class="col-sm-6">
-                <div class="form-group">
-                  <div
-                    @dragover.prevent="dragOver"
-                    @drop.prevent="dropFile"
-                    @dragleave.prevent="dragLeave"
-                    :class="{onArea:onArea}"
-                    class="drop-area"
-                  >
+                <div
+                  @dragover.prevent="dragOver"
+                  @drop.prevent="dropFile"
+                  @dragleave.prevent="dragLeave"
+                  :class="{onArea:onArea}"
+                  class="drop-area"
+                >
+                  <span class="square-content"></span>
                     <label>
                       <div class="addFileButton">＋</div>
                       <input id="fileInput" @change="changeFile" class="form-control" name="img" type="file">
                     </label>
                   </div>
-                  <ul v-for="image in imageData">
-                    <li>
-                      <div>
-                        <img :src="image" class="preview">
-                      </div>
-                    </li>
-                  </ul>
-                </div>
+                <ul v-for="image in imageData">
+                  <li>
+                    <div>
+                      <img :src="image" class="preview">
+                    </div>
+                  </li>
+                </ul>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
@@ -204,9 +203,10 @@ export default {
     width: 200px;
   }
   .drop-area{
-    margin: 20px auto;
-    width: 200px;
-    height: 200px;
+    width: 100%;
+    min-width: 200px;
+    min-height: 200px;
+    height: initial;
     padding: 10px;
     text-align: center;
     border: 1px dashed #c6c6c6;
@@ -214,6 +214,12 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  //ドロップエリアを正方形に保つため
+  .square-content{
+    display: block;
+    height: 0;
+    padding-bottom: 100%;
   }
   .onArea{
     border: 1px dashed #393;
