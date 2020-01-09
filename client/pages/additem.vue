@@ -10,63 +10,61 @@
         </div>
         <div class="form-area">
           <form @submit.prevent="addItem" action="/addItem" method="POST">
-            <div class="row">
-              <div class="col-sm-6">
-                <div
-                  @dragover.prevent="dragOver"
-                  @drop.prevent="dropFile"
-                  @dragleave.prevent="dragLeave"
-                  :class="{onArea:onArea}"
-                  class="drop-area"
-                >
-                  <span class="square-content"></span>
-                  <img class="main-preview" :src="imageData[0]" v-if="imageData" alt="">
-                  <label>
-                    <div class="addFileButton">＋</div>
-                    <input id="fileInput" @change="changeFile" class="form-control" name="img" type="file">
-                  </label>
-                  </div>
-                    <ul class="preview-area">
-                      <li v-for="image in imageData">
-                        <img :src="image" class="preview">
-                      </li>
-                    </ul>
-              </div>
-              <div class="col-sm-6">
-                <div class="form-group">
+            <div
+              @dragover.prevent="dragOver"
+              @drop.prevent="dropFile"
+              @dragleave.prevent="dragLeave"
+              :class="{onArea:onArea}"
+              class="drop-area"
+            >
+              <span class="square-content" />
+              <img :src="imageData[0]" v-if="imageData" class="main-preview" alt="">
+              <label>
+                <div class="addFileButton">＋</div>
+                <input id="fileInput" @change="changeFile" class="form-control" name="img" type="file">
+              </label>
+            </div>
+            <ul class="preview-area">
+              <li v-for="image in imageData">
+                <img :src="image" class="preview">
+              </li>
+            </ul>
+            <div class="form-row">
+              <div class="form-item">
+                <div class="form-label">
                   <label>商品名</label>
                 </div>
-                <div class="form-group">
-                  <input v-model="item.name" class="form-control" name="name" type="text">
-                </div>
-                <div class="form-group">
+                <input v-model="item.name" class="form-control" name="name" type="text">
+              </div>
+              <div class="form-item">
+                <div class="form-label">
                   <label>商品説明</label>
                 </div>
-                <div class="form-group">
-                  <textarea v-model="item.description" class="form-control" name="商品説明" cols="30" rows="10" />
-                </div>
-                <div class="form-group">
-                  <label>価格</label>
-                </div>
-                <div class="form-group">
+                <textarea v-model="item.description" class="form-control" name="商品説明" cols="30" rows="10" />
+              </div>
+              <div class="form-harf-area">
+                <div class="form-item-harf">
+                  <div class="form-label">
+                    <label>価格</label>
+                  </div>
                   <input v-model="item.price" class="form-control" name="price" type="int">
                 </div>
-                <div class="form-group">
-                  <label>発送までの目安</label>
-                </div>
-                <div class="form-group">
+                <div class="form-item-harf">
+                  <div class="form-label">
+                    <label>発送までの目安</label>
+                  </div>
                   <input v-model="item.price" class="form-control" name="price" type="int">
-                </div>
-                <div class="form-group">
-                  <label>オススメの食べ方・レシピなど</label>
-                </div>
-                <div class="form-group">
-                  <textarea v-model="item.recipe" class="form-control" name="レシピ" cols="30" rows="10" />
                 </div>
               </div>
-            </div>
-            <div class="center-xs">
-              <input type="submit" value="登録">
+              <div class="form-item">
+                <div class="form-label">
+                  <label>オススメの食べ方・レシピなど</label>
+                </div>
+                <textarea v-model="item.recipe" class="form-control" name="レシピ" cols="30" rows="10" />
+              </div>
+              <div class="center-xs">
+                <input type="submit" value="登録">
+              </div>
             </div>
           </form>
         </div>
@@ -195,17 +193,26 @@ export default {
     background-color: #fff;
     margin: 0 auto;
   }
-  .form-group{
-    margin-left: 20px;
+  .form-row{
+    margin: 2%;
+  }
+  .form-item{
+    width: 100%;
+  }
+  .form-harf-area{
+    display: flex;
+    justify-content: space-between;
+  }
+  .form-item-harf{
+    width: 48%;
   }
   .form-control{
-    width: 200px;
+    width: 100%;
   }
   .drop-area{
     width: 100%;
     min-width: 200px;
     min-height: 200px;
-    height: initial;
     padding: 10px;
     text-align: center;
     border: 1px dashed #c6c6c6;
