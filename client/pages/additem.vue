@@ -69,9 +69,10 @@
             </div>
           </div>
           <div class="center-xs my-3">
-            <button @click="aaa">
+            <Button @click.native="aaa">
               出品する
-            </button>
+            </Button>
+            <p>{{ this.item }}</p>
           </div>
         </div>
       </div>
@@ -82,13 +83,14 @@
 <script>
 // import axios from 'axios'
 import SideMenu from '~/components/global/SideMenu'
-// import Button from '~/components/global/Button.vue'
+import Button from '~/components/global/Button.vue'
 
 export default {
   layout: 'default',
   middleware: 'auth',
   components: {
-    SideMenu
+    SideMenu,
+    Button
   },
   data: () => {
     return {
@@ -154,7 +156,7 @@ export default {
     },
     changeFile (e) {
       const files = e.target.files || e.dataTransfer.files
-      this.item.files.push(files[0])
+      this.item.files.push(files[0].name)
       this.onArea = false
       this.imagePreview(e)
     },
@@ -173,7 +175,7 @@ export default {
       reader.readAsDataURL(filedata[0])
     },
     aaa () {
-      console.log('hello')
+      console.log(this.item)
     }
   },
   head () {
