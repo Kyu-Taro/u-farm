@@ -69,10 +69,11 @@
             </div>
           </div>
           <div class="center-xs my-3">
-            <Button @click.native="aaa">
+            <Button @click.native="store">
               出品する
             </Button>
             <p>{{ this.item }}</p>
+            <p>{{ $store.state.auth.user.id }}</p>
           </div>
         </div>
       </div>
@@ -81,7 +82,7 @@
 </template>
 
 <script>
-// import axios from 'axios'
+import axios from 'axios'
 import SideMenu from '~/components/global/SideMenu'
 import Button from '~/components/global/Button.vue'
 
@@ -174,8 +175,9 @@ export default {
       console.log({ filedata })
       reader.readAsDataURL(filedata[0])
     },
-    aaa () {
-      console.log(this.item)
+    async store () {
+      const response = await axios.post('/api/items', this.item)
+      console.log(response)
     }
   },
   head () {
