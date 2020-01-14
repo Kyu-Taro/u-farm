@@ -9,7 +9,7 @@
           </h1>
         </div>
         <div class="form-area">
-          <form @submit.prevent="store">
+          <form @submit.prevent="submit">
             <div class="flex-box">
               <div class="column">
                 <div
@@ -66,6 +66,7 @@
                     </div>
                     <textarea v-model="item.recipe" class="form-control" name="レシピ" cols="30" rows="10" />
                   </div>
+                  <input type="hidden" :value="user_id">
                 </div>
               </div>
             </div>
@@ -74,7 +75,7 @@
                 出品する
               </Button>
               <p>{{ this.item }}</p>
-              <p>{{ $store.state.auth.user.id }}</p>
+              <p>{{ user_id }}</p>
             </div>
           </form>
         </div>
@@ -149,6 +150,11 @@ export default {
       ]
     }
   },
+  computed: {
+    user_id () {
+      return this.$store.getters['auth/user_id']
+    }
+  },
   methods: {
     dragOver () {
       this.onArea = true
@@ -177,10 +183,14 @@ export default {
       console.log({ filedata })
       reader.readAsDataURL(filedata[0])
     },
-    async store () {
+    async submit () {
       const formData = new FormData()
       console.log(formData)
-      const response = await axios.post('/api/items', this.item)
+      formData.append('item', this.item)
+      const userId = this.user_id
+      console.log(userId)
+      formData.append('id', userId)
+      const response = await axios.post('/api/items', formData)
       console.log(response)
     }
   },
