@@ -9,72 +9,74 @@
           </h1>
         </div>
         <div class="form-area">
-          <div class="flex-box">
-            <div class="column">
-              <div
-                @dragover.prevent="dragOver"
-                @drop.prevent="dropFile"
-                @dragleave.prevent="dragLeave"
-                :class="{onArea:onArea}"
-                class="drop-area"
-              >
-                <span class="square-content" />
-                <img :src="imageData[0]" v-if="imageData" class="main-preview" alt="">
-                <label>
-                  <div class="addFileButton">＋</div>
-                  <input id="fileInput" @change="changeFile" class="form-control" name="img" type="file">
-                </label>
+          <form @submit.prevent="store">
+            <div class="flex-box">
+              <div class="column">
+                <div
+                  @dragover.prevent="dragOver"
+                  @drop.prevent="dropFile"
+                  @dragleave.prevent="dragLeave"
+                  :class="{onArea:onArea}"
+                  class="drop-area"
+                >
+                  <span class="square-content" />
+                  <img :src="imageData[0]" v-if="imageData" class="main-preview" alt="">
+                  <label>
+                    <div class="addFileButton">＋</div>
+                    <input id="fileInput" @change="changeFile" class="form-control" name="img" type="file">
+                  </label>
+                </div>
+                <ul class="preview-area">
+                  <li v-for="image in imageData">
+                    <img :src="image" class="preview">
+                  </li>
+                </ul>
               </div>
-              <ul class="preview-area">
-                <li v-for="image in imageData">
-                  <img :src="image" class="preview">
-                </li>
-              </ul>
-            </div>
-            <div class="column">
-              <div class="form-text-area">
-                <div class="form-item">
-                  <div class="form-label">
-                    <label>商品名</label>
-                  </div>
-                  <input v-model="item.name" class="form-control" name="name" type="text">
-                </div>
-                <div class="form-item">
-                  <div class="form-label">
-                    <label>商品説明</label>
-                  </div>
-                  <textarea v-model="item.description" class="form-control" name="商品説明" cols="30" rows="10" />
-                </div>
-                <div class="form-harf-area">
-                  <div class="form-item-harf">
+              <div class="column">
+                <div class="form-text-area">
+                  <div class="form-item">
                     <div class="form-label">
-                      <label>価格</label>
+                      <label>商品名</label>
                     </div>
-                    <input v-model="item.price" class="form-control" name="price" type="int">
+                    <input v-model="item.name" class="form-control" name="name" type="text">
                   </div>
-                  <div class="form-item-harf">
+                  <div class="form-item">
                     <div class="form-label">
-                      <label>発送までの目安</label>
+                      <label>商品説明</label>
                     </div>
-                    <input v-model="item.price" class="form-control" name="price" type="int">
+                    <textarea v-model="item.description" class="form-control" name="商品説明" cols="30" rows="10" />
                   </div>
-                </div>
-                <div class="form-item">
-                  <div class="form-label">
-                    <label>オススメの食べ方・レシピなど</label>
+                  <div class="form-harf-area">
+                    <div class="form-item-harf">
+                      <div class="form-label">
+                        <label>価格</label>
+                      </div>
+                      <input v-model="item.price" class="form-control" name="price" type="int">
+                    </div>
+                    <div class="form-item-harf">
+                      <div class="form-label">
+                        <label>発送までの目安</label>
+                      </div>
+                      <input v-model="item.price" class="form-control" name="price" type="int">
+                    </div>
                   </div>
-                  <textarea v-model="item.recipe" class="form-control" name="レシピ" cols="30" rows="10" />
+                  <div class="form-item">
+                    <div class="form-label">
+                      <label>オススメの食べ方・レシピなど</label>
+                    </div>
+                    <textarea v-model="item.recipe" class="form-control" name="レシピ" cols="30" rows="10" />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="center-xs my-3">
-            <Button @click.native="store">
-              出品する
-            </Button>
-            <p>{{ this.item }}</p>
-            <p>{{ $store.state.auth.user.id }}</p>
-          </div>
+            <div class="center-xs my-3">
+              <Button type="submit">
+                出品する
+              </Button>
+              <p>{{ this.item }}</p>
+              <p>{{ $store.state.auth.user.id }}</p>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -176,6 +178,8 @@ export default {
       reader.readAsDataURL(filedata[0])
     },
     async store () {
+      const formData = new FormData()
+      console.log(formData)
       const response = await axios.post('/api/items', this.item)
       console.log(response)
     }
