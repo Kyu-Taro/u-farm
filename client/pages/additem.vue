@@ -248,6 +248,7 @@ export default {
   }
   .form-control{
     width: 100%;
+    border-radius: 5px;
   }
   .drop-area{
     width: 100%;
