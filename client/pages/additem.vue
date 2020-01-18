@@ -57,7 +57,12 @@
                       <div class="form-label">
                         <label>発送までの目安</label>
                       </div>
-                      <input v-model="item.price" class="form-control" name="price" type="int">
+                      <select v-model="item.sipping_duration" class="form-control" name="sipping_duration" type="text">
+                        <option disabled value="">選択してください</option>
+                        <option>1〜2日で発送</option>
+                        <option>2〜3日で発送</option>
+                        <option>4〜7日で発送</option>
+                      </select>
                     </div>
                   </div>
                   <div class="form-item">
@@ -103,6 +108,7 @@ export default {
         name: '',
         description: '',
         price: '',
+        sipping_duration: '',
         recipe: ''
       },
       onArea: false,
@@ -191,6 +197,7 @@ export default {
       console.log(userId)
       formData.append('id', userId)
       const response = await axios.post('/api/items', formData)
+      console.log(formData.values)
       console.log(response)
     }
   },
