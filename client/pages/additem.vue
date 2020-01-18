@@ -58,7 +58,9 @@
                         <label>発送までの目安</label>
                       </div>
                       <select v-model="item.sipping_duration" class="form-control" name="sipping_duration" type="text">
-                        <option disabled value="">選択してください</option>
+                        <option disabled value="">
+                          選択してください
+                        </option>
                         <option>1〜2日で発送</option>
                         <option>2〜3日で発送</option>
                         <option>4〜7日で発送</option>
@@ -71,7 +73,7 @@
                     </div>
                     <textarea v-model="item.recipe" class="form-control" name="レシピ" cols="30" rows="10" />
                   </div>
-                  <input type="hidden" :value="user_id">
+                  <input :value="user_id" type="hidden">
                 </div>
               </div>
             </div>
@@ -79,7 +81,7 @@
               <Button type="submit">
                 出品する
               </Button>
-              <p>{{ this.item }}</p>
+              <p>{{ item }}</p>
               <p>{{ user_id }}</p>
             </div>
           </form>
@@ -190,15 +192,20 @@ export default {
       reader.readAsDataURL(filedata[0])
     },
     async submit () {
-      const formData = new FormData()
-      console.log(formData)
-      formData.append('item', this.item)
-      const userId = this.user_id
-      console.log(userId)
-      formData.append('id', userId)
-      const response = await axios.post('/api/items', formData)
-      console.log(formData.values)
-      console.log(response)
+      try {
+        const formData = new FormData()
+        console.log(formData)
+        formData.append('item', this.item)
+        const userId = this.user_id
+        console.log(userId)
+        formData.append('id', userId)
+        const response = await axios.post('/api/items', formData)
+        console.log(formData)
+        console.log(response)
+        console.log('商品を登録しました')
+      } catch (e) {
+        console.log('エラーが発生しました')
+      }
     }
   },
   head () {
