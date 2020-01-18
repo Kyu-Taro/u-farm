@@ -7,6 +7,7 @@ const state = {
 const getters = {
   check: state => !!state.user,
   username: state => state.user ? state.user.name : '',
+  user_id: state => state.user ? state.user.id : '',
   farmer_flg: state => state.user ? state.user.farmer_flg : false
 }
 
