@@ -38,7 +38,7 @@ class ItemsTableSeeder extends Seeder
             'id' => 100,
             'name' => 'テスト太郎',
             'email' => 'test@gmail.com',
-            'password' => '99999999',
+            'password' => Hash::make('99999999'),
             'farmer_flg' => 1,
         ];
 
