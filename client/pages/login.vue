@@ -44,7 +44,9 @@ export default {
         await this.$store.dispatch('auth/getCsrfToken')
         await this.$store.dispatch('auth/login', this.loginForm)
         if (this.$store.getters['auth/farmer_flg']) {
-          this.$router.push('/')
+          // this.$router.push('/')
+          // 一時的に変更しました
+          this.$router.push('/additem')
           console.log('農家ログイン成功')
         } else {
           console.log('一般ログイン成功')
