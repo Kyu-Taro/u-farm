@@ -73,7 +73,6 @@
                     </div>
                     <textarea v-model="item.recipe" class="form-control" name="レシピ" cols="30" rows="10" />
                   </div>
-                  <input :value="user_id" type="hidden">
                 </div>
               </div>
             </div>
@@ -82,7 +81,6 @@
                 出品する
               </Button>
               <p>{{ item }}</p>
-              <p>{{ user_id }}</p>
             </div>
           </form>
         </div>
@@ -158,11 +156,6 @@ export default {
       ]
     }
   },
-  computed: {
-    user_id () {
-      return this.$store.getters['auth/user_id']
-    }
-  },
   methods: {
     dragOver () {
       this.onArea = true
@@ -193,14 +186,16 @@ export default {
     },
     async submit () {
       try {
-        const formData = new FormData()
-        console.log(formData)
-        formData.append('item', this.item)
-        const userId = this.user_id
-        console.log(userId)
-        formData.append('id', userId)
-        const response = await axios.post('/api/items', formData)
-        console.log(formData)
+        const postData = {
+          'img': this.item.files,
+          'name': this.item.name,
+          'description': this.item.description,
+          'price': this.item.price,
+          'sipping_duration': this.item.sipping_duration,
+          'recipe': this.item.recipe
+        }
+        console.log(postData)
+        const response = await axios.post('/api/items', postData)
         console.log(response)
         console.log('商品を登録しました')
       } catch (e) {
