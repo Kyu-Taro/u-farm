@@ -36,5 +36,6 @@ export default {
   padding: 10px 20px;
   border-radius: 25px;
   background: var(--button-background);
+  width: 100%;
 }
 </style>

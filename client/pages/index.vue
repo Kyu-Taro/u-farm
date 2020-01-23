@@ -1,28 +1,24 @@
 <template>
-  <div class="index container">
-    <section>
+  <div class="index">
+    <section class="top__image">
       <div class="row center-xs">
-        <div class="col-xs-12">
-          <h1>
+        <div class="col-sm-7 col-xl-6 top__image-contents">
+          <h1 class="logo">
             U-FARM
           </h1>
-          <p>
+          <p class="text">
             農家から直接購入できる新しい野菜売買サービス
           </p>
-        </div>
-      </div>
-      <div class="row center-xs">
-        <div class="col-xs-12 col-sm-6">
-          <Button>
-            <fa icon="chevron-right" fixed-width />
-            農家登録はこちら
-          </Button>
-        </div>
-        <div class="col-xs-12 col-sm-6">
-          <Button background="#9BD458">
-            <fa icon="chevron-right" fixed-width />
-            ユーザー登録はこちら
-          </Button>
+          <div class="row around-xs">
+            <Button class="col-xs-5 btn-wrap">
+              <fa icon="chevron-right" fixed-width />
+              農家登録はこちら
+            </Button>
+            <Button class="col-xs-5 btn-wrap" background="#9BD458">
+              <fa icon="chevron-right" fixed-width />
+              ユーザー登録はこちら
+            </Button>
+          </div>
         </div>
       </div>
     </section>
@@ -140,5 +136,36 @@ export default {
 .index{
   // 今だけ背景色塗り
   background: #E9F1F3;
+  .top__image {
+    background-image: url(/top.png);
+    height: 0;
+    padding-top: 61.5384615%;
+    background-size: cover;
+    position: relative;
+    &-contents{
+        position: absolute;
+        top: 45%;
+        width: 100%;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+      .logo {
+        font-size: 5vw;
+      }
+      .text {
+        font-size: 1.5vw;
+        margin-bottom: 25px;
+      }
+      .btn-wrap {
+        max-width: 500px;
+        min-width: 290px;
+        padding-top: 10px;
+        .button {
+          width: 100%;
+        }
+      }
+    }
+  }
 }
 </style>
