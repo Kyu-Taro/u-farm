@@ -8,39 +8,22 @@
             商品編集
           </h1>
         </div>
-        <div class="row">
-          <div
-            v-for="(item, idx) in items"
-            :key="idx"
-            class="item col-xs-6 col-sm-4"
-          >
-            <!-- <ItemCard v-bind="item" /> -->
-          </div>
-          <div class="row center-xs">
-            <infinite-loading @infinite="infiniteHandler" />
-          </div>
-        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import InfiniteLoading from 'vue-infinite-loading'
-// import ItemCard from '~/components/global/ItemCard'
 import SideMenu from '~/components/global/SideMenu'
 
 export default {
   layout: 'default',
   middleware: 'auth',
   components: {
-    // ItemCard,
-    InfiniteLoading,
     SideMenu
   },
   data () {
     return {
-      items: [],
       currentPage: 1,
       menu: [
         {
@@ -74,6 +57,11 @@ export default {
           }
         }
       ]
+    }
+  },
+  compouted: {
+    item () {
+      return this.$store.getters['item/item']
     }
   },
   head () {

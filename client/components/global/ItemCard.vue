@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card__body">
       <img :src="img" class="card__body__item-image">
-      <div v-if="showEditButton" class="card__body__edit-button">
+      <div @click="edit_item" class="card__body__edit-button">
         <fa class="card__body__edit-button__icon" icon="pencil-alt" />
       </div>
       <div class="card__body__price">
@@ -20,12 +20,15 @@
       </div>
       <div>
         {{ name }}
+        {{ id }}
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   props: {
     name: {
@@ -44,9 +47,23 @@ export default {
       type: String,
       required: true
     },
-    showEditButton: {
-      type: Boolean,
-      default: true
+    id: {
+      type: Number,
+      required: true
+    }
+  },
+  methods: {
+    async edit_item () {
+      console.log('発火')
+      await axios.get('/api/items/' + this.id, {
+        params: {
+          id: this.id
+        }
+      }).then((res) => {
+        console.log(res.data)
+        this.$store.commit('item/setItem', res.data)
+      })
+      this.$router.push('/mypage/itemEdit')
     }
   }
 }
@@ -111,6 +128,7 @@ $card-footer-padding: 10px 10px;
       height: $edit-button-size;
       border-radius: 50%;
       background: $edit-button-background;
+      cursor: pointer;
       &__icon {
         position: absolute;
         margin-left: #{-$edit-button-font-size / 2};
